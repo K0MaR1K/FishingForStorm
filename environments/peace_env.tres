@@ -1,11 +1,15 @@
-[gd_resource type="Environment" load_steps=2 format=3 uid="uid://dpm0hicpm0ni5"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://dpm0hicpm0ni5"]
+
+[ext_resource type="Material" uid="uid://1uh5hcsxcqcg" path="res://shaders/peaceful_sky.tres" id="1_rsvsr"]
 
 [sub_resource type="Sky" id="Sky_iggfk"]
+sky_material = ExtResource("1_rsvsr")
 
 [resource]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.627484, 0.893649, 1, 1)
 sky = SubResource("Sky_iggfk")
+ambient_light_source = 3
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.367854, 0.473878, 0.553811, 1)
