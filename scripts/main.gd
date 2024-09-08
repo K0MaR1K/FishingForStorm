@@ -12,10 +12,7 @@ var blinks_to_storm: int = 3
 
 func _ready():
 	blink_timer.wait_time = randf_range(5.0, 8.0)
-	#$blink_timer.start()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -23,8 +20,9 @@ func _on_blink_timer_timeout():
 	blink_timer.wait_time = randf_range(5.0, 8.0)
 	blink_canvas.blink()
 	if blink_counter < blinks_to_storm:
-		blink_counter+=1
+		blink_counter += 1
 	else:
+		blink_counter = 0
 		if is_storm:
 			storm_end()
 		else:
