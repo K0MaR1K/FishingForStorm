@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4h4ixc07becm"
-path.s3tc="res://.godot/imported/Bucket_METAL.png-9e0ce0eca51cb3aa4503bd240d934e04.s3tc.ctex"
+uid="uid://c4flnwqa8vi8"
+path.s3tc="res://.godot/imported/BucketFinal_1.png-9db39899f45dc08ba21f31604838a91b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "375379f2dc23c58e19dd8f7f6ffc349e"
+"md5": "eafa646eddd0d2e1d98e033bfd592929"
 }
 
 [deps]
 
-source_file="res://assets/models/items/Bucket_METAL.png"
-dest_files=["res://.godot/imported/Bucket_METAL.png-9e0ce0eca51cb3aa4503bd240d934e04.s3tc.ctex"]
+source_file="res://assets/models/items/BucketFinal_1.png"
+dest_files=["res://.godot/imported/BucketFinal_1.png-9db39899f45dc08ba21f31604838a91b.s3tc.ctex"]
 
 [params]
 
