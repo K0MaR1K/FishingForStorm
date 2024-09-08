@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_rbxda"]
 [ext_resource type="Texture2D" uid="uid://bako7ekxj53xw" path="res://assets/textures/lukky_handpainted_textures/hand_painted_wood.png" id="1_xkkg8"]
 [ext_resource type="PackedScene" uid="uid://bj0g4qj3mcc8c" path="res://scenes/player.tscn" id="2_6vjup"]
-[ext_resource type="Environment" path="res://environments/test_scene.tres" id="2_23pm4"]
+[ext_resource type="PackedScene" uid="uid://is0uyttklyjf" path="res://assets/models/items/Bucket.glb" id="5_nkdb0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wahw"]
 albedo_texture = ExtResource("1_xkkg8")
@@ -33,7 +33,6 @@ shape = SubResource("BoxShape3D_ova3o")
 [node name="Water" parent="." instance=ExtResource("1_8mnwv")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_23pm4")
 
 [node name="Player" parent="." instance=ExtResource("2_6vjup")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33668, 0)
@@ -42,5 +41,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33668, 0)
 transform = Transform3D(0.866025, 0.5, -7.45058e-09, -0.12941, 0.224144, 0.965926, 0.482963, -0.836516, 0.258819, 0, 5, 0)
 
 [node name="storm_timer" type="Timer" parent="."]
+
+[node name="Bucket" parent="." instance=ExtResource("5_nkdb0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07845, 1.83724, 1.07642)
 
 [connection signal="timeout" from="storm_timer" to="." method="_on_storm_timer_timeout"]
