@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlb2spdov4i25"]
+[gd_scene load_steps=9 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_rbxda"]
 [ext_resource type="Texture2D" uid="uid://bako7ekxj53xw" path="res://assets/textures/lukky_handpainted_textures/hand_painted_wood.png" id="1_xkkg8"]
 [ext_resource type="PackedScene" uid="uid://bj0g4qj3mcc8c" path="res://scenes/player.tscn" id="2_6vjup"]
-[ext_resource type="Environment" uid="uid://dpm0hicpm0ni5" path="res://shaders/test_scene.tres" id="2_23pm4"]
+[ext_resource type="Environment" path="res://environments/test_scene.tres" id="2_23pm4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wahw"]
 albedo_texture = ExtResource("1_xkkg8")
@@ -17,6 +18,7 @@ size = Vector3(8, 0.5, 8)
 size = Vector3(8, 0.5, 8)
 
 [node name="TestScene" type="Node3D"]
+script = ExtResource("1_rbxda")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26122, 0)
@@ -38,3 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33668, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.5, -7.45058e-09, -0.12941, 0.224144, 0.965926, 0.482963, -0.836516, 0.258819, 0, 5, 0)
+
+[node name="storm_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="storm_timer" to="." method="_on_storm_timer_timeout"]
