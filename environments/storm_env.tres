@@ -1,10 +1,9 @@
-[gd_resource type="Environment" load_steps=2 format=3 uid="uid://dpm0hicpm0ni5"]
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://lquvw8gqo4ha"]
 
 [sub_resource type="Sky" id="Sky_iggfk"]
 
 [resource]
 background_mode = 1
-background_color = Color(0.627484, 0.893649, 1, 1)
 sky = SubResource("Sky_iggfk")
 fog_enabled = true
 adjustment_enabled = true
