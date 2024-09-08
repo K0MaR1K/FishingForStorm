@@ -70,7 +70,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -87,12 +87,13 @@ func _physics_process(delta):
 	handle_pointing()
 	move_and_slide()
 
-
 func handle_pointing():
 	if point_ray.is_colliding():
 		if Input.is_action_just_pressed("interact1"):
 			var collider = point_ray.get_collider()
-			print(collider)
 			if collider is RigidBody3D:
-				pass
-				#collider.picked_up()
+				collider.picked_up()
+				var c = load(collider.my_scene).instantiate()
+				c.sleeping = true
+				c.freeze = true
+				%hand.add_child(c)
