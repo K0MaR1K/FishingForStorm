@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3qlrdx6cmx0x"
-path.s3tc="res://.godot/imported/Bucket_WOOD.png-d4a7f63f1a1d53e0c9fa144d128dc281.s3tc.ctex"
+uid="uid://cwbrmi1ls7k1a"
+path.s3tc="res://.godot/imported/BucketFinal_0.png-fa9757972829d8b800c1df1c91ddda81.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "05a3666b1304198a4f0b0d26a27629cd"
+"md5": "d9c2d3a390263be4ded97376874c9ee9"
 }
 
 [deps]
 
-source_file="res://assets/models/items/Bucket_WOOD.png"
-dest_files=["res://.godot/imported/Bucket_WOOD.png-d4a7f63f1a1d53e0c9fa144d128dc281.s3tc.ctex"]
+source_file="res://assets/models/items/BucketFinal_0.png"
+dest_files=["res://.godot/imported/BucketFinal_0.png-fa9757972829d8b800c1df1c91ddda81.s3tc.ctex"]
 
 [params]
 
