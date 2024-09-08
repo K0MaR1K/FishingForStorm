@@ -87,7 +87,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 		
 	handle_pointing()
-	handle_tasks()
+	handle_tasks(delta)
 	move_and_slide()
 
 func handle_pointing():
@@ -101,12 +101,12 @@ func handle_pointing():
 				c.freeze = true
 				%Hand.add_child(c)
 
-func handle_tasks():
-	if Input.is_action_just_pressed("interact2"):
+func handle_tasks(delta):
+	if Input.is_action_pressed("interact2"):
 		var current_object = %Hand.get_child(0)
 		if current_object and task:
 			if task.required_object == current_object.my_scene:
-				current_object.interact()
+				current_object.interact(delta)
 			
 
 func entered_interaction(etask: Node3D):
