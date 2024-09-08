@@ -30,6 +30,8 @@ var direction: Vector3 = Vector3.ZERO
 
 @export var mouse_sens: float = 0.4
 
+var task: Node3D
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -85,6 +87,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 		
 	handle_pointing()
+	handle_tasks()
 	move_and_slide()
 
 func handle_pointing():
@@ -93,7 +96,18 @@ func handle_pointing():
 			var collider = point_ray.get_collider()
 			if collider is RigidBody3D:
 				collider.picked_up()
-				var c = load(collider.my_scene).instantiate()
+				var c = collider.my_scene.instantiate()
 				c.sleeping = true
 				c.freeze = true
-				%hand.add_child(c)
+				%Hand.add_child(c)
+
+func handle_tasks():
+	if Input.is_action_just_pressed("interact2"):
+		var current_object = %Hand.get_child(0)
+		if current_object and task:
+			if task.required_object == current_object.my_scene:
+				current_object.interact()
+			
+
+func entered_interaction(etask: Node3D):
+	task = etask
