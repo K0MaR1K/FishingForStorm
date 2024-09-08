@@ -1,32 +1,39 @@
 extends Node3D
 
-@onready var storm_timer = $storm_timer
+@onready var blink_timer: Timer = $BlinkCanvas/BlinkTimer
+
 var is_storm: bool = false
 var storm_env = load("res://environments/storm_env.tres")
 var peace_env = load("res://environments/peace_env.tres")
+@onready var blink_canvas: CanvasLayer = $BlinkCanvas
 
+var blink_counter: int = 0
+var blinks_to_storm: int = 3
 
 func _ready():
-	storm_timer.wait_time = randf_range(5.0, 8.0)
-	$storm_timer.start()
+	blink_timer.wait_time = randf_range(5.0, 8.0)
+	#$blink_timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func _on_storm_timer_timeout():
-	if is_storm:
-		storm_end()
+func _on_blink_timer_timeout():
+	blink_timer.wait_time = randf_range(5.0, 8.0)
+	blink_canvas.blink()
+	if blink_counter < blinks_to_storm:
+		blink_counter+=1
 	else:
-		storm_start()
+		if is_storm:
+			storm_end()
+		else:
+			storm_start()
 	
 func storm_start():
 	$WorldEnvironment.environment = storm_env
 	is_storm = true
-	storm_timer.wait_time = randf_range(5.0, 8.0)
 	
 func storm_end():
 	$WorldEnvironment.environment = peace_env
 	is_storm = false
-	storm_timer.wait_time = randf_range(5.0, 8.0)
