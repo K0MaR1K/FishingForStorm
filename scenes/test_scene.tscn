@@ -19,7 +19,7 @@ size = Vector3(8, 0.5, 8)
 [node name="TestScene" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26122, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63803, 0)
 mesh = SubResource("BoxMesh_0yfcn")
 metadata/_edit_group_ = true
 
