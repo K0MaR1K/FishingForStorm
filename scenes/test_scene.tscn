@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_rbxda"]
 [ext_resource type="Texture2D" uid="uid://bako7ekxj53xw" path="res://assets/textures/lukky_handpainted_textures/hand_painted_wood.png" id="1_xkkg8"]
 [ext_resource type="PackedScene" uid="uid://bj0g4qj3mcc8c" path="res://scenes/player.tscn" id="2_6vjup"]
-[ext_resource type="Environment" path="res://environments/test_scene.tres" id="2_23pm4"]
+[ext_resource type="Environment" uid="uid://dpm0hicpm0ni5" path="res://environments/peace_env.tres" id="2_23pm4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wahw"]
 albedo_texture = ExtResource("1_xkkg8")

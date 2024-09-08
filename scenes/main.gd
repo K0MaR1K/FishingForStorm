@@ -2,8 +2,8 @@ extends Node3D
 
 @onready var storm_timer = $storm_timer
 var is_storm: bool = false
-var storm_env = load("res://environments/storm_scene.tres")
-var peace_env = load("res://environments/test_scene.tres")
+var storm_env = load("res://environments/storm_env.tres")
+var peace_env = load("res://environments/peace_env.tres")
 
 
 func _ready():
