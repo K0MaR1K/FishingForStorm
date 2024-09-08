@@ -11,14 +11,20 @@ var blink_counter: int = 0
 var blinks_to_storm: int = 3
 
 func _ready():
+<<<<<<< HEAD
 	blink_timer.wait_time = randf_range(5.0, 8.0)
 	$BlinkCanvas.get_node("AnimationPlayer").animation_finished.connect(_on_anim_finished)
+=======
+	blink_timer.wait_time = randf_range(15.0, 20.0)
+>>>>>>> 22cc22c1e683bb347288ab4f038b0cbdade00d6b
 
 func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_blink_timer_timeout():
 	blink_timer.wait_time = randf_range(5.0, 8.0)
+	blink_timer.wait_time = randf_range(15.0, 20.0)
 	blink_canvas.blink()
 	
 func storm_start():
