@@ -13,7 +13,7 @@ var blinks_to_storm: int = 3
 func _ready():
 	blink_timer.wait_time = randf_range(5.0, 8.0)
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_blink_timer_timeout():
