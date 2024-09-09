@@ -69,3 +69,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.113
 
 [node name="RepairTask3" parent="RepairTasks" index="18" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.10926, -1.49116)
+
+[node name="RepairTimer" type="Timer" parent="." index="3"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]

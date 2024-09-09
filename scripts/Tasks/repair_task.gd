@@ -10,6 +10,7 @@ func _ready() -> void:
 	$SpillingParticles.emitting = false
 	$Hole.hide()
 	self.monitoring = false
+	$CollisionShape3D.disabled = true
 
 func repair(delta):
 	repaired += repair_speed * delta
@@ -22,3 +23,10 @@ func fully_repaired():
 		plank.show()
 		$Hole.hide()
 		deactivated = true
+
+func make_a_hole():
+	$SpillingParticles.emitting = true
+	$Hole.show()
+	deactivated = false
+	self.monitoring = true
+	$CollisionShape3D.disabled = false
