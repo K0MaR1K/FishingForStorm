@@ -1,4 +1,3 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlb2spdov4i25"]
 [gd_scene load_steps=12 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
@@ -6,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bako7ekxj53xw" path="res://assets/textures/lukky_handpainted_textures/hand_painted_wood.png" id="1_xkkg8"]
 [ext_resource type="PackedScene" uid="uid://bj0g4qj3mcc8c" path="res://scenes/player.tscn" id="2_6vjup"]
 [ext_resource type="Environment" uid="uid://dpm0hicpm0ni5" path="res://environments/peace_env.tres" id="2_23pm4"]
-[ext_resource type="PackedScene" uid="uid://is0uyttklyjf" path="res://assets/models/items/Bucket.glb" id="5_nkdb0"]
 [ext_resource type="PackedScene" uid="uid://yochq87itm7n" path="res://scenes/blink_canvas.tscn" id="6_qtd7q"]
 [ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="8_2v86y"]
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
@@ -41,20 +39,11 @@ shape = SubResource("BoxShape3D_ova3o")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_23pm4")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.866025, 0.5, 2.78842e-07, -0.12941, 0.224144, 0.965926, 0.482963, -0.836516, 0.258819, 0, 5, 0)
-
 [node name="Player" parent="." instance=ExtResource("2_6vjup")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33668, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79488, 0)
 
-<<<<<<< HEAD
-[node name="Bucket" parent="." instance=ExtResource("5_nkdb0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16951, -1.50294)
-=======
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.5, 2.78842e-07, -0.12941, 0.224144, 0.965926, 0.482963, -0.836516, 0.258819, 0, 7.43415, 0)
->>>>>>> 22cc22c1e683bb347288ab4f038b0cbdade00d6b
 
 [node name="BlinkCanvas" parent="." instance=ExtResource("6_qtd7q")]
 
