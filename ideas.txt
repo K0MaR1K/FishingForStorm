@@ -1,7 +1,10 @@
-anxiety
-threats
+ITEMS:
+ropes
+planks
+hammer
+fishing rod
 
-the player is the storm
-but doesnt know it
 
-building tension
+MAAAAAAAAAybe:
+navigation (compass, map, steering)
+fishing minigame

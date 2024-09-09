@@ -23,6 +23,7 @@ radial_segments = 9
 script = ExtResource("2_t1j6e")
 
 [node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014822, 0)
 shape = SubResource("CylinderShape3D_315pk")
 
 [node name="WaterMesh" type="MeshInstance3D" parent="." index="1"]
