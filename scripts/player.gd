@@ -46,27 +46,6 @@ func _input(event):
 
 func _physics_process(delta):
 	
-	#HANDLE MOVEMENT STATE
-	if Input.is_action_pressed("crouch"):
-		#crouching
-		
-		head.position.y = lerp(head.position.y, 0.6 + crouching_depth, delta * lerp_speed)
-		current_speed = crouching_speed
-		standing_shape.disabled = true
-		crouching_shape.disabled = false
-
-	elif !standing_ray.is_colliding():
-		#standing
-		standing_shape.disabled = false
-		crouching_shape.disabled = true
-		head.position.y = lerp(head.position.y, 0.6, delta * lerp_speed)
-		#HANDLE SPRINTING
-		if Input.is_action_pressed("sprint"):
-			#sprinting
-			current_speed = sprinting_speed
-		else:
-			current_speed = walking_speed
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -74,8 +53,23 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
+	handle_pointing()
+	handle_movement_state(delta)
+	handle_walking(delta)
+	handle_tasks(delta)
+	move_and_slide()
 
+func handle_walking(delta):
+		# Directions from input
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
+	
+	# Item walking animation
+	if %Hand.get_child_count():
+		var current_object = %Hand.get_child(0)
+		current_object.walk_with(input_dir != Vector2.ZERO)
+	
+	# Moving the player
 	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(),delta * lerp_speed)
 	if direction:
 		velocity.x = direction.x * current_speed
@@ -83,12 +77,32 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
+
+func handle_movement_state(delta):
+	if Input.is_action_pressed("crouch"):
 		
-	handle_pointing()
-	handle_tasks(delta)
-	move_and_slide()
+		#crouching
+		head.position.y = lerp(head.position.y, 0.6 + crouching_depth, delta * lerp_speed)
+		current_speed = crouching_speed
+		standing_shape.disabled = true
+		crouching_shape.disabled = false
+
+	elif !standing_ray.is_colliding():
+		
+		#standing
+		standing_shape.disabled = false
+		crouching_shape.disabled = true
+		head.position.y = lerp(head.position.y, 0.6, delta * lerp_speed)
+		
+		#HANDLE SPRINTING
+		if Input.is_action_pressed("sprint"):
+			#sprinting
+			current_speed = sprinting_speed
+		else:
+			current_speed = walking_speed
 
 func handle_pointing():
+	# For picking up items
 	if point_ray.is_colliding():
 		if Input.is_action_just_pressed("interact1"):
 			var collider = point_ray.get_collider()
@@ -106,7 +120,6 @@ func handle_tasks(delta):
 			if current_object and task:
 				if task.required_object == current_object.my_scene:
 					current_object.interact(delta)
-			
 
-func entered_interaction(etask: Node3D):
-	task = etask
+func entered_interaction(new_task: Node3D):
+	task = new_task

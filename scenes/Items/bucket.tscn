@@ -1,23 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqbvgwi0wt5hx"]
+[gd_scene load_steps=9 format=3 uid="uid://bqbvgwi0wt5hx"]
 
 [ext_resource type="PackedScene" uid="uid://bspjuurin0r3u" path="res://scenes/Items/items_template.tscn" id="1_tahbt"]
 [ext_resource type="PackedScene" uid="uid://cg73lvabdpydv" path="res://assets/models/items/BucketFinal.glb" id="2_6tiri"]
 [ext_resource type="Script" path="res://scripts/Items/bucket.gd" id="2_t1j6e"]
+[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="3_oc0b2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_315pk"]
 height = 0.45
 radius = 0.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7dw3"]
-transparency = 4
-albedo_color = Color(0.12549, 0.329412, 0.752941, 0.52549)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_xgp6h"]
-material = SubResource("StandardMaterial3D_w7dw3")
+material = ExtResource("3_oc0b2")
 top_radius = 0.27
 bottom_radius = 0.27
 height = 0.01
 radial_segments = 9
+rings = 0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dyhon"]
+emission_shape_scale = Vector3(0.3, 0, 0.3)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_w2m6x"]
+material = ExtResource("3_oc0b2")
+radius = 0.02
+height = 0.05
+radial_segments = 4
+rings = 4
 
 [node name="Bucket" instance=ExtResource("1_tahbt")]
 script = ExtResource("2_t1j6e")
@@ -31,3 +44,10 @@ transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0,
 mesh = SubResource("CylinderMesh_xgp6h")
 
 [node name="BucketFinal" parent="." index="2" instance=ExtResource("2_6tiri")]
+
+[node name="WalkingParticles" type="GPUParticles3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2179, 0)
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_dyhon")
+draw_pass_1 = SubResource("SphereMesh_w2m6x")

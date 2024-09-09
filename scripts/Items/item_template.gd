@@ -4,7 +4,10 @@ var my_scene: PackedScene
 
 
 func interact(_delta):
-	pass
+	print("NO INTERACT")
+
+func walk_with(_is_walking):
+	print("NO WALK WITH")
 
 func picked_up():
 	queue_free()
