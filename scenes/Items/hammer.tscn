@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bspjuurin0r3u" path="res://scenes/Items/items_template.tscn" id="1_l7qsr"]
 [ext_resource type="Script" path="res://scripts/Items/hammer.gd" id="2_y2hd0"]
-[ext_resource type="PackedScene" uid="uid://b5q2bxoun2a2h" path="res://assets/models/items/Hammer.glb" id="3_u42h7"]
+[ext_resource type="PackedScene" uid="uid://h24ejtloqsh4" path="res://assets/models/items/Hammer.glb" id="3_u42h7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_85f2w"]
 size = Vector3(0.6, 0.2, 0.4)
