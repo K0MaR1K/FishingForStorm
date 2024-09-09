@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlb2spdov4i25"]
+[gd_scene load_steps=14 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_rbxda"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="8_2v86y"]
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
 [ext_resource type="PackedScene" uid="uid://coat6nmcbaf1l" path="res://scenes/Tasks/bucket_spill_task.tscn" id="9_5on05"]
+[ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wahw"]
 albedo_texture = ExtResource("1_xkkg8")
@@ -66,5 +67,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -3.5)
 
 [node name="BucketSpillTask2" parent="Tasks" instance=ExtResource("9_5on05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -3.5)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_8awv5")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]
