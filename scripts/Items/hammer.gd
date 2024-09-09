@@ -7,3 +7,9 @@ func _ready():
 func picked_up():
 	super.picked_up()
 	self.rotation = Vector3(0, 0, -PI/2)
+
+func interact(delta, task):
+	if task:
+		if task.task_name == "repair":
+			task.repair(delta)
+			$AnimationPlayer.play("impact")

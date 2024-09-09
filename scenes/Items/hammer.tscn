@@ -41,6 +41,7 @@ height = 0.04
 
 [sub_resource type="Animation" id="Animation_i5wlb"]
 resource_name = "impact"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,7 +64,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.233333, 0.366667, 0.566667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.269508), Vector3(0, 0, 0.0918357), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.342436), Vector3(0, 0, -0.190978), Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -75,7 +76,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.233333, 0.366667, 0.566667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, -1.5708), Vector3(-0.346204, 0, -1.5708), Vector3(0, 0, -1.5708), Vector3(0, 0, -1.5708)]
+"values": [Vector3(0, 3.14159, -1.5708), Vector3(-0.345575, 3.14159, -1.5708), Vector3(0, 3.14159, -1.5708), Vector3(0, 3.14159, -1.5708)]
 }
 
 [sub_resource type="Animation" id="Animation_e8god"]
@@ -102,7 +103,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, -0.269508)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -114,7 +115,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.346204, 0, -1.5708)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_em2pi"]
@@ -124,7 +125,6 @@ _data = {
 }
 
 [node name="Hammer" instance=ExtResource("1_l7qsr")]
-transform = Transform3D(-4.37114e-08, 1, 0, -0.940668, -4.11179e-08, 0.339329, 0.339329, 1.48325e-08, 0.940668, 0, 0, -0.269508)
 script = ExtResource("2_y2hd0")
 
 [node name="CollisionShape3D" parent="." index="0"]
