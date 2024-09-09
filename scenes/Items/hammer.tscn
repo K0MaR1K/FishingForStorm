@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bspjuurin0r3u" path="res://scenes/Items/items_template.tscn" id="1_l7qsr"]
 [ext_resource type="Script" path="res://scripts/Items/hammer.gd" id="2_y2hd0"]
-[ext_resource type="PackedScene" uid="uid://h24ejtloqsh4" path="res://assets/models/items/Hammer.glb" id="3_u42h7"]
+[ext_resource type="PackedScene" uid="uid://b5q2bxoun2a2h" path="res://assets/models/items/Hammer.glb" id="3_u42h7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_85f2w"]
 size = Vector3(0.6, 0.2, 0.4)
@@ -24,6 +24,46 @@ albedo_color = Color(1, 1, 1, 0.152941)
 material = SubResource("StandardMaterial3D_slvof")
 radius = 0.02
 height = 0.04
+
+[sub_resource type="Animation" id="Animation_i5wlb"]
+resource_name = "impact"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.366667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.342436), Vector3(0, 0, -0.190978), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.366667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, -1.5708), Vector3(-0.345575, 3.14159, -1.5708), Vector3(0, 3.14159, -1.5708), Vector3(0, 3.14159, -1.5708)]
+}
 
 [sub_resource type="Animation" id="Animation_e8god"]
 length = 0.001
@@ -49,7 +89,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, -0.269508)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -61,46 +101,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.346204, 0, -1.5708)]
-}
-
-[sub_resource type="Animation" id="Animation_i5wlb"]
-resource_name = "impact"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles3D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.366667, 0.566667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.269508), Vector3(0, 0, 0.0918357), Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.366667, 0.566667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, -1.5708), Vector3(-0.346204, 0, -1.5708), Vector3(0, 0, -1.5708), Vector3(0, 0, -1.5708)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_em2pi"]
@@ -110,7 +111,6 @@ _data = {
 }
 
 [node name="Hammer" instance=ExtResource("1_l7qsr")]
-transform = Transform3D(-3.61999e-06, 1, 0, -0.940668, -3.40521e-06, 0.33933, 0.33933, 1.22837e-06, 0.940668, 0, 0, -0.269508)
 script = ExtResource("2_y2hd0")
 
 [node name="CollisionShape3D" parent="." index="0"]

@@ -35,7 +35,7 @@ var direction: Vector3 = Vector3.ZERO
 
 #OTHER VARS
 
-var task: Node3D
+var tasks: Array[Node3D]
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -86,7 +86,7 @@ func handle_walking(delta):
 	
 	# Hand moving animation
 	if (input_dir != Vector2.ZERO):
-		%Hand.position.y = lerp(%Hand.position.y, sin(current_speed / camera_shake_freq * Time.get_ticks_msec() + PI/2) / 40, delta * lerp_speed)
+		%Hand.position.y = lerp(%Hand.position.y, %Hand.position.y + sin(current_speed / camera_shake_freq * Time.get_ticks_msec() + PI/2) / 40, delta * lerp_speed)
 		head.position.y = lerp(head.position.y, head.position.y + camera_shake * sin(current_speed / camera_shake_freq * Time.get_ticks_msec()), delta * lerp_speed)
 	
 	# Moving the player
@@ -140,8 +140,12 @@ func handle_tasks(delta):
 	if Input.is_action_pressed("interact2"):
 		if %Hand.get_child_count():
 			var current_object = %Hand.get_child(0)
-			current_object.interact(delta, task)
+			for task in tasks:
+				if task.required_object == current_object.my_scene:
+					current_object.interact(delta, task)
+					break
 
+# CHANGED
 func entered_interaction(new_task: Node3D):
-	task = new_task
+	tasks.append(new_task)
 	

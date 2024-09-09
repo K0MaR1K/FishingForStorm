@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cy0cnc8uccist"]
+[gd_scene load_steps=12 format=3 uid="uid://cy0cnc8uccist"]
 
 [ext_resource type="PackedScene" uid="uid://covmq1lx8eod7" path="res://scenes/Tasks/task_template.tscn" id="1_rbucg"]
-[ext_resource type="Material" path="res://assets/textures/water.tres" id="2_a46yw"]
+[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="2_a46yw"]
 [ext_resource type="Script" path="res://scripts/Tasks/repair_task.gd" id="2_u6elx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_la67r"]
@@ -33,13 +33,23 @@ height = 0.06
 radial_segments = 8
 rings = 4
 
+[sub_resource type="BoxMesh" id="BoxMesh_j6wac"]
+size = Vector3(1, 0.06, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dhcg"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p2qy2"]
+material = SubResource("StandardMaterial3D_6dhcg")
+size = Vector3(1, 0.06, 0.3)
+
 [node name="RepairTask" instance=ExtResource("1_rbucg")]
 script = ExtResource("2_u6elx")
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("SphereShape3D_la67r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+[node name="Hole" type="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("CylinderMesh_j1gxw")
 
 [node name="SpillingParticles" type="GPUParticles3D" parent="." index="2"]
@@ -47,3 +57,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0203192, 0.0337913)
 amount = 60
 process_material = SubResource("ParticleProcessMaterial_e8hko")
 draw_pass_1 = SubResource("SphereMesh_hptso")
+
+[node name="Planks" type="Node3D" parent="." index="3"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Planks" index="0"]
+visible = false
+mesh = SubResource("BoxMesh_j6wac")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Planks" index="1"]
+transform = Transform3D(0.64679, 0, 0.762668, 0, 1, 0, -0.762668, 0, 0.64679, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_p2qy2")
