@@ -6,10 +6,10 @@
 [ext_resource type="Environment" uid="uid://dpm0hicpm0ni5" path="res://environments/peace_env.tres" id="2_23pm4"]
 [ext_resource type="PackedScene" uid="uid://yochq87itm7n" path="res://scenes/blink_canvas.tscn" id="6_qtd7q"]
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
-[ext_resource type="PackedScene" uid="uid://coat6nmcbaf1l" path="res://scenes/Tasks/bucket_spill_task.tscn" id="9_5on05"]
+[ext_resource type="PackedScene" uid="uid://chxgbvh3j8dp3" path="res://scenes/Tasks/bucket_spill_task.tscn" id="9_5on05"]
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
-[ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
+[ext_resource type="PackedScene" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_rbxda")
@@ -35,10 +35,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12085, 0)
 
 [node name="Bucket" parent="Items" instance=ExtResource("8_qcsk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, 2.06887, 0)
-continuous_cd = false
 
 [node name="Hammer" parent="Items" instance=ExtResource("11_1mdt6")]
-continuous_cd = false
 
 [node name="Tasks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938819, 0)
