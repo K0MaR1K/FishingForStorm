@@ -1,4 +1,4 @@
-extends "res://scripts/Items/item_template.gd"
+extends Item
 
 var filled: float = 0
 var fill_speed: float = 1
