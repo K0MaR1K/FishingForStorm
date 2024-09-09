@@ -1,6 +1,7 @@
 extends Node3D
+class_name Item
 
-var my_scene: PackedScene
+@export var my_scene: PackedScene
 
 var is_picked_up:
 	get():

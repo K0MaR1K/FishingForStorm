@@ -1,4 +1,4 @@
-extends "res://scripts/Items/item_template.gd"
+extends Item
 
 var filled: float = 0
 var fill_speed: float = 1
@@ -31,20 +31,19 @@ func water_level(water_lvl):
 		water_mesh.hide()
 
 func interact(delta, task):
-	if task:
-		if task.task_name == "bucket":
-			if filled < 1:
-				filled += delta * fill_speed
-		elif task.task_name == "bucket_spill" and filled > 0:
-			var tween = get_tree().create_tween()
-			tween.tween_property(self, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.4)
-			
-			await tween.finished
-			
-			spilling_particles.restart()
-			
-			filled = 0
-		water_level(filled)
+	if task.task_name == "bucket":
+		if filled < 1:
+			filled += delta * fill_speed
+	elif task.task_name == "bucket_spill" and filled > 0:
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.4)
+		
+		await tween.finished
+		
+		spilling_particles.restart()
+		
+		filled = 0
+	water_level(filled)
 	
 func _process(delta):
 	if !spilling_particles.emitting and is_picked_up:
