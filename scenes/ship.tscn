@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ik6isrf6c2jt"]
+
+[ext_resource type="PackedScene" uid="uid://coaqakp0corhp" path="res://assets/models/items/ship uv.glb" id="1_jvsd8"]
+
+[node name="Ship" instance=ExtResource("1_jvsd8")]
+
+[node name="collision" parent="." index="0"]
+collision_layer = 2
