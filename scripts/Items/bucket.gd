@@ -23,31 +23,34 @@ func _ready():
 	spilling_particles.emitting = false
 
 func water_level(water_lvl):
-	water_mesh.show()
-	water_mesh.position.y = water_end_pos * water_lvl + water_start_pos * (1 - water_lvl)
-	water_mesh.mesh.top_radius = water_end_rad * water_lvl + water_start_rad * (1 - water_lvl)
-	water_mesh.mesh.bottom_radius = water_mesh.mesh.top_radius
+	if water_lvl > 0:
+		water_mesh.show()
+		water_mesh.position.y = water_end_pos * water_lvl + water_start_pos * (1 - water_lvl)
+		water_mesh.mesh.top_radius = water_end_rad * water_lvl + water_start_rad * (1 - water_lvl)
+		water_mesh.mesh.bottom_radius = water_mesh.mesh.top_radius
+	else:
+		water_mesh.hide()
 
 func interact(delta, task):
 	if task:
-		if task.required_object == my_scene:
+		if task.task_name == "bucket":
 			if filled < 1:
 				filled += delta * fill_speed
-			else:
-					var tween = get_tree().create_tween()
-					tween.tween_property(bucket, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.4)
-					
-					await tween.finished
-					
-					spilling_particles.restart()
-					
-					filled = 0
-					
-					await get_tree().create_timer(0.5).timeout
-					tween = get_tree().create_tween()
-					tween.tween_property(bucket, "rotation", Vector3(0, 0, 0), 0.3)
-			water_level(filled)
+		elif task.task_name == "bucket_spill" and filled >= 1:
+			var tween = get_tree().create_tween()
+			tween.tween_property(bucket, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.4)
+			
+			await tween.finished
+			
+			spilling_particles.restart()
+			
+			filled = 0
+			#
+			#tween = get_tree().create_tween()
+			#tween.tween_property(bucket, "rotation", Vector3(0, 0, 0), 0.3)
+		water_level(filled)
 	
 func _process(delta):
-	bucket.global_rotation.x = lerp(bucket.global_rotation.x, 0.0, delta * 10)
-	bucket.global_rotation.z = lerp(bucket.global_rotation.z, 0.0, delta * 10)
+	if !spilling_particles.emitting:
+		bucket.global_rotation.x = lerp(bucket.global_rotation.x, 0.0, delta * 10)
+		bucket.global_rotation.z = lerp(bucket.global_rotation.z, 0.0, delta * 10)
