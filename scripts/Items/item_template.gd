@@ -17,7 +17,7 @@ func interact(_delta, _task):
 	print("NO INTERACT")
 
 func picked_up():
-	pass
+	self.freeze = true
 	
 func dropped():
-	pass
+	self.freeze = false
