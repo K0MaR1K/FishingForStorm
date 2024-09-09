@@ -35,7 +35,7 @@ var direction: Vector3 = Vector3.ZERO
 
 #OTHER VARS
 
-var task: Node3D
+var tasks: Array[Node3D]
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -140,7 +140,12 @@ func handle_tasks(delta):
 	if Input.is_action_pressed("interact2"):
 		if %Hand.get_child_count():
 			var current_object = %Hand.get_child(0)
-			current_object.interact(delta, task)
+			for task in tasks:
+				if task.required_object == current_object.my_scene:
+					current_object.interact(delta, task)
+					break
 
+# CHANGED
 func entered_interaction(new_task: Node3D):
-	task = new_task
+	tasks.append(new_task)
+	

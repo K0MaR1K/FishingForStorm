@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c62c1g5xgjb3e"
-path.s3tc="res://.godot/imported/Hammer_HammerHead.png-50952867c674749f4bc1a3fec3c1e912.s3tc.ctex"
+uid="uid://cfmtsnubf66t4"
+path.s3tc="res://.godot/imported/ShipCollision_Body.png-76312664ecccd73553c80f4072f1ed43.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "7c5e6393a1b795db46b68f150b176459"
+"md5": "566263462f7c49c81255dd637acd65be"
 }
 
 [deps]
 
-source_file="res://assets/models/items/Hammer_HammerHead.png"
-dest_files=["res://.godot/imported/Hammer_HammerHead.png-50952867c674749f4bc1a3fec3c1e912.s3tc.ctex"]
+source_file="res://assets/models/items/ShipCollision_Body.png"
+dest_files=["res://.godot/imported/ShipCollision_Body.png-76312664ecccd73553c80f4072f1ed43.s3tc.ctex"]
 
 [params]
 

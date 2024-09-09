@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b5q2bxoun2a2h"
-path="res://.godot/imported/Hammer.glb-b40dffa72129400dd906b2fd73904bd5.scn"
+uid="uid://w74exyjxo67u"
+path="res://.godot/imported/ShipCollision.glb-abc99ec187f5ce8873312d832824e95f.scn"
 
 [deps]
 
-source_file="res://assets/models/items/Hammer.glb"
-dest_files=["res://.godot/imported/Hammer.glb-b40dffa72129400dd906b2fd73904bd5.scn"]
+source_file="res://assets/models/items/ShipCollision.glb"
+dest_files=["res://.godot/imported/ShipCollision.glb-abc99ec187f5ce8873312d832824e95f.scn"]
 
 [params]
 
