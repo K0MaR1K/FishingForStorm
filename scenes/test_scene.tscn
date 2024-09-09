@@ -51,16 +51,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79488, 0)
 [node name="BlinkTimer" type="Timer" parent="BlinkCanvas"]
 autostart = true
 
-[node name="BucketTask" parent="." instance=ExtResource("8_2v86y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)
+[node name="Items" type="Node3D" parent="."]
 
-[node name="Bucket" parent="." instance=ExtResource("8_qcsk1")]
+[node name="Bucket" parent="Items" instance=ExtResource("8_qcsk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, 2.06887, 0)
 
-[node name="BucketSpillTask" parent="." instance=ExtResource("9_5on05")]
+[node name="Tasks" type="Node3D" parent="."]
+
+[node name="BucketTask" parent="Tasks" instance=ExtResource("8_2v86y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)
+
+[node name="BucketSpillTask" parent="Tasks" instance=ExtResource("9_5on05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -3.5)
 
-[node name="BucketSpillTask2" parent="." instance=ExtResource("9_5on05")]
+[node name="BucketSpillTask2" parent="Tasks" instance=ExtResource("9_5on05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -3.5)
 
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]

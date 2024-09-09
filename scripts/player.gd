@@ -7,7 +7,8 @@ extends CharacterBody3D
 @onready var crouching_shape = $CrouchingShape
 @onready var standing_ray = $StandingRay
 @onready var point_ray = $Head/PointRay
-
+@onready var test_scene: Node3D = $".."
+@onready var pointer_indicator: TextureRect = $PointerIndicator
 
 #SPEED VARS
 
@@ -58,6 +59,19 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
+	# Handle dropping items.
+	if %Hand.get_child_count():
+		if Input.is_action_just_pressed("interact1"):
+			var item = %Hand.get_child(0)
+			item.sleeping = false
+			item.freeze = false
+			var global_pos = item.global_position
+			%Hand.remove_child(item)
+			var items = test_scene.get_node("Items")
+			items.add_child(item)
+			item.global_position = global_pos
+			item.is_picked_up = false
+	
 	handle_pointing()
 	handle_movement_state(delta)
 	handle_walking(delta)
@@ -81,7 +95,6 @@ func handle_walking(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
-		
 
 func handle_movement_state(delta):
 	if Input.is_action_pressed("crouch"):
@@ -109,14 +122,16 @@ func handle_movement_state(delta):
 func handle_pointing():
 	# For picking up items
 	if point_ray.is_colliding():
+		pointer_indicator.modulate.a = 0.9
 		if Input.is_action_just_pressed("interact1"):
 			var collider = point_ray.get_collider()
 			if collider is RigidBody3D:
-				collider.picked_up()
 				var c = collider.my_scene.instantiate()
-				c.sleeping = true
-				c.freeze = true
+				collider.queue_free()
 				%Hand.add_child(c)
+				c.is_picked_up = true
+	else:
+		pointer_indicator.modulate.a = 0.4
 
 func handle_tasks(delta):
 	if Input.is_action_pressed("interact2"):

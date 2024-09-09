@@ -9,7 +9,6 @@ var water_start_rad: float = 0.18
 var water_end_rad: float = 0.25
 
 @onready var water_mesh: MeshInstance3D = $WaterMesh
-@onready var bucket: RigidBody3D = $"."
 @onready var spilling_particles: GPUParticles3D = $SpillingParticles
 
 var spilling_water: bool = false
@@ -38,7 +37,7 @@ func interact(delta, task):
 				filled += delta * fill_speed
 		elif task.task_name == "bucket_spill" and filled >= 1:
 			var tween = get_tree().create_tween()
-			tween.tween_property(bucket, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.4)
+			tween.tween_property(self, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.4)
 			
 			await tween.finished
 			
@@ -51,6 +50,14 @@ func interact(delta, task):
 		water_level(filled)
 	
 func _process(delta):
-	if !spilling_particles.emitting:
-		bucket.global_rotation.x = lerp(bucket.global_rotation.x, 0.0, delta * 10)
-		bucket.global_rotation.z = lerp(bucket.global_rotation.z, 0.0, delta * 10)
+	if !spilling_particles.emitting and is_picked_up:
+		global_rotation.x = lerp(global_rotation.x, 0.0, delta * 10)
+		global_rotation.z = lerp(global_rotation.z, 0.0, delta * 10)
+
+func picked_up():
+	self.freeze = true
+	
+func dropped():
+	self.freeze = false
+	global_rotation.x = 0.0
+	global_rotation.z = 0.0
