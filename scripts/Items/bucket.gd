@@ -44,9 +44,6 @@ func interact(delta, task):
 			spilling_particles.restart()
 			
 			filled = 0
-			#
-			#tween = get_tree().create_tween()
-			#tween.tween_property(bucket, "rotation", Vector3(0, 0, 0), 0.3)
 		water_level(filled)
 	
 func _process(delta):
@@ -54,10 +51,7 @@ func _process(delta):
 		global_rotation.x = lerp(global_rotation.x, 0.0, delta * 10)
 		global_rotation.z = lerp(global_rotation.z, 0.0, delta * 10)
 
-func picked_up():
-	self.freeze = true
-	
 func dropped():
-	self.freeze = false
+	super.dropped()
 	global_rotation.x = 0.0
 	global_rotation.z = 0.0

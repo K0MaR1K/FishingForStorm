@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://ch4w3sksninet"]
+
+[ext_resource type="PackedScene" uid="uid://bspjuurin0r3u" path="res://scenes/Items/items_template.tscn" id="1_l7qsr"]
+[ext_resource type="Script" path="res://scripts/Items/hammer.gd" id="2_y2hd0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_85f2w"]
+size = Vector3(0.6, 0.2, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mbdg"]
+albedo_color = Color(0.2484, 0.2484, 0.2484, 1)
+metallic = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_gi0i1"]
+material = SubResource("StandardMaterial3D_7mbdg")
+size = Vector3(0.2, 0.2, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjrkv"]
+albedo_color = Color(0.277066, 0.125394, 0.0227447, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hkudb"]
+material = SubResource("StandardMaterial3D_xjrkv")
+size = Vector3(0.4, 0.1, 0.1)
+
+[node name="Hammer" instance=ExtResource("1_l7qsr")]
+script = ExtResource("2_y2hd0")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_85f2w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190382, 0, 0)
+mesh = SubResource("BoxMesh_gi0i1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110521, 0, 0)
+mesh = SubResource("BoxMesh_hkudb")

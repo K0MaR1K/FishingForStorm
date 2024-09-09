@@ -66,10 +66,12 @@ func _physics_process(delta):
 			item.sleeping = false
 			item.freeze = false
 			var global_pos = item.global_position
+			var global_rot = item.global_rotation
 			%Hand.remove_child(item)
 			var items = test_scene.get_node("Items")
 			items.add_child(item)
 			item.global_position = global_pos
+			item.global_rotation = global_rot
 			item.is_picked_up = false
 	
 	handle_pointing()
