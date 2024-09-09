@@ -86,7 +86,7 @@ func handle_walking(delta):
 	
 	# Hand moving animation
 	if (input_dir != Vector2.ZERO):
-		%Hand.position.y = lerp(%Hand.position.y, sin(current_speed / camera_shake_freq * Time.get_ticks_msec() + PI/2) / 40, delta * lerp_speed)
+		%Hand.position.y = lerp(%Hand.position.y, %Hand.position.y + sin(current_speed / camera_shake_freq * Time.get_ticks_msec() + PI/2) / 40, delta * lerp_speed)
 		head.position.y = lerp(head.position.y, head.position.y + camera_shake * sin(current_speed / camera_shake_freq * Time.get_ticks_msec()), delta * lerp_speed)
 	
 	# Moving the player
