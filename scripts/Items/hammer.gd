@@ -11,5 +11,8 @@ func picked_up():
 func interact(delta, task):
 	if task:
 		if task.task_name == "repair":
-			task.repair(delta)
-			$AnimationPlayer.play("impact")
+			if task.repaired < 1:
+				task.repair(delta)
+				$AnimationPlayer.play("impact")
+			else:
+				task.fully_repaired()
