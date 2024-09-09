@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlb2spdov4i25"]
+[gd_scene load_steps=13 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_rbxda"]
@@ -11,6 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
 [ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8k2b3"]
+size = Vector3(10, 1, 10)
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_rbxda")
@@ -36,6 +39,12 @@ autostart = true
 [node name="Bucket" parent="Items" instance=ExtResource("8_qcsk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, 2.06887, 0)
 
+[node name="Hammer" parent="Items" instance=ExtResource("11_1mdt6")]
+
+[node name="Hammer2" parent="Items" instance=ExtResource("11_1mdt6")]
+
+[node name="Hammer3" parent="Items" instance=ExtResource("11_1mdt6")]
+
 [node name="Tasks" type="Node3D" parent="."]
 
 [node name="BucketTask" parent="Tasks" instance=ExtResource("8_2v86y")]
@@ -52,9 +61,15 @@ stream = ExtResource("10_8awv5")
 volume_db = -30.0
 autoplay = true
 
-[node name="Ship" parent="AudioStreamPlayer" instance=ExtResource("10_x831h")]
+[node name="Ship" parent="." instance=ExtResource("10_x831h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54674, -5.10001, 0)
 
-[node name="Hammer" parent="." instance=ExtResource("11_1mdt6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.806257, 0)
+shape = SubResource("BoxShape3D_8k2b3")
 
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]
