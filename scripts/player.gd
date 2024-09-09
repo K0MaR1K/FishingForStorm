@@ -126,9 +126,10 @@ func handle_pointing():
 		if Input.is_action_just_pressed("interact1"):
 			var collider = point_ray.get_collider()
 			if collider is RigidBody3D:
-				var c = collider.my_scene.instantiate()
-				collider.queue_free()
+				var c = collider.get_node(".")
+				c.get_parent().remove_child(c)
 				%Hand.add_child(c)
+				c.position = Vector3.ZERO
 				c.is_picked_up = true
 	else:
 		pointer_indicator.modulate.a = 0.4
