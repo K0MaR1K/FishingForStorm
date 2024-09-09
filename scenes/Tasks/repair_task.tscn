@@ -59,12 +59,11 @@ process_material = SubResource("ParticleProcessMaterial_e8hko")
 draw_pass_1 = SubResource("SphereMesh_hptso")
 
 [node name="Planks" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planks" index="0"]
-visible = false
 mesh = SubResource("BoxMesh_j6wac")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Planks" index="1"]
 transform = Transform3D(0.64679, 0, 0.762668, 0, 1, 0, -0.762668, 0, 0.64679, 0, 0, 0)
-visible = false
 mesh = SubResource("BoxMesh_p2qy2")

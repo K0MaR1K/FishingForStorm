@@ -32,8 +32,9 @@ func water_level(water_lvl):
 
 func interact(delta, task):
 	if task.task_name == "bucket":
-		if filled < 1:
+		if filled < 1 and task.get_parent().water_filled > 0:
 			filled += delta * fill_speed
+			task.get_parent().drain(delta)
 	elif task.task_name == "bucket_spill" and filled > 0:
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.4)

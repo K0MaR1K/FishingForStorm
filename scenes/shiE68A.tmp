@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=6 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://pmaei7ilav4b" path="res://assets/models/items/ShipCollision2.glb" id="1_tigw4"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
 [ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
-[ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="5_3byml"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_oav1y"]
 material = ExtResource("4_6m6rm")
-size = Vector3(9.11, -0.565, 12.125)
+size = Vector3(9.11, 1, 12.125)
 
 [node name="Ship" instance=ExtResource("1_tigw4")]
 script = ExtResource("2_0o2k5")
@@ -23,16 +22,16 @@ collision_mask = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.1853, -0.58553)
 
 [node name="RepairTask4" parent="RepairTasks" index="1" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 0.998652, -0.0519002, 0, 0.0519002, 0.998652, -1.27865, -4.07294, -2.42625)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27865, -4.05007, -2.42625)
 
 [node name="RepairTask5" parent="RepairTasks" index="2" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, -0.063017, -0.998012, 0, 0.998012, -0.063017, -1.27865, -3.17485, -3.88678)
+transform = Transform3D(1, 0, 0, 0, -0.0023911, -0.999997, 0, 0.999997, -0.0023911, -1.27865, -3.17485, -3.87444)
 
 [node name="RepairTask6" parent="RepairTasks" index="3" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.99998, -0.00637041, 2.78459e-10, 0, -4.37114e-08, -1, 0.00637041, 0.99998, -4.37105e-08, 0.440101, -2.81703, -3.79564)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.440101, -2.81703, -3.73834)
 
 [node name="RepairTask7" parent="RepairTasks" index="4" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.997368, -0.0725071, 3.16939e-09, 0, -4.37114e-08, -1, 0.0725071, 0.997368, -4.35963e-08, 2.83678, -3.63852, -3.7852)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83678, -3.63852, -3.73834)
 
 [node name="RepairTask2" parent="RepairTasks" index="5" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0909, -4.14089, 0.639555)
@@ -74,18 +73,14 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.8857
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.11341, -2.86224, 7.51519)
 
 [node name="RepairTask3" parent="RepairTasks" index="18" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.12943, -1.49116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.10926, -1.49116)
 
 [node name="RepairTimer" type="Timer" parent="." index="3"]
-wait_time = 15.0
+wait_time = 5.0
 autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.92926, 1.80947)
 mesh = SubResource("BoxMesh_oav1y")
-metadata/_edit_lock_ = true
-
-[node name="BucketTask" parent="." index="5" instance=ExtResource("5_3byml")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.91, 1.8)
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]

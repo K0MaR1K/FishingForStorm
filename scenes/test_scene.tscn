@@ -1,16 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlb2spdov4i25"]
+[gd_scene load_steps=11 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_rbxda"]
 [ext_resource type="PackedScene" uid="uid://bj0g4qj3mcc8c" path="res://scenes/player.tscn" id="2_6vjup"]
 [ext_resource type="Environment" uid="uid://dpm0hicpm0ni5" path="res://environments/peace_env.tres" id="2_23pm4"]
 [ext_resource type="PackedScene" uid="uid://yochq87itm7n" path="res://scenes/blink_canvas.tscn" id="6_qtd7q"]
-[ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="8_2v86y"]
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
-[ext_resource type="PackedScene" uid="uid://chxgbvh3j8dp3" path="res://scenes/Tasks/bucket_spill_task.tscn" id="9_5on05"]
+[ext_resource type="PackedScene" uid="uid://coat6nmcbaf1l" path="res://scenes/Tasks/bucket_spill_task.tscn" id="9_5on05"]
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
-[ext_resource type="PackedScene" path="res://scenes/ship.tscn" id="10_x831h"]
-[ext_resource type="PackedScene" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
+[ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
+[ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_rbxda")
@@ -36,15 +35,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12085, 0)
 
 [node name="Bucket" parent="Items" instance=ExtResource("8_qcsk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, 2.06887, 0)
+continuous_cd = false
 
 [node name="Hammer" parent="Items" instance=ExtResource("11_1mdt6")]
-transform = Transform3D(-3.61999e-06, 1, 0, -0.940668, -3.40521e-06, 0.33933, 0.33933, 1.22837e-06, 0.940668, 0, 0, -0.269508)
+continuous_cd = false
 
 [node name="Tasks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938819, 0)
-
-[node name="BucketTask" parent="Tasks" instance=ExtResource("8_2v86y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.769212, 1.70181, 4.59681)
 
 [node name="BucketSpillTask" parent="Tasks" instance=ExtResource("9_5on05")]
 transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, -4.6988, 2, 4.38386)

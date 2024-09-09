@@ -77,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.113
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.12943, -1.49116)
 
 [node name="RepairTimer" type="Timer" parent="." index="3"]
-wait_time = 15.0
+wait_time = 5.0
 autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="4"]
