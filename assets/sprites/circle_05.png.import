@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmbociyfqvdhl"
-path.s3tc="res://.godot/imported/Ship_Rails.png-e1ba9e67791ba08804f29ca43bab0233.s3tc.ctex"
+uid="uid://6lcywunqx5r1"
+path.s3tc="res://.godot/imported/circle_05.png-d3a3ba925af79a91fc63213a55d319fc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "afdf35d22c2753e22ab3e50f84df155c"
-}
 
 [deps]
 
-source_file="res://assets/models/items/Ship_Rails.png"
-dest_files=["res://.godot/imported/Ship_Rails.png-e1ba9e67791ba08804f29ca43bab0233.s3tc.ctex"]
+source_file="res://assets/sprites/circle_05.png"
+dest_files=["res://.godot/imported/circle_05.png-d3a3ba925af79a91fc63213a55d319fc.s3tc.ctex"]
 
 [params]
 

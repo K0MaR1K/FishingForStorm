@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cy0cnc8uccist"]
+[gd_scene load_steps=13 format=3 uid="uid://cy0cnc8uccist"]
 
 [ext_resource type="PackedScene" uid="uid://covmq1lx8eod7" path="res://scenes/Tasks/task_template.tscn" id="1_rbucg"]
 [ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="2_a46yw"]
@@ -33,6 +33,20 @@ height = 0.06
 radial_segments = 8
 rings = 4
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxkeq"]
+albedo_color = Color(0.230163, 0.119743, 0.0366915, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tqyq0"]
+material = SubResource("StandardMaterial3D_pxkeq")
+size = Vector3(0.2, 0.06, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gup7x"]
+albedo_color = Color(0.148813, 0.0698365, 0.0163099, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5t3sl"]
+material = SubResource("StandardMaterial3D_gup7x")
+size = Vector3(0.2, 0.06, 1)
+
 [node name="RepairTask" instance=ExtResource("1_rbucg")]
 script = ExtResource("2_u6elx")
 
@@ -47,3 +61,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0203192, 0.0337913)
 amount = 60
 process_material = SubResource("ParticleProcessMaterial_e8hko")
 draw_pass_1 = SubResource("SphereMesh_hptso")
+
+[node name="Planks" type="Node3D" parent="." index="3"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Planks" index="0"]
+visible = false
+mesh = SubResource("BoxMesh_tqyq0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Planks" index="1"]
+visible = false
+mesh = SubResource("BoxMesh_5t3sl")
