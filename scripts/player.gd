@@ -21,6 +21,8 @@ var current_speed: float = 5.0
 const JUMP_VELOCITY = 4.5
 
 var lerp_speed: float = 10.0
+var camera_shake: float = 0.05
+var camera_shake_freq: float = 300
 
 var crouching_depth: float = -0.5
 
@@ -29,6 +31,8 @@ var direction: Vector3 = Vector3.ZERO
 #INPUT VARS
 
 @export var mouse_sens: float = 0.4
+
+#OTHER VARS
 
 var task: Node3D
 
@@ -64,10 +68,10 @@ func handle_walking(delta):
 		# Directions from input
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	
-	# Item walking animation
-	if %Hand.get_child_count():
-		var current_object = %Hand.get_child(0)
-		current_object.walk_with(input_dir != Vector2.ZERO)
+	# Hand moving animation
+	if (input_dir != Vector2.ZERO):
+		%Hand.position.y = lerp(%Hand.position.y, sin(current_speed / camera_shake_freq * Time.get_ticks_msec() + PI/2) / 40, delta * lerp_speed)
+		head.position.y = lerp(head.position.y, head.position.y + camera_shake * sin(current_speed / camera_shake_freq * Time.get_ticks_msec()), delta * lerp_speed)
 	
 	# Moving the player
 	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(),delta * lerp_speed)
@@ -77,6 +81,7 @@ func handle_walking(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
+		
 
 func handle_movement_state(delta):
 	if Input.is_action_pressed("crouch"):
@@ -117,9 +122,7 @@ func handle_tasks(delta):
 	if Input.is_action_pressed("interact2"):
 		if %Hand.get_child_count():
 			var current_object = %Hand.get_child(0)
-			if current_object and task:
-				if task.required_object == current_object.my_scene:
-					current_object.interact(delta)
+			current_object.interact(delta, task)
 
 func entered_interaction(new_task: Node3D):
 	task = new_task
