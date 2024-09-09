@@ -1,6 +1,4 @@
-extends Node3D
-
-var my_scene = preload("res://scenes/bucket_scene.tscn")
+extends "res://scripts/Items/item_template.gd"
 
 var filled: float = 0
 var fill_speed: float = 1
@@ -15,12 +13,14 @@ var water_end_rad: float = 0.25
 
 
 func _ready():
+	my_scene = preload("res://scenes/Items/bucket.tscn")
 	water_mesh.position.y = water_start_pos
 	water_mesh.mesh.top_radius = water_start_rad
 	water_mesh.mesh.bottom_radius = water_start_rad
 	water_mesh.hide()
 
 func interact(delta):
+	super.interact(delta)
 	if filled < 1:
 		filled += delta * fill_speed
 		water_mesh.show()
@@ -31,6 +31,3 @@ func interact(delta):
 func _process(_delta):
 	bucket.global_rotation.x = 0
 	bucket.global_rotation.z = 0
-
-func picked_up():
-	queue_free()

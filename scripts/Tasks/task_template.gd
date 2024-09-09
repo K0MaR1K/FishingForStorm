@@ -1,7 +1,7 @@
 extends Area3D
 
-var required_object = preload("res://scenes/bucket_scene.tscn")
+var required_object
 
 func _on_body_entered(body: Node3D) -> void:
-	print("entered Bucket task")
+	print("entered", self)
 	body.entered_interaction(self)

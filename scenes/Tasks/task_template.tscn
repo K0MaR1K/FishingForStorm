@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://covmq1lx8eod7"]
+
+[node name="Task" type="Area3D"]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

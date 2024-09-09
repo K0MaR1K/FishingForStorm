@@ -103,10 +103,11 @@ func handle_pointing():
 
 func handle_tasks(delta):
 	if Input.is_action_pressed("interact2"):
-		var current_object = %Hand.get_child(0)
-		if current_object and task:
-			if task.required_object == current_object.my_scene:
-				current_object.interact(delta)
+		if %Hand.get_child_count():
+			var current_object = %Hand.get_child(0)
+			if current_object and task:
+				if task.required_object == current_object.my_scene:
+					current_object.interact(delta)
 			
 
 func entered_interaction(etask: Node3D):

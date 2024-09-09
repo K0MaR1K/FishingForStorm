@@ -1,0 +1,8 @@
+extends "res://scripts/Tasks/task_template.gd"
+
+func _ready() -> void:
+	required_object = preload("res://scenes/Items/bucket.tscn")
+
+func _on_body_entered(body: Node3D) -> void:
+	print("entered Bucket task")
+	body.entered_interaction(self)
