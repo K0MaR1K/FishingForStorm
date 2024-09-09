@@ -35,7 +35,7 @@ func interact(delta, task):
 		if task.task_name == "bucket":
 			if filled < 1:
 				filled += delta * fill_speed
-		elif task.task_name == "bucket_spill" and filled >= 1:
+		elif task.task_name == "bucket_spill" and filled > 0:
 			var tween = get_tree().create_tween()
 			tween.tween_property(self, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.4)
 			
