@@ -9,10 +9,9 @@ func picked_up():
 	self.rotation = Vector3(0, 0, -PI/2)
 
 func interact(delta, task):
-	if task:
-		if task.task_name == "repair":
-			if task.repaired < 1:
-				task.repair(delta)
-				$AnimationPlayer.play("impact")
-			else:
-				task.fully_repaired()
+	if task.task_name == "repair":
+		if task.repaired < 1:
+			task.repair(delta)
+			$AnimationPlayer.play("impact")
+		else:
+			task.fully_repaired()

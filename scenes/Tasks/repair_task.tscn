@@ -34,7 +34,7 @@ radial_segments = 8
 rings = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxkeq"]
-albedo_color = Color(0.230163, 0.119743, 0.0366915, 1)
+albedo_color = Color(0.231373, 0.121569, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tqyq0"]
 material = SubResource("StandardMaterial3D_pxkeq")
@@ -53,7 +53,7 @@ script = ExtResource("2_u6elx")
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("SphereShape3D_la67r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+[node name="Hole" type="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("CylinderMesh_j1gxw")
 
 [node name="SpillingParticles" type="GPUParticles3D" parent="." index="2"]
@@ -65,6 +65,7 @@ draw_pass_1 = SubResource("SphereMesh_hptso")
 [node name="Planks" type="Node3D" parent="." index="3"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planks" index="0"]
+transform = Transform3D(0.861797, 0, -0.507253, 0, 1, 0, 0.507253, 0, 0.861797, 0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_tqyq0")
 
