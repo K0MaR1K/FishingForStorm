@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
 [ext_resource type="PackedScene" uid="uid://chxgbvh3j8dp3" path="res://scenes/Tasks/bucket_spill_task.tscn" id="9_5on05"]
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
-[ext_resource type="PackedScene" path="res://scenes/ship.tscn" id="10_x831h"]
 [ext_resource type="PackedScene" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
+[ext_resource type="PackedScene" uid="uid://cdrud0hmcnatu" path="res://assets/models/items/Ship.glb" id="11_idngq"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_rbxda")
@@ -38,7 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12085, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, 2.06887, 0)
 
 [node name="Hammer" parent="Items" instance=ExtResource("11_1mdt6")]
-transform = Transform3D(-3.61999e-06, 1, 0, -0.940668, -3.40521e-06, 0.33933, 0.33933, 1.22837e-06, 0.940668, 0, 0, -0.269508)
 
 [node name="Tasks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938819, 0)
@@ -75,7 +74,7 @@ stream = ExtResource("10_8awv5")
 volume_db = -30.0
 autoplay = true
 
-[node name="Ship" parent="." instance=ExtResource("10_x831h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.30893, 0)
+[node name="Ship" parent="." instance=ExtResource("11_idngq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58584, 5.96885, 1.29777)
 
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]
