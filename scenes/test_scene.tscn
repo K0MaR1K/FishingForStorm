@@ -84,4 +84,7 @@ size = Vector3(10.0044, 10.2777, 27.5524)
 thickness = 2.0
 texture = ExtResource("12_hkfgt")
 
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548221, 4, 5)
+
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]

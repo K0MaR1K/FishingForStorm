@@ -43,3 +43,8 @@ func _on_repair_timer_timeout() -> void:
 
 func covered_up_a_hole():
 	hole_count -= 1
+
+
+func _on_dropped_items_body_entered(body: Node3D) -> void:
+	body.global_position = $ItemsRespawn.global_position
+	body.linear_velocity = Vector3.ZERO

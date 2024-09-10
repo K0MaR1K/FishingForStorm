@@ -650,6 +650,7 @@ _data = {
 script = ExtResource("2_u6elx")
 
 [node name="CollisionShape3D" parent="." index="0"]
+visible = false
 shape = SubResource("SphereShape3D_la67r")
 
 [node name="Hole" type="MeshInstance3D" parent="." index="1"]
@@ -657,12 +658,14 @@ mesh = SubResource("CylinderMesh_j1gxw")
 
 [node name="SpillingParticles" type="GPUParticles3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0203192, 0.0337913)
+visible = false
 amount = 60
 process_material = SubResource("ParticleProcessMaterial_e8hko")
 draw_pass_1 = SubResource("SphereMesh_hptso")
 
 [node name="Planks" type="Node3D" parent="." index="3"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.06, 0)
+visible = false
 
 [node name="Plank" parent="Planks" index="0" instance=ExtResource("4_f4f8f")]
 transform = Transform3D(0.706432, 0.142709, 0.693245, -0.252825, 0.965722, 0.0588339, -0.661086, -0.216831, 0.718297, -0.628227, 0.823888, 0.569762)
