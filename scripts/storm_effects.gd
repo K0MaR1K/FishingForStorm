@@ -14,4 +14,5 @@ func _on_lightning_timer_timeout():
 		$lightning.transform.origin = Vector3(randf_range(-30.0, 30.0),
 		randf_range(15.0,30.0), randf_range(-30.0, 30.0))
 		$lightning.show()
+		$LightningAnimation.play("lightning")
 		$lightning_timer.start(0.5)

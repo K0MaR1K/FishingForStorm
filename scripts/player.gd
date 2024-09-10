@@ -29,6 +29,10 @@ var crouching_depth: float = -0.5
 
 var direction: Vector3 = Vector3.ZERO
 
+var hand_start_pos: float 
+var head_start_pos: float 
+
+
 #INPUT VARS
 
 @export var mouse_sens: float = 0.4
@@ -42,6 +46,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hand_start_pos =  %Hand.position.y
+	head_start_pos = head.position.y
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -86,8 +92,8 @@ func handle_walking(delta):
 	
 	# Hand moving animation
 	if (input_dir != Vector2.ZERO):
-		%Hand.position.y = lerp(%Hand.position.y, %Hand.position.y + sin(current_speed / camera_shake_freq * Time.get_ticks_msec() + PI/2) / 40, delta * lerp_speed)
-		head.position.y = lerp(head.position.y, head.position.y + camera_shake * sin(current_speed / camera_shake_freq * Time.get_ticks_msec()), delta * lerp_speed)
+		%Hand.position.y = lerp(%Hand.position.y, hand_start_pos + sin(current_speed / camera_shake_freq * Time.get_ticks_msec() + PI/2) / 40, delta * lerp_speed)
+		head.position.y = lerp(head.position.y, head_start_pos + camera_shake * sin(current_speed / camera_shake_freq * Time.get_ticks_msec()), delta * lerp_speed)
 	
 	# Moving the player
 	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(),delta * lerp_speed)

@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var lanterns: Node3D = $Lanterns
+
 var ship_health: float = 100.0
 var water_filled: float = 0.0
 var water_fill_speed: float = 0.01
@@ -12,13 +14,23 @@ var is_storm:
 	set(value):
 		if value:
 			$RepairTimer.start()
+			$RockingAnimation.play("heavy_rocking")
+			for lantern in lanterns.get_children():
+				lantern.get_node("Light").visible = true
 		else:
 			$RepairTimer.stop()
+			$RockingAnimation.play("light_rocking")
+			for lantern in lanterns.get_children():
+				lantern.get_node("Light").visible = false
 		is_storm = value
 
 var hole_count: int = 0
 
 func _ready() -> void:
+	$RepairTimer.stop()
+	$RockingAnimation.play("light_rocking")
+	for lantern in lanterns.get_children():
+		lantern.get_node("Light").visible = false
 	for repair in $RepairTasks.get_children():
 		repair.covered_up.connect(covered_up_a_hole)
 	

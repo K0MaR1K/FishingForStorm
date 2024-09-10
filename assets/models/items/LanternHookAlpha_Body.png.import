@@ -2,7 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c05fad72em120"
+
+uid="uid://b1spfuxper2xy"
+
 path.s3tc="res://.godot/imported/LanternHookAlpha_Body.png-63109913994b2eca1b1d177a6dbf5d3b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
