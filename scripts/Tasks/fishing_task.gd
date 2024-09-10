@@ -18,7 +18,17 @@ func _ready() -> void:
 	required_object = null
 	task_name = "fishing"
 	starting_rotation = rotation_degrees.z
-
+	
+func handle_fishing() -> bool:
+	if is_fishing and fish_caught:
+		is_fishing = false;
+		fish_caught = false;
+		return true
+	elif !is_fishing:
+		is_fishing = true
+		return false
+	else:
+		return false
 
 func _on_fish_timer_timeout():
 	fish_caught = true;

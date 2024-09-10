@@ -18,6 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.683624, 1.05298, -0.054931
 shape = SubResource("BoxShape3D_351xk")
 
 [node name="fish_timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

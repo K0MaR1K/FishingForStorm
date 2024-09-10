@@ -148,11 +148,12 @@ func handle_tasks(delta):
 		else:
 			for task in tasks:
 				#this one could be useful for tasks that might not require item
+				#it is only fishing rn
 				if !task.required_object:
-					#if i write "is_fishing = !is_fishing" the rod shakes
-					#because of several input calls :(
-					task.is_fishing = true;
-					break
+					if task.handle_fishing():
+						var c = load("res://scenes/Items/fish.tscn").instantiate()
+						%Hand.add_child(c)
+			
 
 # CHANGED
 func entered_interaction(new_task: Node3D):
