@@ -37,9 +37,9 @@ func interact(delta, task):
 			task.get_parent().drain(delta)
 	elif task.task_name == "bucket_spill" and filled > 0:
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.4)
+		tween.tween_property(self, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.3)
 		
-		await tween.finished
+		await get_tree().create_timer(0.10).timeout
 		
 		spilling_particles.restart()
 		

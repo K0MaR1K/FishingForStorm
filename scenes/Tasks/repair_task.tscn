@@ -658,26 +658,27 @@ mesh = SubResource("CylinderMesh_j1gxw")
 
 [node name="SpillingParticles" type="GPUParticles3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0203192, 0.0337913)
-visible = false
 amount = 60
 process_material = SubResource("ParticleProcessMaterial_e8hko")
 draw_pass_1 = SubResource("SphereMesh_hptso")
 
 [node name="Planks" type="Node3D" parent="." index="3"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.06, 0)
-visible = false
 
 [node name="Plank" parent="Planks" index="0" instance=ExtResource("4_f4f8f")]
-transform = Transform3D(0.706432, 0.142709, 0.693245, -0.252825, 0.965722, 0.0588339, -0.661086, -0.216831, 0.718297, -0.628227, 0.823888, 0.569762)
+transform = Transform3D(0.706432, 0.142709, 0.693246, -0.252825, 0.965722, 0.0588339, -0.661086, -0.216832, 0.718296, -0.628227, 0.823888, 0.569762)
+visible = false
 
 [node name="Plank4" parent="Planks" index="1" instance=ExtResource("5_77i05")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0021192, 0, 0.74559)
+visible = false
 
 [node name="Plank3" parent="Planks" index="2" instance=ExtResource("6_l1vyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 
 [node name="Plank2" parent="Planks" index="3" instance=ExtResource("7_76ppq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.646443, 0, -0.0347791)
+visible = false
 
 [node name="nail" parent="Planks" index="4" instance=ExtResource("8_cut53")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.633364, 0.272708, -0.461671)

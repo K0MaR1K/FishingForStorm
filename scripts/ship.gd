@@ -46,5 +46,5 @@ func covered_up_a_hole():
 
 
 func _on_dropped_items_body_entered(body: Node3D) -> void:
-	body.global_position = $ItemsRespawn.global_position
+	body.global_position = $DroppedItems/ItemsRespawn.global_position
 	body.linear_velocity = Vector3.ZERO
