@@ -15,6 +15,8 @@ var blinks_to_storm: int = 1
 
 func _ready():
 	blink_timer.wait_time = randf_range(15.0, 20.0)
+	$WorldEnvironment.environment = peace_env
+	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 
 func _process(_delta):
 	pass
@@ -36,7 +38,7 @@ func _on_blink_timer_timeout():
 func storm_start():
 	await get_tree().create_timer(0.10).timeout
 	$WorldEnvironment.environment = storm_env
-	$WorldEnvironment/DirectionalLight3D.light_energy = 0.75
+	$WorldEnvironment/DirectionalLight3D.light_energy = 0.05
 	storm_node = storm_effects_scene.instantiate()
 	add_child(storm_node)
 	$Player.get_node("rain").show()

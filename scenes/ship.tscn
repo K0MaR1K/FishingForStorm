@@ -179,16 +179,13 @@ transform = Transform3D(0.850472, -6.44984e-11, 0.526021, -0.0149902, 0.999594, 
 [node name="LanternStand4" parent="Props" index="14" instance=ExtResource("10_cs0w4")]
 transform = Transform3D(0.850472, 1.23656e-09, 0.526021, -0.047821, 0.995859, 0.077317, -0.523843, -0.0909107, 0.84695, 3.67434, 0.439604, 10.6865)
 
-[node name="LanternHookAlpha" parent="Props" index="15" instance=ExtResource("9_mcgqo")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0441762, -1.44956, 0.0844055)
+[node name="LanternHookAlpha3" parent="Props" index="15" instance=ExtResource("9_mcgqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81614, 1.9862, -11.5972)
 
-[node name="LanternHookAlpha3" parent="Props" index="16" instance=ExtResource("9_mcgqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20066, -0.340426, -3.48783)
+[node name="LanternHookAlpha4" parent="Props" index="16" instance=ExtResource("9_mcgqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79197, 1.95362, -11.6268)
 
-[node name="LanternHookAlpha4" parent="Props" index="17" instance=ExtResource("9_mcgqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12826, -0.340426, -3.48783)
-
-[node name="LanternHookAlpha2" parent="Props" index="18" instance=ExtResource("9_mcgqo")]
+[node name="LanternHookAlpha2" parent="Props" index="17" instance=ExtResource("9_mcgqo")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00778437, -1.44956, 1.40432)
 
 [node name="DroppedItems" type="Area3D" parent="." index="8"]
