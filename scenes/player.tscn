@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj0g4qj3mcc8c"]
+[gd_scene load_steps=10 format=3 uid="uid://bj0g4qj3mcc8c"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uxt2i"]
+[ext_resource type="Texture2D" uid="uid://b12dimdr3qc6c" path="res://assets/sprites/pointer.png" id="2_a8wba"]
+[ext_resource type="Texture2D" uid="uid://6lcywunqx5r1" path="res://assets/sprites/circle_05.png" id="3_8rqvh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a133h"]
 radius = 0.4
@@ -9,8 +11,39 @@ radius = 0.4
 radius = 0.4
 height = 1.4
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cjdi"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 20, 10)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_6tv82"]
+max_value = 0.1
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0421053, 0.0327586), 0.289047, 0.289047, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33tig"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.847475, 0.87576, 0.833478, 0.843137)
+albedo_texture = ExtResource("3_8rqvh")
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_k6nbu"]
+material = SubResource("StandardMaterial3D_33tig")
+shape = 0
+curve = SubResource("Curve_6tv82")
+
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 10
+floor_max_angle = 1.0472
 script = ExtResource("1_uxt2i")
 walking_speed = 2.0
 sprinting_speed = 4.0
@@ -33,12 +66,12 @@ fov = 56.2243
 
 [node name="PointRay" type="RayCast3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.485208)
-target_position = Vector3(0, 0, -1)
+target_position = Vector3(0, 0, -1.4)
 collision_mask = 4
 
 [node name="Hand" type="Node3D" parent="Head"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.614098, -0.24202, -1.29728)
+transform = Transform3D(0.999404, -0.0345332, 0, 0.0345332, 0.999404, 0, 0, 0, 1, 0.470723, -0.228771, -1)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.698039, 0.639216, 0.454902, 1)
@@ -46,3 +79,27 @@ light_energy = 0.515
 
 [node name="StandingRay" type="RayCast3D" parent="."]
 target_position = Vector3(0, 1, 0)
+
+[node name="PointerIndicator" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a8wba")
+stretch_mode = 3
+
+[node name="rain" type="GPUParticles3D" parent="."]
+visible = false
+amount = 600
+randomness = 0.5
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_3cjdi")
+draw_pass_1 = SubResource("RibbonTrailMesh_k6nbu")

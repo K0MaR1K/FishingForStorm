@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqbvgwi0wt5hx"]
+
+[ext_resource type="PackedScene" uid="uid://bspjuurin0r3u" path="res://scenes/Items/items_template.tscn" id="1_tahbt"]
+[ext_resource type="PackedScene" uid="uid://cg73lvabdpydv" path="res://assets/models/items/BucketFinal.glb" id="2_6tiri"]
+[ext_resource type="Script" path="res://scripts/Items/bucket.gd" id="2_t1j6e"]
+[ext_resource type="Material" path="res://assets/textures/water.tres" id="3_oc0b2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_315pk"]
+height = 0.45
+radius = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xgp6h"]
+material = ExtResource("3_oc0b2")
+top_radius = 0.27
+bottom_radius = 0.27
+height = 0.01
+radial_segments = 9
+rings = 0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dyhon"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(0.3, 0, 0.3)
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 10.0
+initial_velocity_max = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_w2m6x"]
+material = ExtResource("3_oc0b2")
+radius = 0.1
+height = 0.25
+radial_segments = 8
+rings = 4
+
+[node name="Bucket" instance=ExtResource("1_tahbt")]
+script = ExtResource("2_t1j6e")
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014822, 0)
+shape = SubResource("CylinderShape3D_315pk")
+
+[node name="WaterMesh" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0, 0.218554, 0)
+mesh = SubResource("CylinderMesh_xgp6h")
+
+[node name="BucketFinal" parent="." index="2" instance=ExtResource("2_6tiri")]
+
+[node name="SpillingParticles" type="GPUParticles3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2179, 0)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 0.7
+process_material = SubResource("ParticleProcessMaterial_dyhon")
+draw_pass_1 = SubResource("SphereMesh_w2m6x")

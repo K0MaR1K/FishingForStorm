@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://pyqnyjouaboq"]
+
+[ext_resource type="Shader" path="res://shaders/lightning.gdshader" id="1_fo07q"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p5aum"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6064n"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_p5aum")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_jdsbd"]
+material = SubResource("StandardMaterial3D_6064n")
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afhca"]
+shader = ExtResource("1_fo07q")
+shader_parameter/effect_color = Color(0.286808, 0.411549, 0.909748, 1)
+shader_parameter/octave_count = 10
+shader_parameter/amp_start = 0.5
+shader_parameter/amp_coeff = 0.5
+shader_parameter/freq_coeff = 2.0
+shader_parameter/speed = 0.5
+
+[node name="Lightning" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_jdsbd")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1280, 1280)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+material = SubResource("ShaderMaterial_afhca")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

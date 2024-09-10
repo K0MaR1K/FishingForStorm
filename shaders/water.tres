@@ -125,7 +125,7 @@ void vertex() {
 
 
 // MultiplyAdd:7
-	vec4 n_out7p0 = (n_out4p0 * vec4(n_out8p0, 0.0)) + vec4(n_out6p0, 0.0);
+	vec4 n_out7p0 = fma(n_out4p0, vec4(n_out8p0, 0.0), vec4(n_out6p0, 0.0));
 
 
 // Output:0
@@ -195,7 +195,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1282.41, -182.8)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_oiey0")
 nodes/vertex/2/position = Vector2(-1020, -20)
 nodes/vertex/3/node = SubResource("VisualShaderNodeUVFunc_7gdxu")
