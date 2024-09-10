@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bspjuurin0r3u" path="res://scenes/Items/items_template.tscn" id="1_tahbt"]
 [ext_resource type="PackedScene" uid="uid://cg73lvabdpydv" path="res://assets/models/items/BucketFinal.glb" id="2_6tiri"]
 [ext_resource type="Script" path="res://scripts/Items/bucket.gd" id="2_t1j6e"]
-[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="3_oc0b2"]
+[ext_resource type="Material" path="res://assets/textures/water.tres" id="3_oc0b2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_315pk"]
 height = 0.45

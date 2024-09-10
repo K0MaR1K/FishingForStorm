@@ -6,7 +6,7 @@
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x3q3i"]
 emission_shape = 3
-emission_box_extents = Vector3(5, 10, 5)
+emission_box_extents = Vector3(40, 20, 40)
 direction = Vector3(0, -1, 0)
 spread = 5.0
 initial_velocity_min = 15.0
@@ -15,24 +15,26 @@ collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.0
 
-[sub_resource type="Curve" id="Curve_6tv82"]
+[sub_resource type="Curve" id="Curve_i5tbm"]
 max_value = 0.1
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.909589, 0.0993092), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0184211, 0.0564909), 0.241229, 0.241229, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33tig"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvfit"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.753354, 0.853421, 0.905538, 1)
+albedo_color = Color(0.687738, 0.705087, 0.689771, 0.823529)
 albedo_texture = ExtResource("1_mm651")
+use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_tgqmx"]
-material = SubResource("StandardMaterial3D_33tig")
+material = SubResource("StandardMaterial3D_jvfit")
 shape = 0
+size = 2.0
 section_length = 0.4
-curve = SubResource("Curve_6tv82")
+curve = SubResource("Curve_i5tbm")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xetsv"]
 viewport_path = NodePath("lightning/SubViewport")
@@ -50,8 +52,11 @@ shader_parameter/speed = 0.5
 script = ExtResource("1_wwoii")
 
 [node name="rain" type="GPUParticles3D" parent="."]
-amount = 600
+amount = 1800
 randomness = 1.0
+visibility_aabb = AABB(-20, -4, -20, 40, 20, 40)
+trail_enabled = true
+trail_lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_x3q3i")
 draw_pass_1 = SubResource("RibbonTrailMesh_tgqmx")
 
