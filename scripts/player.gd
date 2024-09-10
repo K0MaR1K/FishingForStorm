@@ -147,5 +147,5 @@ func handle_tasks(delta):
 
 # CHANGED
 func entered_interaction(new_task: Node3D):
-	tasks.append(new_task)
+	tasks.insert(0, new_task)
 	

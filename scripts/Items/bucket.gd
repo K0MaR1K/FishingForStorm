@@ -44,6 +44,7 @@ func interact(delta, task):
 		spilling_particles.restart()
 		
 		filled = 0
+	
 	water_level(filled)
 	
 func _process(delta):
