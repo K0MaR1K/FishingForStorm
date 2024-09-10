@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=13 format=3 uid="uid://dlb2spdov4i25"]
+[gd_scene load_steps=12 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_rbxda"]
