@@ -8,6 +8,7 @@ var peace_env = load("res://environments/peace_env.tres")
 var storm_effects_scene = load("res://scenes/storm_effects.tscn")
 var storm_node;
 @onready var blink_canvas: CanvasLayer = $BlinkCanvas
+@onready var ship: Node3D = $Ship
 
 var blink_counter: int = 0
 var blinks_to_storm: int = 1
@@ -40,6 +41,7 @@ func storm_start():
 	add_child(storm_node)
 	$Player.get_node("rain").show()
 	is_storm = true
+	ship.is_storm = true
 	
 func storm_end():
 	await get_tree().create_timer(0.10).timeout
@@ -48,3 +50,4 @@ func storm_end():
 	storm_node.queue_free()
 	$Player.get_node("rain").hide()
 	is_storm = false
+	ship.is_storm = false
