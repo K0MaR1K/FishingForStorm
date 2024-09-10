@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1spfuxper2xy"
-path.s3tc="res://.godot/imported/LanternHookAlpha_Body.png-63109913994b2eca1b1d177a6dbf5d3b.s3tc.ctex"
+uid="uid://y0bntm1wkdl"
+path.s3tc="res://.godot/imported/HookForLantern_Hook.png-c260190448960d6f4c7233762c1aa890.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e810146661fecc19d31b0299d2de306a"
+"md5": "2ff8ea5f7008da2f389f7935b38c8829"
 }
 
 [deps]
 
-source_file="res://assets/models/items/LanternHookAlpha_Body.png"
-dest_files=["res://.godot/imported/LanternHookAlpha_Body.png-63109913994b2eca1b1d177a6dbf5d3b.s3tc.ctex"]
+source_file="res://assets/models/items/HookForLantern_Hook.png"
+dest_files=["res://.godot/imported/HookForLantern_Hook.png-c260190448960d6f4c7233762c1aa890.s3tc.ctex"]
 
 [params]
 

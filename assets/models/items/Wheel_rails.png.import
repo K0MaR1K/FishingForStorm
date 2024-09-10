@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1spfuxper2xy"
-path.s3tc="res://.godot/imported/LanternHookAlpha_Body.png-63109913994b2eca1b1d177a6dbf5d3b.s3tc.ctex"
+uid="uid://dkh46trmt0qpf"
+path.s3tc="res://.godot/imported/Wheel_rails.png-c8eaea39717bc05be8e8100603fe1c68.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e810146661fecc19d31b0299d2de306a"
+"md5": "b5cfa9d6c8febd618f91ac2843d50a1c"
 }
 
 [deps]
 
-source_file="res://assets/models/items/LanternHookAlpha_Body.png"
-dest_files=["res://.godot/imported/LanternHookAlpha_Body.png-63109913994b2eca1b1d177a6dbf5d3b.s3tc.ctex"]
+source_file="res://assets/models/items/Wheel_rails.png"
+dest_files=["res://.godot/imported/Wheel_rails.png-c8eaea39717bc05be8e8100603fe1c68.s3tc.ctex"]
 
 [params]
 
