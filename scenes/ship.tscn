@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=5 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://w74exyjxo67u" path="res://assets/models/items/ShipCollision.glb" id="1_7lohx"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rypsd"]
+size = Vector3(2.07593, 0.383789, 3.80269)
 
 [node name="Ship" instance=ExtResource("1_7lohx")]
 script = ExtResource("2_0o2k5")
@@ -69,3 +72,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.113
 
 [node name="RepairTask3" parent="RepairTasks" index="18" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.10926, -1.49116)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.79038, 0.612617, 0, -0.612617, 0.79038, 0.355873, -3.23292, 6.40594)
+shape = SubResource("BoxShape3D_rypsd")
