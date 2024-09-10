@@ -9,7 +9,7 @@ shader_parameter/ColorParameter = Color(0, 0.266667, 0.533333, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k7gw0"]
 material = SubResource("ShaderMaterial_lq00n")
-size = Vector2(120, 120)
+size = Vector2(150, 150)
 subdivide_width = 40
 subdivide_depth = 40
 

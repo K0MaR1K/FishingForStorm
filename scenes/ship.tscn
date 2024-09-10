@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cmrk4kipf4ety" path="res://assets/models/items/Ship2.glb" id="1_l4hqr"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
-[ext_resource type="Material" path="res://assets/textures/water.tres" id="4_6m6rm"]
+[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
 [ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="5_3byml"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_piq1m"]

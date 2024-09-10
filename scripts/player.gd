@@ -153,7 +153,6 @@ func handle_tasks(delta):
 					if task.handle_fishing():
 						var c = load("res://scenes/Items/fish.tscn").instantiate()
 						%Hand.add_child(c)
-			
 
 # CHANGED
 func entered_interaction(new_task: Node3D):

@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c62c1g5xgjb3e"
+uid="uid://orrxfk5k5qp7"
 path.s3tc="res://.godot/imported/Hammer_HammerHead.png-50952867c674749f4bc1a3fec3c1e912.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "7c5e6393a1b795db46b68f150b176459"
 }
 
 [deps]
