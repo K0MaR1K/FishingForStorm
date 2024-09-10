@@ -5,7 +5,9 @@ extends Node3D
 var is_storm: bool = false
 var storm_env = load("res://environments/storm_env.tres")
 var peace_env = load("res://environments/peace_env.tres")
+
 @onready var blink_canvas: CanvasLayer = $BlinkCanvas
+@onready var ship: Node3D = $Ship
 
 var blink_counter: int = 0
 var blinks_to_storm: int = 1
@@ -35,9 +37,11 @@ func storm_start():
 	$WorldEnvironment.environment = storm_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 0.75
 	is_storm = true
+	ship.is_storm = true
 	
 func storm_end():
 	await get_tree().create_timer(0.10).timeout
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 	is_storm = false
+	ship.is_storm = false

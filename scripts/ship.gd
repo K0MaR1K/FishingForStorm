@@ -8,6 +8,14 @@ var water_drain_speed: float = 0.1
 var start_y: float = -0.57
 var end_y: float = 1
 
+var is_storm: 
+	set(value):
+		if value:
+			$RepairTimer.start()
+		else:
+			$RepairTimer.stop()
+		is_storm = value
+
 var hole_count: int = 0
 
 func _ready() -> void:

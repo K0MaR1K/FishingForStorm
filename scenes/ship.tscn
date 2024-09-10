@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=9 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://cmrk4kipf4ety" path="res://assets/models/items/Ship2.glb" id="1_l4hqr"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
 [ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
 [ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="5_3byml"]
-[ext_resource type="PackedScene" uid="uid://t5l20egebs1u" path="res://assets/models/items/Plank2.glb" id="6_7k1as"]
-[ext_resource type="PackedScene" uid="uid://muj2oduds0l6" path="res://assets/models/items/Plank3.glb" id="7_rt18v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_piq1m"]
 size = Vector3(1.5, 4.81273, 0.230859)
@@ -116,7 +114,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.12943, -1.49116)
 
 [node name="RepairTimer" type="Timer" parent="." index="4"]
 wait_time = 15.0
-autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.92926, 1.80947)
@@ -125,13 +122,5 @@ metadata/_edit_lock_ = true
 
 [node name="BucketTask" parent="." index="6" instance=ExtResource("5_3byml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.91, 1.8)
-
-[node name="DecorPlanks" type="Node3D" parent="." index="7"]
-
-[node name="Plank2" parent="DecorPlanks" index="0" instance=ExtResource("6_7k1as")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.819786, -1.94617, 0.450777)
-
-[node name="Plank3" parent="DecorPlanks" index="1" instance=ExtResource("7_rt18v")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.08692, 1.08414)
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
