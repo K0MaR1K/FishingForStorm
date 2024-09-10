@@ -141,8 +141,17 @@ func handle_tasks(delta):
 		if %Hand.get_child_count():
 			var current_object = %Hand.get_child(0)
 			for task in tasks:
-				if task.required_object == current_object.my_scene:
-					current_object.interact(delta, task)
+				if task.required_object:
+					if task.required_object == current_object.my_scene:
+						current_object.interact(delta, task)
+						break
+		else:
+			for task in tasks:
+				#this one could be useful for tasks that might not require item
+				if !task.required_object:
+					#if i write "is_fishing = !is_fishing" the rod shakes
+					#because of several input calls :(
+					task.is_fishing = true;
 					break
 
 # CHANGED

@@ -1,4 +1,3 @@
-
 [gd_scene load_steps=13 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
@@ -8,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://yochq87itm7n" path="res://scenes/blink_canvas.tscn" id="6_qtd7q"]
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
 [ext_resource type="PackedScene" uid="uid://chxgbvh3j8dp3" path="res://scenes/Tasks/bucket_spill_task.tscn" id="9_5on05"]
+[ext_resource type="PackedScene" uid="uid://dwq07dt6pmxma" path="res://scenes/Tasks/fishing_task.tscn" id="10_7w7s2"]
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
 [ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
@@ -66,6 +66,9 @@ transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.003996
 
 [node name="BucketSpillTask8" parent="Tasks" instance=ExtResource("9_5on05")]
 transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, 4.55709, 2, -1.63974)
+
+[node name="FishingTask" parent="Tasks" instance=ExtResource("10_7w7s2")]
+transform = Transform3D(0.844581, -0.258189, -0.469064, 0.224808, 0.966093, -0.126988, 0.485947, 0.00180252, 0.873987, 3.682, 3.65607, 12.0324)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_8awv5")
