@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfnvwepuilriu"
-path.s3tc="res://.godot/imported/ShipCollision2_Body.png-90427a0e6ae87ef7338727ab07fc33f1.s3tc.ctex"
+uid="uid://cf7rasv6j7glb"
+path.s3tc="res://.godot/imported/FishignRod_Pole.png-610bf340fcfddbb01bdba6955e4a96a0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "566263462f7c49c81255dd637acd65be"
+"md5": "6fc66863162d2c80b6442b0fe75d8c51"
 }
 
 [deps]
 
-source_file="res://assets/models/items/ShipCollision2_Body.png"
-dest_files=["res://.godot/imported/ShipCollision2_Body.png-90427a0e6ae87ef7338727ab07fc33f1.s3tc.ctex"]
+source_file="res://assets/models/items/FishignRod_Pole.png"
+dest_files=["res://.godot/imported/FishignRod_Pole.png-610bf340fcfddbb01bdba6955e4a96a0.s3tc.ctex"]
 
 [params]
 

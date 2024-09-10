@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0kdhddcwd7xd"
-path.s3tc="res://.godot/imported/ShipCollision_Rails.png-80c9c9f5f8fbf774a75ad46a378d3924.s3tc.ctex"
+uid="uid://bhknsrat2ny6n"
+path.s3tc="res://.godot/imported/Plank4_pLANK4.png-7f47e438e516163d2751a45ab07a4069.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "afdf35d22c2753e22ab3e50f84df155c"
+"md5": "ee3309058f91c4dbb267a42d6ca51de9"
 }
 
 [deps]
 
-source_file="res://assets/models/items/ShipCollision_Rails.png"
-dest_files=["res://.godot/imported/ShipCollision_Rails.png-80c9c9f5f8fbf774a75ad46a378d3924.s3tc.ctex"]
+source_file="res://assets/models/items/Plank4_pLANK4.png"
+dest_files=["res://.godot/imported/Plank4_pLANK4.png-7f47e438e516163d2751a45ab07a4069.s3tc.ctex"]
 
 [params]
 

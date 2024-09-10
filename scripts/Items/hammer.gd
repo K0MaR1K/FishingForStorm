@@ -15,3 +15,4 @@ func interact(delta, task):
 			$AnimationPlayer.play("impact")
 		else:
 			task.fully_repaired()
+	

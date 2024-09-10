@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://w74exyjxo67u"
-path="res://.godot/imported/ShipCollision.glb-abc99ec187f5ce8873312d832824e95f.scn"
+uid="uid://pkpk4gves26p"
+path="res://.godot/imported/Plank4.glb-2816c9384d3a216516a1d66228fbc1a0.scn"
 
 [deps]
 
-source_file="res://assets/models/items/ShipCollision.glb"
-dest_files=["res://.godot/imported/ShipCollision.glb-abc99ec187f5ce8873312d832824e95f.scn"]
+source_file="res://assets/models/items/Plank4.glb"
+dest_files=["res://.godot/imported/Plank4.glb-2816c9384d3a216516a1d66228fbc1a0.scn"]
 
 [params]
 

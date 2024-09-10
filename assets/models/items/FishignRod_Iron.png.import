@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bciwry7nh5wci"
-path.s3tc="res://.godot/imported/ShipCollision2_Rails.png-1fd14e9637d857c9870abe307c055890.s3tc.ctex"
+uid="uid://kaga3pbi03kc"
+path.s3tc="res://.godot/imported/FishignRod_Iron.png-55cd296b9d8eaeb4270550793937d10c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "afdf35d22c2753e22ab3e50f84df155c"
+"md5": "6713a81bf1116f6033d0511ec13b0b65"
 }
 
 [deps]
 
-source_file="res://assets/models/items/ShipCollision2_Rails.png"
-dest_files=["res://.godot/imported/ShipCollision2_Rails.png-1fd14e9637d857c9870abe307c055890.s3tc.ctex"]
+source_file="res://assets/models/items/FishignRod_Iron.png"
+dest_files=["res://.godot/imported/FishignRod_Iron.png-55cd296b9d8eaeb4270550793937d10c.s3tc.ctex"]
 
 [params]
 

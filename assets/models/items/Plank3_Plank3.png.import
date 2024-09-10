@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnkp36e3lnywd"
-path.s3tc="res://.godot/imported/ship uv_ship.png-87a9eb6af1d3c22679038c6678273ef7.s3tc.ctex"
+uid="uid://cce2gfngy3htb"
+path.s3tc="res://.godot/imported/Plank3_Plank3.png-7b4a174575d03db2aa2ea4c930e1f090.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b82c709e9c6c22a4cc98d728585d0203"
+"md5": "3b75af0247d656b4336aedea376137ca"
 }
 
 [deps]
 
-source_file="res://assets/models/items/ship uv_ship.png"
-dest_files=["res://.godot/imported/ship uv_ship.png-87a9eb6af1d3c22679038c6678273ef7.s3tc.ctex"]
+source_file="res://assets/models/items/Plank3_Plank3.png"
+dest_files=["res://.godot/imported/Plank3_Plank3.png-7b4a174575d03db2aa2ea4c930e1f090.s3tc.ctex"]
 
 [params]
 

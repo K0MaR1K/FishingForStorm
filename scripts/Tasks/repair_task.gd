@@ -4,12 +4,17 @@ var repair_speed: float = 0.3
 var repaired: float = 0.0
 var deactivated: bool = false
 
+signal covered_up
+
 func _ready() -> void:
 	required_object = preload("res://scenes/Items/hammer.tscn")
 	task_name = "repair"
 	$SpillingParticles.emitting = false
 	$Hole.hide()
 	self.monitoring = false
+	$CollisionShape3D.disabled = true
+	for plank in $Planks.get_children():
+		plank.hide()
 
 func repair(delta):
 	repaired += repair_speed * delta
@@ -22,3 +27,14 @@ func fully_repaired():
 		plank.show()
 		$Hole.hide()
 		deactivated = true
+		covered_up.emit()
+
+func make_a_hole():
+	repaired = 0.0
+	$SpillingParticles.emitting = true
+	$Hole.show()
+	deactivated = false
+	self.monitoring = true
+	$CollisionShape3D.disabled = false
+	for plank in $Planks.get_children():
+		plank.hide()

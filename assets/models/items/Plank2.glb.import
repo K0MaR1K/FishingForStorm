@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://coaqakp0corhp"
-path="res://.godot/imported/ship uv.glb-b815a9b8bbef6ebb043cd6853532309a.scn"
+uid="uid://t5l20egebs1u"
+path="res://.godot/imported/Plank2.glb-61b4cdbe6d899f6824adf8c0df1b6270.scn"
 
 [deps]
 
-source_file="res://assets/models/items/ship uv.glb"
-dest_files=["res://.godot/imported/ship uv.glb-b815a9b8bbef6ebb043cd6853532309a.scn"]
+source_file="res://assets/models/items/Plank2.glb"
+dest_files=["res://.godot/imported/Plank2.glb-61b4cdbe6d899f6824adf8c0df1b6270.scn"]
 
 [params]
 
