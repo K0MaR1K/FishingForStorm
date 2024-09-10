@@ -141,9 +141,18 @@ func handle_tasks(delta):
 		if %Hand.get_child_count():
 			var current_object = %Hand.get_child(0)
 			for task in tasks:
-				if task.required_object == current_object.my_scene:
-					current_object.interact(delta, task)
-					break
+				if task.required_object:
+					if task.required_object == current_object.my_scene:
+						current_object.interact(delta, task)
+						break
+		else:
+			for task in tasks:
+				#this one could be useful for tasks that might not require item
+				#it is only fishing rn
+				if !task.required_object:
+					if task.handle_fishing():
+						var c = load("res://scenes/Items/fish.tscn").instantiate()
+						%Hand.add_child(c)
 
 # CHANGED
 func entered_interaction(new_task: Node3D):

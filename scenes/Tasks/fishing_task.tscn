@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwq07dt6pmxma"]
+
+[ext_resource type="Script" path="res://scripts/Tasks/fishing_task.gd" id="1_nfejs"]
+[ext_resource type="PackedScene" uid="uid://dv4i70fuovtpb" path="res://assets/models/items/FishignRod.glb" id="2_nhxc6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_351xk"]
+size = Vector3(2.86456, 1, 1.79443)
+
+[node name="Task" type="Area3D"]
+collision_layer = 8
+script = ExtResource("1_nfejs")
+
+[node name="FishignRod" parent="." instance=ExtResource("2_nhxc6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.683624, 1.05298, -0.0549316)
+shape = SubResource("BoxShape3D_351xk")
+
+[node name="fish_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="fish_timer" to="." method="_on_fish_timer_timeout"]

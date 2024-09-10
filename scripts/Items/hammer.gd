@@ -8,11 +8,8 @@ func picked_up():
 	super.picked_up()
 	self.rotation = Vector3(0, 0, -PI/2)
 
-func interact(delta, task):
+func interact(_delta, task):
 	if task.task_name == "repair":
-		if task.repaired < 1:
-			task.repair(delta)
+		if not task.deactivated:
+			task.repair()
 			$AnimationPlayer.play("impact")
-		else:
-			task.fully_repaired()
-	

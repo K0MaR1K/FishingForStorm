@@ -1,8 +1,7 @@
 extends "res://scripts/Tasks/task_template.gd"
 
-var repair_speed: float = 0.3
-var repaired: float = 0.0
 var deactivated: bool = false
+var started_repair: bool = false
 
 signal covered_up
 
@@ -16,21 +15,27 @@ func _ready() -> void:
 	for plank in $Planks.get_children():
 		plank.hide()
 
-func repair(delta):
-	repaired += repair_speed * delta
+func _process(_delta: float) -> void:
+	if Input.is_action_just_released("interact2"):
+		$AnimationPlayer.active = false
+
+func repair():
+	if not started_repair:
+		var planks = $AnimationPlayer.get_animation_list()
+		$AnimationPlayer.play(planks[randi() % planks.size()])
+		started_repair = true
+	$AnimationPlayer.active = true
 
 func fully_repaired():
 	if !deactivated:
 		$SpillingParticles.emitting = false
-		var planks = $Planks.get_child_count()
-		var plank = $Planks.get_child(randi_range(0, planks - 1))
-		plank.show()
 		$Hole.hide()
 		deactivated = true
+		self.monitoring = false
+		$CollisionShape3D.disabled = true
 		covered_up.emit()
 
 func make_a_hole():
-	repaired = 0.0
 	$SpillingParticles.emitting = true
 	$Hole.show()
 	deactivated = false

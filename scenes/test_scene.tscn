@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlb2spdov4i25"]
+[gd_scene load_steps=11 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_rbxda"]
@@ -6,7 +6,6 @@
 [ext_resource type="Environment" uid="uid://dpm0hicpm0ni5" path="res://environments/peace_env.tres" id="2_23pm4"]
 [ext_resource type="PackedScene" uid="uid://yochq87itm7n" path="res://scenes/blink_canvas.tscn" id="6_qtd7q"]
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
-[ext_resource type="PackedScene" uid="uid://chxgbvh3j8dp3" path="res://scenes/Tasks/bucket_spill_task.tscn" id="9_5on05"]
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
 [ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
@@ -39,33 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, 2.06887, 0)
 
 [node name="Hammer" parent="Items" instance=ExtResource("11_1mdt6")]
 
-[node name="Tasks" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938819, 0)
-
-[node name="BucketSpillTask" parent="Tasks" instance=ExtResource("9_5on05")]
-transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, -4.6988, 2, 4.38386)
-
-[node name="BucketSpillTask2" parent="Tasks" instance=ExtResource("9_5on05")]
-transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, -4.69081, 2, 2.38387)
-
-[node name="BucketSpillTask3" parent="Tasks" instance=ExtResource("9_5on05")]
-transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, -4.6988, 2, 0.360244)
-
-[node name="BucketSpillTask4" parent="Tasks" instance=ExtResource("9_5on05")]
-transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, -4.69081, 2, -1.63974)
-
-[node name="BucketSpillTask5" parent="Tasks" instance=ExtResource("9_5on05")]
-transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, 4.5491, 2, 4.38386)
-
-[node name="BucketSpillTask6" parent="Tasks" instance=ExtResource("9_5on05")]
-transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, 4.55709, 2, 2.38387)
-
-[node name="BucketSpillTask7" parent="Tasks" instance=ExtResource("9_5on05")]
-transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, 4.5491, 2, 0.360244)
-
-[node name="BucketSpillTask8" parent="Tasks" instance=ExtResource("9_5on05")]
-transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, 4.55709, 2, -1.63974)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_8awv5")
 volume_db = -30.0
@@ -79,5 +51,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184177, 4.68513, 1.71576)
 size = Vector3(10.0044, 10.2777, 27.5524)
 thickness = 2.0
 texture = ExtResource("12_hkfgt")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548221, 4, 5)
 
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]

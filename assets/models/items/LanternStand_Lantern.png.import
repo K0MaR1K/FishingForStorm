@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://orrxfk5k5qp7"
-path.s3tc="res://.godot/imported/Hammer_HammerHead.png-50952867c674749f4bc1a3fec3c1e912.s3tc.ctex"
+uid="uid://cfjlcsd7qof6w"
+path.s3tc="res://.godot/imported/LanternStand_Lantern.png-31daa722611c3641ee0fce757e4f4581.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "aac60c0111696dfda61c9060ed968021"
+}
 
 [deps]
 
-source_file="res://assets/models/items/Hammer_HammerHead.png"
-dest_files=["res://.godot/imported/Hammer_HammerHead.png-50952867c674749f4bc1a3fec3c1e912.s3tc.ctex"]
+source_file="res://assets/models/items/LanternStand_Lantern.png"
+dest_files=["res://.godot/imported/LanternStand_Lantern.png-31daa722611c3641ee0fce757e4f4581.s3tc.ctex"]
 
 [params]
 

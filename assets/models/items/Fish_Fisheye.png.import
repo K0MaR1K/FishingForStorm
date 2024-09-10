@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://orrxfk5k5qp7"
-path.s3tc="res://.godot/imported/Hammer_HammerHead.png-50952867c674749f4bc1a3fec3c1e912.s3tc.ctex"
+uid="uid://dcexv3wn2brmf"
+path.s3tc="res://.godot/imported/Fish_Fisheye.png-6b645a6e96be6d494a0aaa1d237cb01d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "fc08d39f0605e4d6860f92d281685a72"
+}
 
 [deps]
 
-source_file="res://assets/models/items/Hammer_HammerHead.png"
-dest_files=["res://.godot/imported/Hammer_HammerHead.png-50952867c674749f4bc1a3fec3c1e912.s3tc.ctex"]
+source_file="res://assets/models/items/Fish_Fisheye.png"
+dest_files=["res://.godot/imported/Fish_Fisheye.png-6b645a6e96be6d494a0aaa1d237cb01d.s3tc.ctex"]
 
 [params]
 
