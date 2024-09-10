@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cpu10af63xon8"]
+
+[ext_resource type="Texture2D" uid="uid://id8ki1ctf1o4" path="res://assets/models/items/LanternStandAlpha_Lantern.png" id="1_6qe4t"]
+
+[resource]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 0.213636)
+albedo_texture = ExtResource("1_6qe4t")
+roughness = 0.5

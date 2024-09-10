@@ -15,6 +15,7 @@
 script = ExtResource("1_rbxda")
 
 [node name="Water" parent="." instance=ExtResource("1_8mnwv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45731, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_23pm4")

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bako7ekxj53xw"
-path.s3tc="res://.godot/imported/hand_painted_wood.png-3d4570a61966e2b53cff9fc04e5220e0.s3tc.ctex"
+uid="uid://id8ki1ctf1o4"
+path.s3tc="res://.godot/imported/LanternStandAlpha_Lantern.png-f5f493909c105fa148b65a3380726363.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "6a34b185f3e683ad40e8d7187ce78f85"
+}
 
 [deps]
 
-source_file="res://assets/textures/lukky_handpainted_textures/hand_painted_wood.png"
-dest_files=["res://.godot/imported/hand_painted_wood.png-3d4570a61966e2b53cff9fc04e5220e0.s3tc.ctex"]
+source_file="res://assets/models/items/LanternStandAlpha_Lantern.png"
+dest_files=["res://.godot/imported/LanternStandAlpha_Lantern.png-f5f493909c105fa148b65a3380726363.s3tc.ctex"]
 
 [params]
 

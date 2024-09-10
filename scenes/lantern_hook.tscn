@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://br4op248hs8u1"]
+
+[ext_resource type="PackedScene" uid="uid://dpj31vqw30y1f" path="res://assets/models/items/LanternHookAlpha.glb" id="1_kf6o7"]
+[ext_resource type="Material" uid="uid://cpucfkuoog7e3" path="res://assets/textures/Material.003.tres" id="2_1j2kw"]
+[ext_resource type="Texture2D" uid="uid://d5oje64vht4l" path="res://assets/sprites/fire_01.png" id="3_f0a4y"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uxki8"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.15
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w5w3f"]
+emission_shape_scale = Vector3(0.05, 0.05, 0.05)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 2, 0)
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4k1e"]
+transparency = 1
+albedo_color = Color(0.52549, 0.466667, 0, 0.796078)
+albedo_texture = ExtResource("3_f0a4y")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_nrvvn"]
+material = SubResource("StandardMaterial3D_t4k1e")
+size = Vector2(0.1, 0.1)
+
+[node name="LanternHook" instance=ExtResource("1_kf6o7")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(0.05, 0, 0, 0, 0.034, 0, 0, 0, 0.055, 0, 0, 0)
+material_override = ExtResource("2_1j2kw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Cube" index="0"]
+transform = Transform3D(51.9511, 0, 0, 0, 77.9903, 0, 0, 0, 46.5888, 0, -7.39419, 0)
+light_color = Color(0.511703, 0.506765, 1.92523e-07, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.369721, 0)
+mesh = SubResource("CylinderMesh_uxki8")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.287755, 0)
+amount = 30
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_w5w3f")
+draw_pass_1 = SubResource("QuadMesh_nrvvn")

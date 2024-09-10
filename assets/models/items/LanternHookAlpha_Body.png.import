@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://74npt2noer8v"
-path.s3tc="res://.godot/imported/hand_painted_tiles_checkerd.png-482598cae313dd4b59684a91905be51b.s3tc.ctex"
+uid="uid://b1spfuxper2xy"
+path.s3tc="res://.godot/imported/LanternHookAlpha_Body.png-63109913994b2eca1b1d177a6dbf5d3b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "e810146661fecc19d31b0299d2de306a"
+}
 
 [deps]
 
-source_file="res://assets/textures/lukky_handpainted_textures/hand_painted_tiles_checkerd.png"
-dest_files=["res://.godot/imported/hand_painted_tiles_checkerd.png-482598cae313dd4b59684a91905be51b.s3tc.ctex"]
+source_file="res://assets/models/items/LanternHookAlpha_Body.png"
+dest_files=["res://.godot/imported/LanternHookAlpha_Body.png-63109913994b2eca1b1d177a6dbf5d3b.s3tc.ctex"]
 
 [params]
 
