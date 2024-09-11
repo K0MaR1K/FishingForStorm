@@ -1,5 +1,7 @@
 extends "res://scripts/Tasks/task_template.gd"
 
+signal fish_eating
+
 var starting_rotation
 
 @onready var fishing_line: Node3D = $FishingLine
@@ -11,8 +13,7 @@ var is_fishing: bool = false:
 		is_fishing = value
 		if is_fishing:
 			rotation_degrees.z = 4.0
-			if $fish_timer.is_stopped() and !fish_caught:
-				$fish_timer.start(randf_range(2.0, 10.0))
+			$fish_timer.start(randf_range(7.0, 15.0))
 			$AnimationPlayer.play("throw")
 		else:
 			floaty.hide()
@@ -23,7 +24,6 @@ var is_fishing: bool = false:
 			line_thrown = false
 
 @export var line_thrown: bool = false
-var fish_caught: bool = false
 
 func throw():
 	floaty.show()
@@ -42,10 +42,9 @@ func _process(_delta: float) -> void:
 	elif fishing_line.lines.size():
 		fishing_line.erase_line()
 	
-func handle_fishing() -> bool:
-	if is_fishing and fish_caught:
+func interact() -> bool:
+	if is_fishing:
 		is_fishing = false
-		fish_caught = false
 		return true
 	elif !is_fishing:
 		is_fishing = true
@@ -54,4 +53,4 @@ func handle_fishing() -> bool:
 		return false
 
 func _on_fish_timer_timeout():
-	fish_caught = true;
+	fish_eating.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwq07dt6pmxma"]
+[gd_scene load_steps=11 format=3 uid="uid://dwq07dt6pmxma"]
 
 [ext_resource type="Script" path="res://scripts/Tasks/fishing_task.gd" id="1_nfejs"]
 [ext_resource type="PackedScene" uid="uid://dv4i70fuovtpb" path="res://assets/models/items/FishignRod.glb" id="2_nhxc6"]
@@ -107,40 +107,15 @@ _data = {
 "throw": SubResource("Animation_g3p8e")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hfrt5"]
-albedo_color = Color(0.643985, 0, 0.0653918, 1)
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_h3xhw"]
-material = SubResource("StandardMaterial3D_hfrt5")
-radius = 0.1
-height = 0.3
+radius = 0.05
+height = 0.2
 radial_segments = 8
 rings = 4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wimtx"]
-radius = 0.1
-height = 0.3
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2uqsf"]
-particle_flag_align_y = true
-emission_shape_scale = Vector3(0.1, 0, 0.1)
-emission_shape = 1
-emission_sphere_radius = 1.0
-direction = Vector3(0, 1, 0)
-spread = 15.0
-initial_velocity_min = 1.0
-initial_velocity_max = 3.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8clyo"]
-transparency = 4
-albedo_color = Color(0.960784, 0.976471, 1, 0.917647)
-
-[sub_resource type="SphereMesh" id="SphereMesh_kgajm"]
-material = SubResource("StandardMaterial3D_8clyo")
-radius = 0.03
-height = 0.06
-radial_segments = 8
-rings = 4
+radius = 0.05
+height = 0.2
 
 [node name="Task" type="Area3D"]
 collision_layer = 8
@@ -182,20 +157,10 @@ skeleton = NodePath("../..")
 shape = SubResource("CapsuleShape3D_wimtx")
 
 [node name="Marker3D2" type="Marker3D" parent="Floaty"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00449753, 0.148744, 0.00451763)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00449777, 0.0958464, 0.00451763)
 
 [node name="FishPullTimer" type="Timer" parent="Floaty"]
-wait_time = 0.8
-
-[node name="PullParticles" type="GPUParticles3D" parent="Floaty"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0203192, 0.0337913)
-emitting = false
-amount = 20
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_2uqsf")
-draw_pass_1 = SubResource("SphereMesh_kgajm")
+wait_time = 0.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
