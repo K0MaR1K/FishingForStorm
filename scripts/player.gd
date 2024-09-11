@@ -156,9 +156,10 @@ func handle_tasks(delta):
 				#this one could be useful for tasks that might not require item
 				#it is only fishing rn
 				if !task.required_object:
-					if task.handle_fishing():
-						var c = load("res://scenes/Items/fish.tscn").instantiate()
-						%Hand.add_child(c)
+					task.interact()
+					#var c = load("res://scenes/Items/fish.tscn").instantiate()
+					#%Hand.add_child(c)
+					break
 
 # CHANGED
 func entered_interaction(new_task: Node3D):
