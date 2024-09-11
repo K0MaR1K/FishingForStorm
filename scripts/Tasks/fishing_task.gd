@@ -2,6 +2,10 @@ extends "res://scripts/Tasks/task_template.gd"
 
 var starting_rotation
 
+@onready var fishing_line: Node3D = $FishingLine
+@onready var floaty: RigidBody3D = $Floaty
+@onready var marker_3d: Marker3D = $FishingRod/Marker3D
+
 var is_fishing: bool = false:
 	set(value):
 		is_fishing = value
@@ -9,20 +13,39 @@ var is_fishing: bool = false:
 			rotation_degrees.z = 4.0
 			if $fish_timer.is_stopped() and !fish_caught:
 				$fish_timer.start(randf_range(2.0, 10.0))
+			$AnimationPlayer.play("throw")
 		else:
+			floaty.hide()
+			floaty.freeze = true
+			floaty.global_position = marker_3d.global_position
 			rotation_degrees.z = starting_rotation
-			
-var fish_caught: bool = false;
+			fishing_line.erase_line()
+			line_thrown = false
+
+@export var line_thrown: bool = false
+var fish_caught: bool = false
+
+func throw():
+	floaty.show()
+	floaty.freeze = false
+	floaty.global_position = marker_3d.global_position
+	floaty.linear_velocity = Vector3(10, 10, 6)
 
 func _ready() -> void:
 	required_object = null
 	task_name = "fishing"
 	starting_rotation = rotation_degrees.z
 	
+func _process(_delta: float) -> void:
+	if line_thrown:
+		fishing_line.calc_line()
+	elif fishing_line.lines.size():
+		fishing_line.erase_line()
+	
 func handle_fishing() -> bool:
 	if is_fishing and fish_caught:
-		is_fishing = false;
-		fish_caught = false;
+		is_fishing = false
+		fish_caught = false
 		return true
 	elif !is_fishing:
 		is_fishing = true
