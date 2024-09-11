@@ -8,11 +8,12 @@ var starting_rotation
 @onready var floaty: RigidBody3D = $Floaty
 @onready var marker_3d: Marker3D = $FishingRod/Marker3D
 
+var is_fish_on_hook: bool = false
+
 var is_fishing: bool = false:
 	set(value):
 		is_fishing = value
 		if is_fishing:
-			rotation_degrees.z = 4.0
 			$fish_timer.start(randf_range(7.0, 15.0))
 			$AnimationPlayer.play("throw")
 		else:
@@ -29,7 +30,7 @@ func throw():
 	floaty.show()
 	floaty.freeze = false
 	floaty.global_position = marker_3d.global_position
-	floaty.linear_velocity = Vector3(10, 10, 6)
+	floaty.linear_velocity = Vector3(10, 6, 6).normalized() * 15
 
 func _ready() -> void:
 	required_object = null

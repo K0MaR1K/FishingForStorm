@@ -41,5 +41,6 @@ func make_a_hole():
 	deactivated = false
 	self.monitoring = true
 	$CollisionShape3D.disabled = false
+	started_repair = false
 	for plank in $Planks.get_children():
 		plank.hide()

@@ -121,58 +121,58 @@ shape = SubResource("BoxShape3D_dp8y3")
 [node name="RepairTasks" type="Node3D" parent="." index="3"]
 
 [node name="RepairTask" parent="RepairTasks" index="0" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.1853, -0.58553)
+transform = Transform3D(0.407326, 0, -0.913283, 0, 1, 0, 0.913283, 0, 0.407326, 0, -4.1853, -0.58553)
 
 [node name="RepairTask4" parent="RepairTasks" index="1" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(1, 0, 0, 0, 0.998652, -0.0519002, 0, 0.0519002, 0.998652, -1.27865, -4.07294, -2.42625)
 
 [node name="RepairTask5" parent="RepairTasks" index="2" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, -0.063017, -0.998012, 0, 0.998012, -0.063017, -1.27865, -3.17485, -3.88678)
+transform = Transform3D(0.533688, -0.0532923, -0.844, -0.845681, -0.0336314, -0.532627, 0, 0.998012, -0.063017, -1.27865, -3.17485, -3.88678)
 
 [node name="RepairTask6" parent="RepairTasks" index="3" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(0.99998, -0.00637041, 2.78459e-10, 0, -4.37114e-08, -1, 0.00637041, 0.99998, -4.37105e-08, 0.440101, -2.81703, -3.79564)
 
 [node name="RepairTask7" parent="RepairTasks" index="4" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.997368, -0.0725071, 3.16939e-09, 0, -4.37114e-08, -1, 0.0725071, 0.997368, -4.35963e-08, 1.67405, -3.0549, -3.76108)
+transform = Transform3D(0.474035, -0.0344616, 0.879831, 0.877515, -0.063794, -0.475286, 0.0725071, 0.997368, -4.35963e-08, 1.67405, -3.0549, -3.76108)
 
 [node name="RepairTask2" parent="RepairTasks" index="5" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0909, -4.14089, 0.639555)
+transform = Transform3D(0.657402, 0, 0.75354, 0, 1, 0, -0.75354, 0, 0.657402, 2.0909, -4.14089, 0.639555)
 
 [node name="RepairTask8" parent="RepairTasks" index="6" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02962, -4.14089, 2.68759)
+transform = Transform3D(0.811982, 0, -0.583683, 0, 1, 0, 0.583683, 0, 0.811982, 3.02962, -4.14089, 2.68759)
 
 [node name="RepairTask9" parent="RepairTasks" index="7" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50003, -4.14089, -1.20176)
 
 [node name="RepairTask10" parent="RepairTasks" index="8" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09408, -4.14089, 1.17261)
+transform = Transform3D(-0.520756, 0, 0.853705, 0, 1, 0, -0.853705, 0, -0.520756, -2.09408, -4.14089, 1.17261)
 
 [node name="RepairTask11" parent="RepairTasks" index="9" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55493, -4.14089, 2.90671)
 
 [node name="RepairTask12" parent="RepairTasks" index="10" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184464, -4.14089, 2.70053)
+transform = Transform3D(0.984747, 0, -0.173992, 0, 1, 0, 0.173992, 0, 0.984747, 0.184464, -4.14089, 2.70053)
 
 [node name="RepairTask13" parent="RepairTasks" index="11" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32967, -4.08177, 4.09621)
+transform = Transform3D(0.454099, 0, 0.890951, 0, 1, 0, -0.890951, 0, 0.454099, -1.32967, -4.08177, 4.09621)
 
 [node name="RepairTask16" parent="RepairTasks" index="12" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32967, -1.95565, 8.73584)
+transform = Transform3D(-0.0879729, 0, 0.996123, 0, 1, 0, -0.996123, 0, -0.0879729, -1.32967, -1.95565, 8.73584)
 
 [node name="RepairTask17" parent="RepairTasks" index="13" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69098, -1.90616, 9.28661)
+transform = Transform3D(-0.713935, 0, -0.700212, 0, 1, 0, 0.700212, 0, -0.713935, 1.69098, -1.90616, 9.28661)
 
 [node name="RepairTask18" parent="RepairTasks" index="14" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.537685, -1.84002, 10.6272)
 
 [node name="RepairTask19" parent="RepairTasks" index="15" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.737259, -1.57986, 12.2556)
+transform = Transform3D(0.693528, 0, 0.72043, 0, 1, 0, -0.72043, 0, 0.693528, 0.737259, -1.57986, 12.2556)
 
 [node name="RepairTask14" parent="RepairTasks" index="16" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.885729, -2.86224, 7.53241)
+transform = Transform3D(0.719716, 3.03475e-08, -0.694269, 0.694269, -3.14598e-08, 0.719716, 0, -1, -4.37114e-08, 0.885729, -2.86224, 7.53241)
 
 [node name="RepairTask15" parent="RepairTasks" index="17" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.11341, -2.86224, 7.51519)
+transform = Transform3D(0.999876, -6.87352e-10, 0.0157248, -0.0157248, -4.3706e-08, 0.999876, 0, -1, -4.37114e-08, -1.11341, -2.86224, 7.51519)
 
 [node name="RepairTask3" parent="RepairTasks" index="18" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.12943, -1.49116)
@@ -185,10 +185,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.92926, 1.80947)
 mesh = SubResource("BoxMesh_hq0gs")
 metadata/_edit_lock_ = true
 
-[node name="BucketTask" parent="." index="6" instance=ExtResource("5_3byml")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.91, 1.8)
-
-[node name="Props" type="Node3D" parent="." index="7"]
+[node name="Props" type="Node3D" parent="." index="6"]
 
 [node name="Box5" parent="Props" index="0" instance=ExtResource("6_xowsk")]
 transform = Transform3D(0.852731, 0, -0.52235, 0, 1, 0, 0.52235, 0, 0.852731, 2.74725, -3.75614, -3.37113)
@@ -220,7 +217,7 @@ transform = Transform3D(0.863574, -0.0917753, 0.495799, 0.0289322, 0.990695, 0.1
 [node name="LargeBox" parent="Props" index="9" instance=ExtResource("7_j0384")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87353, -3.51928, -3.17043)
 
-[node name="Lanterns" type="Node3D" parent="." index="8"]
+[node name="Lanterns" type="Node3D" parent="." index="7"]
 
 [node name="LanternStand" parent="Lanterns" index="0" instance=ExtResource("10_cs0w4")]
 transform = Transform3D(0.95534, 0, -0.295508, 0, 1, 0, 0.295508, 0, 0.95534, -4.72838, -2.9916, -0.66089)
@@ -246,7 +243,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79197, 1.95362, -11.6268)
 [node name="LanternHookAlpha2" parent="Lanterns" index="7" instance=ExtResource("9_mcgqo")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00778437, -2.53792, 1.22519)
 
-[node name="DroppedItems" type="Area3D" parent="." index="9"]
+[node name="DroppedItems" type="Area3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
 collision_layer = 16
 collision_mask = 4
@@ -258,7 +255,7 @@ shape = SubResource("BoxShape3D_xr660")
 [node name="ItemsRespawn" type="Marker3D" parent="DroppedItems" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 6)
 
-[node name="Tasks" type="Node3D" parent="." index="10"]
+[node name="Tasks" type="Node3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.38883, 0.271543)
 
 [node name="BucketSpillTask" parent="Tasks" index="0" instance=ExtResource("8_h62ty")]
@@ -288,7 +285,13 @@ transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.003996
 [node name="FishingTask" parent="Tasks" index="8" instance=ExtResource("9_kub6g")]
 transform = Transform3D(0.844581, -0.258189, -0.469064, 0.224808, 0.966093, -0.126988, 0.485947, 0.00180252, 0.873987, 3.682, 3.65607, 12.0324)
 
-[node name="RockingAnimation" type="AnimationPlayer" parent="." index="11"]
+[node name="BucketTask" parent="Tasks" index="9" instance=ExtResource("5_3byml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47883, 1.52846)
+
+[node name="RockingAnimation" type="AnimationPlayer" parent="." index="10"]
 libraries = {
 "": SubResource("AnimationLibrary_ynugp")
 }
+
+[connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
+[connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]
