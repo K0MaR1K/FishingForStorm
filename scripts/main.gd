@@ -9,6 +9,7 @@ var storm_effects_scene = load("res://scenes/storm_effects.tscn")
 var storm_node;
 @onready var blink_canvas: CanvasLayer = $BlinkCanvas
 @onready var ship: Node3D = $Ship
+var fire_control = null
 
 var blink_counter: int = 0
 var blinks_to_storm: int = 1
@@ -40,6 +41,7 @@ func storm_start():
 	$WorldEnvironment.environment = storm_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 0.05
 	storm_node = storm_effects_scene.instantiate()
+	storm_node.striking_ship_positions = [$lightning_test.transform.origin] #subject of change
 	add_child(storm_node)
 	$Player.get_node("rain").show()
 	is_storm = true
