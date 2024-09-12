@@ -4,7 +4,7 @@ extends "res://scripts/Tasks/task_template.gd"
 var another_fire_offset = 2
 var fire_growth_time = 4.0
 var my_scene = preload("res://scenes/Tasks/fire_task.tscn")
-var my_pos: Vector3 #get's set in fire_control
+var my_pos: Vector3 #gets set in fire_control
 
 var occupied_points = []
 
@@ -28,9 +28,10 @@ func _ready():
 		
 func _on_my_position_tween_finished():
 	if check_ship_ray.is_colliding():
-		transform.origin = my_pos
+		global_position = my_pos
 		$CollisionShape3D.disabled = false
 	else:
+		get_parent().fire_positions.erase(my_pos)
 		queue_free()
 		
 func get_random_pos() -> Vector3:
@@ -64,7 +65,6 @@ func _on_fire_growth_timer_timeout():
 	elif fire_health < 1.0:
 		fire_health += 0.1;
 		$fire_growth_timer.start(fire_growth_time)
-
 
 func _on_animation_player_animation_finished(_anim_name):
 	get_parent().fire_positions.erase(my_pos)

@@ -298,5 +298,22 @@ libraries = {
 "": SubResource("AnimationLibrary_ynugp")
 }
 
+[node name="LightningStrikePositions" type="Node3D" parent="." index="11"]
+
+[node name="Marker3D" type="Marker3D" parent="LightningStrikePositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84778, 0.981848, -9.85572)
+
+[node name="Marker3D2" type="Marker3D" parent="LightningStrikePositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51068, -0.30699, -5.93838)
+
+[node name="Marker3D3" type="Marker3D" parent="LightningStrikePositions" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52348, -1.17378, 10.2058)
+
+[node name="Marker3D4" type="Marker3D" parent="LightningStrikePositions" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0732412, -0.695077, 13.9136)
+
+[node name="Marker3D5" type="Marker3D" parent="LightningStrikePositions" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70154, 0.981849, -9.43336)
+
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
 [connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]
