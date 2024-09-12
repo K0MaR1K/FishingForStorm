@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
 [ext_resource type="PackedScene" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
-[ext_resource type="PackedScene" uid="uid://bt0vyfuge7vqx" path="res://assets/models/items/Ship4.2.glb" id="11_fw364"]
+[ext_resource type="PackedScene" uid="uid://dtewlwncrv3wx" path="res://assets/models/items/FishingRod4.2.glb" id="11_s1mve"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]
 
 [node name="TestScene" type="Node3D"]
@@ -55,7 +55,7 @@ size = Vector3(10.0044, 10.2777, 27.5524)
 thickness = 2.0
 texture = ExtResource("12_hkfgt")
 
-[node name="Ship4_2" parent="." instance=ExtResource("11_fw364")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.83443, 14.0242, 10.9968)
+[node name="FishingRod4_2" parent="." instance=ExtResource("11_s1mve")]
+transform = Transform3D(0.500882, 0, 0, 0, 0.862639, 0, 0, 0, 0.306387, 1.91257, -3.06122, 1.54103)
 
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]
