@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://8aelntkceqfj"]
+[gd_scene load_steps=2 format=3 uid="uid://80lvb41s7xps"]
 
 [ext_resource type="Script" path="res://scripts/fire_control.gd" id="1_qumvh"]
 

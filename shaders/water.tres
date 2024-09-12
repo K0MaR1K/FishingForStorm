@@ -346,6 +346,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-503.516, -326.094)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_oiey0")
 nodes/vertex/2/position = Vector2(-1760, -140)
 nodes/vertex/3/node = SubResource("VisualShaderNodeUVFunc_7gdxu")
@@ -417,7 +418,7 @@ nodes/fragment/19/position = Vector2(-360, -620)
 nodes/fragment/20/node = SubResource("VisualShaderNodeInput_bh71r")
 nodes/fragment/20/position = Vector2(-1200, -720)
 nodes/fragment/21/node = SubResource("VisualShaderNodeFloatOp_nwj28")
-nodes/fragment/21/position = Vector2(-720, -740)
+nodes/fragment/21/position = Vector2(-680, -720)
 nodes/fragment/22/node = SubResource("VisualShaderNodeFloatFunc_58e5w")
 nodes/fragment/22/position = Vector2(-160, -620)
 nodes/fragment/23/node = SubResource("VisualShaderNodeFloatOp_ncb07")

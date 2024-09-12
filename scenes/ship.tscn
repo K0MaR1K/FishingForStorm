@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://diiwfoj417yer" path="res://assets/models/items/Ship4.2.glb" id="1_0s5sk"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
-[ext_resource type="Material" path="res://assets/textures/water.tres" id="4_6m6rm"]
+[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
 [ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="5_3byml"]
 [ext_resource type="PackedScene" uid="uid://bwqv8jh10h2q6" path="res://scenes/box.tscn" id="6_xowsk"]
 [ext_resource type="PackedScene" uid="uid://3s1npfpa23e2" path="res://scenes/large_box.tscn" id="7_j0384"]
@@ -288,7 +288,7 @@ transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.003996
 transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.00399679, 4.55709, 2, -1.63974)
 
 [node name="FishingTask" parent="Tasks" index="8" instance=ExtResource("9_kub6g")]
-transform = Transform3D(0.844581, -0.258189, -0.469064, 0.224808, 0.966093, -0.126988, 0.485947, 0.00180252, 0.873987, 3.682, 3.65607, 12.0324)
+transform = Transform3D(0.844581, -0.258189, -0.469064, 0.224808, 0.966093, -0.126988, 0.485947, 0.00180252, 0.873987, 3.682, 5.02995, 12.0324)
 
 [node name="BucketTask" parent="Tasks" index="9" instance=ExtResource("5_3byml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47883, 1.52846)

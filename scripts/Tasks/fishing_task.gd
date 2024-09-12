@@ -10,6 +10,14 @@ var starting_rotation
 @onready var fishing_rod: Node3D = $FishingRod
 
 var player: PhysicsBody3D
+var skeleton: Skeleton3D
+
+var bone_start_pos = [Quaternion(-0.009, -0.001, -0.011, 0.999), Quaternion(.004,0, -0.001, 1), Quaternion(-0.02, 0, 0.003, 0.999)]
+var bone_end_pos = [Quaternion(-0.069, -0.001, -0.011, 0.999), Quaternion( -0.146,0, -0.001, 1), Quaternion(-0.255, 0, 0.003, 0.999)]
+var marker_start_pos = Vector3(-0.003, 0.408, -2.371)
+var marker_end_pos = Vector3(0.25,-0.9, -2.1)
+
+var pull_strength: float = 1
 
 enum {IDLE, WAIT, HOOK, CATCH}
 
@@ -43,17 +51,26 @@ func throw():
 	floaty.linear_velocity = Vector3(10, 6, 6).normalized() * 10
 
 func _ready() -> void:
+	skeleton = fishing_rod.get_node("Armature/Skeleton3D")
 	fishing_rod.position = Vector3.ZERO
 	player = get_tree().get_root().get_node("TestScene/Player")
 	required_object = null
 	task_name = "fishing"
 	starting_rotation = rotation_degrees.z
 	
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if line_thrown:
 		fishing_line.calc_line()
 	elif fishing_line.lines.size():
 		fishing_line.erase_line()
+		
+	if state != IDLE:
+		if pull_strength < 1:
+			pull_strength += delta * 0.01
+	
+	for i in range(1,4):
+		skeleton.set_bone_pose_rotation(i, bone_end_pos[i-1] * pull_strength + bone_start_pos[i-1] * (1 - pull_strength))
+		marker_3d.position = marker_end_pos * pull_strength + marker_start_pos * (1 - pull_strength)
 	
 func interact() -> void:
 	match state:

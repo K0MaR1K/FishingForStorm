@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlb2spdov4i25"]
+[gd_scene load_steps=13 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_rbxda"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
-[ext_resource type="PackedScene" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
+[ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
 [ext_resource type="PackedScene" uid="uid://dtewlwncrv3wx" path="res://assets/models/items/FishingRod4.2.glb" id="11_s1mve"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]
+[ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="12_s1muj"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_rbxda")
@@ -57,5 +58,7 @@ texture = ExtResource("12_hkfgt")
 
 [node name="FishingRod4_2" parent="." instance=ExtResource("11_s1mve")]
 transform = Transform3D(0.500882, 0, 0, 0, 0.862639, 0, 0, 0, 0.306387, 1.91257, -3.06122, 1.54103)
+
+[node name="FireControl" parent="." instance=ExtResource("12_s1muj")]
 
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]
