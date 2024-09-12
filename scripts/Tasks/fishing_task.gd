@@ -68,6 +68,14 @@ func _ready() -> void:
 	starting_rotation = rotation_degrees.z
 	
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("interact1") and state != IDLE:
+		state = IDLE
+		is_fishing = false
+		player.is_fishing = false
+		pull_strength = 0
+		fish_caught = 0
+		$AnimationPlayer.stop()
+	
 	if line_thrown:
 		fishing_line.calc_line()
 	elif fishing_line.lines.size():

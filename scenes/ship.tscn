@@ -22,10 +22,10 @@ size = Vector3(1.5, 3.11551, 0.2)
 material = ExtResource("4_6m6rm")
 size = Vector3(9.215, 0, 19.51)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_20tr0"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ic1t"]
 size = Vector3(9.215, 0, 19.51)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_11hpi"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xkuoq"]
 size = Vector3(29.4331, 7.01654, 44.7451)
 
 [sub_resource type="Animation" id="Animation_o78py"]
@@ -196,7 +196,7 @@ mesh = SubResource("BoxMesh_ayuu1")
 [node name="Area3D" type="Area3D" parent="WaterRising" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterRising/Area3D" index="0"]
-shape = SubResource("BoxShape3D_20tr0")
+shape = SubResource("BoxShape3D_1ic1t")
 
 [node name="Props" type="Node3D" parent="." index="6"]
 
@@ -324,3 +324,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0732412, -0.695077, 13.913
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70154, 0.981849, -9.43336)
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
+[connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]
