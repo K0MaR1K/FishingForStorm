@@ -24,6 +24,7 @@ func _ready():
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 	$Player.get_node("rain").hide()
+	$UICanvas.hide()
 	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.02))
 	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, -0.01))
 	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
