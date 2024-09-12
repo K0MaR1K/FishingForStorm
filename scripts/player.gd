@@ -41,16 +41,22 @@ var head_start_pos: float
 
 var tasks: Array[Node3D]
 
+var is_fishing: bool:
+	set(value):
+		is_fishing = value
+		global_rotation = Vector3(0, -PI*3/5, 0)
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	is_fishing = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hand_start_pos =  %Hand.position.y
 	head_start_pos = head.position.y
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and !is_fishing:
 		rotate_y(-event.relative.x * mouse_sens)
 		head.rotate_x(-event.relative.y * mouse_sens)
 		head.rotation.x = clamp(head.rotation.x, -1.2, 1.2)
@@ -60,13 +66,13 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and !is_fishing:
 		velocity.y = JUMP_VELOCITY
 		
 	# Handle dropping items.
-	if %Hand.get_child_count():
+	if %Hand.get_child_count() and !is_fishing:
 		if Input.is_action_just_pressed("interact1"):
 			var item = %Hand.get_child(0)
 			item.sleeping = false
@@ -80,29 +86,31 @@ func _physics_process(delta):
 			item.global_rotation = global_rot
 			item.is_picked_up = false
 	
-	handle_pointing()
-	handle_movement_state(delta)
-	handle_walking(delta)
+	if !is_fishing:
+		handle_pointing()
+		handle_movement_state(delta)
+		handle_walking(delta)
+		move_and_slide()
 	handle_tasks(delta)
-	move_and_slide()
-
+	
 func handle_walking(delta):
 		# Directions from input
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	
-	# Hand moving animation
-	if (input_dir != Vector2.ZERO):
-		%Hand.position.y = lerp(%Hand.position.y, hand_start_pos + sin(current_speed / camera_shake_freq * Time.get_ticks_msec() + PI/2) / 40, delta * lerp_speed)
-		head.position.y = lerp(head.position.y, head_start_pos + camera_shake * sin(current_speed / camera_shake_freq * Time.get_ticks_msec()), delta * lerp_speed)
-	
-	# Moving the player
-	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(),delta * lerp_speed)
-	if direction:
-		velocity.x = direction.x * current_speed
-		velocity.z = direction.z * current_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, current_speed)
-		velocity.z = move_toward(velocity.z, 0, current_speed)
+	if !is_fishing:
+		# Hand moving animation
+		if (input_dir != Vector2.ZERO):
+			%Hand.position.y = lerp(%Hand.position.y, hand_start_pos + sin(current_speed / camera_shake_freq * Time.get_ticks_msec() + PI/2) / 40, delta * lerp_speed)
+			head.position.y = lerp(head.position.y, head_start_pos + camera_shake * sin(current_speed / camera_shake_freq * Time.get_ticks_msec()), delta * lerp_speed)
+		
+		# Moving the player
+		direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(),delta * lerp_speed)
+		if direction:
+			velocity.x = direction.x * current_speed
+			velocity.z = direction.z * current_speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, current_speed)
+			velocity.z = move_toward(velocity.z, 0, current_speed)
 
 func handle_movement_state(delta):
 	if Input.is_action_pressed("crouch"):
@@ -157,8 +165,6 @@ func handle_tasks(delta):
 				#it is only fishing rn
 				if !task.required_object:
 					task.interact()
-					#var c = load("res://scenes/Items/fish.tscn").instantiate()
-					#%Hand.add_child(c)
 					break
 
 # CHANGED

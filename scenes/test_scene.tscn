@@ -36,7 +36,7 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12085, 0)
 
 [node name="Bucket" parent="Items" instance=ExtResource("8_qcsk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, 2.06887, 2.1735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, -1.03597, 2.1735)
 
 [node name="Hammer" parent="Items" instance=ExtResource("11_1mdt6")]
 

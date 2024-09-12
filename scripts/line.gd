@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var line_dots = 10
+@export var line_dots = 10	
 @onready var marker_3d_2: Marker3D = $"../Floaty/Marker3D2"
 @onready var marker_3d: Marker3D = $"../FishingRod/Marker3D"
 
