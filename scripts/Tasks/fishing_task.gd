@@ -2,12 +2,14 @@ extends "res://scripts/Tasks/task_template.gd"
 
 var starting_rotation
 
-@export var mouse_sens: float = 0.001
+@export var mouse_sens: float = 0.0005
 
 @onready var fishing_line: Node3D = $FishingLine
 @onready var floaty: RigidBody3D = $Floaty
 @onready var marker_3d: Marker3D = $FishingRod/Marker3D
 @onready var fishing_rod: Node3D = $FishingRod
+
+const FISH = preload("res://scenes/Items/fish.tscn")
 
 var player: PhysicsBody3D
 var skeleton: Skeleton3D
@@ -18,6 +20,7 @@ var marker_start_pos = Vector3(-0.003, 0.408, -2.371)
 var marker_end_pos = Vector3(0.25,-0.9, -2.1)
 
 var pull_strength: float = 0
+var fish_caught: float = 0
 
 enum {IDLE, WAIT, HOOK, CATCH}
 
@@ -28,6 +31,7 @@ var is_fishing: bool = false:
 		is_fishing = value
 		if is_fishing:
 			$fish_timer.start(randf_range(7.0, 15.0))
+			floaty.global_position = marker_3d.global_position
 			$AnimationPlayer.play("throw")
 		else:
 			floaty.hide()
@@ -42,13 +46,15 @@ var is_fishing: bool = false:
 func _input(event):
 	if event is InputEventMouseMotion and state != IDLE:
 		fishing_rod.rotation.z += -event.relative.x * mouse_sens
-		fishing_rod.rotation.z = clamp($FishingRod.rotation.z, -0.4, 0.7)
+		fishing_rod.rotation.y += -event.relative.x * mouse_sens
+		fishing_rod.rotation.z = clamp($FishingRod.rotation.z, -0.7, 0.7)
+		fishing_rod.rotation.y = clamp($FishingRod.rotation.y, -PI*2/3, -PI/4)
 		
 func throw():
 	floaty.show()
 	floaty.freeze = false
 	floaty.global_position = marker_3d.global_position
-	floaty.linear_velocity = Vector3(10, 6, 6).normalized() * 10
+	floaty.linear_velocity = Vector3(10, 6, 6).normalized() * 12
 
 func _ready() -> void:
 	skeleton = fishing_rod.get_node("Armature/Skeleton3D")
@@ -64,9 +70,31 @@ func _process(delta: float) -> void:
 	elif fishing_line.lines.size():
 		fishing_line.erase_line()
 		
-	if state != IDLE:
-		if pull_strength < 1:
-			pull_strength += delta * 0.01
+	if state == CATCH:
+		fishing_rod.rotation.z = lerp(fishing_rod.rotation.z, -0.7 * floaty.move_ratio + 0.7 * (1 - floaty.move_ratio), delta)
+		fishing_rod.rotation.y = lerp(fishing_rod.rotation.y, -PI*2/3 * floaty.move_ratio -PI/4 * (1 - floaty.move_ratio), delta)
+		fishing_rod.rotation.y += sin(10*pull_strength*Time.get_ticks_msec())*0.05*pull_strength
+		if fishing_rod.rotation.z * (floaty.move_ratio - 0.5) < 0:
+			if pull_strength < 1:
+				pull_strength += delta * 0.2
+			else:
+				state = IDLE
+				is_fishing = false
+				player.is_fishing = false
+				pull_strength = 0
+		else:
+			if fish_caught < 1:
+				fish_caught += delta * 0.05
+			else:
+				state = IDLE
+				is_fishing = false
+				player.is_fishing = false
+				pull_strength = 0
+				fish_caught = 0
+				var fish = FISH.instantiate()
+				player.hand.add_child(fish)
+			if pull_strength > 0:
+				pull_strength -= delta * 0.1
 	
 	for i in range(1,4):
 		skeleton.set_bone_pose_rotation(i, bone_end_pos[i-1] * pull_strength + bone_start_pos[i-1] * (1 - pull_strength))
