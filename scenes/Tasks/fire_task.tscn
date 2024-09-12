@@ -223,12 +223,14 @@ shape = SubResource("BoxShape3D_qjqcn")
 disabled = true
 
 [node name="fire" type="GPUParticles3D" parent="."]
+visible = false
 material_override = SubResource("ShaderMaterial_v2aph")
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_j6hfn")
 draw_pass_1 = SubResource("QuadMesh_1fnki")
 
 [node name="smoke" type="GPUParticles3D" parent="."]
+visible = false
 sorting_offset = -1.0
 material_override = SubResource("ShaderMaterial_v2aph")
 amount = 64
@@ -238,6 +240,7 @@ process_material = SubResource("ParticleProcessMaterial_h7jpd")
 draw_pass_1 = SubResource("QuadMesh_1fnki")
 
 [node name="sparkles" type="GPUParticles3D" parent="."]
+visible = false
 sorting_offset = 1.0
 material_override = SubResource("ShaderMaterial_y7vu1")
 amount = 48
@@ -249,7 +252,7 @@ draw_pass_1 = SubResource("QuadMesh_kedud")
 one_shot = true
 
 [node name="check_ship_ray" type="RayCast3D" parent="."]
-target_position = Vector3(0, -0.5, 0)
+target_position = Vector3(0, -10, 0)
 collision_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

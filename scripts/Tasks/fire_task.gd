@@ -4,6 +4,7 @@ extends "res://scripts/Tasks/task_template.gd"
 var another_fire_offset = 2
 var fire_growth_time = 4.0
 var my_scene = preload("res://scenes/Tasks/fire_task.tscn")
+var my_pos_checked: bool = false #this one is only for initial spreading check
 var my_pos: Vector3 #gets set in fire_control
 
 var occupied_points = []
@@ -24,7 +25,7 @@ var fire_health: float = 0.1:
 func _ready():
 	required_object = preload("res://scenes/Items/bucket.tscn")
 	task_name = "fire"
-	$fire_growth_timer.start(fire_growth_time)
+	$fire_growth_timer.start(fire_growth_time) #DONT FORGET TO CHANGE
 		
 func _on_my_position_tween_finished():
 	if check_ship_ray.is_colliding():
@@ -32,6 +33,18 @@ func _on_my_position_tween_finished():
 		$CollisionShape3D.disabled = false
 	else:
 		get_parent().fire_positions.erase(my_pos)
+		queue_free()
+		
+func _physics_process(_delta):
+	if check_ship_ray.is_colliding():
+		if check_ship_ray.get_collider() is Ship:
+			if !my_pos_checked:
+				var my_new_pos = check_ship_ray.get_collision_point()
+				my_pos_checked = true;
+				get_parent().fire_pos_checked(my_new_pos)
+		else:
+			queue_free()
+	else:
 		queue_free()
 		
 func get_random_pos() -> Vector3:

@@ -136,6 +136,9 @@ text = "MAIN MENU (NO SAVES)"
 process_mode = 1
 autostart = true
 
+[node name="PlayerRespawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91573, 0)
+
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]
 [connection signal="pressed" from="UICanvas/game_over_panel/VBoxContainer/main_menu_button" to="UICanvas" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="UICanvas/game_paused_panel/VBoxContainer/unpause_button" to="UICanvas" method="_on_unpause_button_pressed"]

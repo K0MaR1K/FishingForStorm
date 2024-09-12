@@ -1,4 +1,5 @@
 extends Node3D
+class_name Ship
 
 @onready var lanterns: Node3D = $Lanterns
 
@@ -45,10 +46,11 @@ func _process(delta: float) -> void:
 	else:
 		if get_parent().has_method("game_over"): #is ship in main menu or game?
 			get_parent().game_over("Your ship has sunk!")
-	$MeshInstance3D.mesh.size.y = end_dim_y * water_filled + start_dim_y * (1 - water_filled)
-	$MeshInstance3D.position.y = end_pos_y * water_filled + start_pos_y * (1 - water_filled)
-
-
+	var new_size_y = end_dim_y * water_filled + start_dim_y * (1 - water_filled)
+	$WaterRising.mesh.size.y = new_size_y
+	$WaterRising.position.y = end_pos_y * water_filled + start_pos_y * (1 - water_filled)
+	$WaterRising/Area3D/CollisionShape3D.shape.size.y = new_size_y
+	
 func _on_repair_timer_timeout() -> void:
 	var repairs = $RepairTasks.get_child_count()
 	var repair = $RepairTasks.get_child(randi_range(0, repairs - 1))
@@ -57,8 +59,3 @@ func _on_repair_timer_timeout() -> void:
 
 func covered_up_a_hole():
 	hole_count -= 1
-
-
-func _on_dropped_items_body_entered(body: Node3D) -> void:
-	body.global_position = $DroppedItems/ItemsRespawn.global_position
-	body.linear_velocity = Vector3.ZERO
