@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cy0cnc8uccist"]
 
 [ext_resource type="PackedScene" uid="uid://covmq1lx8eod7" path="res://scenes/Tasks/task_template.tscn" id="1_rbucg"]
-[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="2_a46yw"]
+[ext_resource type="Material" path="res://assets/textures/water.tres" id="2_a46yw"]
 [ext_resource type="Script" path="res://scripts/Tasks/repair_task.gd" id="2_u6elx"]
 [ext_resource type="PackedScene" uid="uid://c5cdvl15th1w8" path="res://assets/models/items/Plank.glb" id="4_f4f8f"]
 [ext_resource type="PackedScene" uid="uid://pkpk4gves26p" path="res://assets/models/items/Plank4.glb" id="5_77i05"]
@@ -667,7 +667,6 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.06, 0)
 
 [node name="Plank" parent="Planks" index="0" instance=ExtResource("4_f4f8f")]
 transform = Transform3D(0.706432, 0.142709, 0.693246, -0.252825, 0.965722, 0.0588339, -0.661086, -0.216832, 0.718296, -0.628227, 0.823888, 0.569762)
-visible = false
 
 [node name="Plank4" parent="Planks" index="1" instance=ExtResource("5_77i05")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0021192, 0, 0.74559)

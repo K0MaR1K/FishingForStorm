@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://bh3j5huvwwt33"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_18tpf"]
+[ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="2_hkhug"]
+[ext_resource type="Environment" uid="uid://lquvw8gqo4ha" path="res://environments/storm_env.tres" id="3_ph7t6"]
+[ext_resource type="PackedScene" uid="uid://yochq87itm7n" path="res://scenes/blink_canvas.tscn" id="5_7u4tx"]
+[ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="6_dj2v3"]
+[ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="7_jyowo"]
+[ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="8_0cg83"]
+[ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="9_flk2b"]
+[ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="10_illt2"]
+[ext_resource type="PackedScene" uid="uid://8aelntkceqfj" path="res://scenes/fire_control.tscn" id="10_ta5l4"]
+
+[node name="MAIN_MENU" type="Node3D"]
+script = ExtResource("1_18tpf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.593939, 0, 0.80451, 0, 1, 0, -0.80451, 0, 0.593939, 19.2749, 9.66759, 21.0336)
+
+[node name="Water" parent="." instance=ExtResource("2_hkhug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45731, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_ph7t6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, 0.5, 2.91603e-07, -0.12941, 0.224144, 0.965926, 0.482963, -0.836516, 0.258819, 0, 7.43415, 0)
+light_energy = 0.05
+
+[node name="MenuCanvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="menu_control" type="Control" parent="MenuCanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="start_button" type="Button" parent="MenuCanvas/menu_control"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 149.0
+offset_right = 311.0
+offset_bottom = 249.0
+text = "START"
+
+[node name="BlinkCanvas" parent="." instance=ExtResource("5_7u4tx")]
+
+[node name="BlinkTimer" type="Timer" parent="BlinkCanvas"]
+autostart = true
+
+[node name="Items" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12085, 0)
+
+[node name="Bucket" parent="Items" instance=ExtResource("6_dj2v3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, 2.06887, 2.1735)
+
+[node name="Hammer" parent="Items" instance=ExtResource("7_jyowo")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0cg83")
+volume_db = -30.0
+autoplay = true
+
+[node name="Ship" parent="." instance=ExtResource("9_flk2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.30893, 0)
+
+[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184177, 4.68513, 1.71576)
+size = Vector3(10.0044, 10.2777, 27.5524)
+thickness = 2.0
+texture = ExtResource("10_illt2")
+
+[node name="FireControl" parent="." instance=ExtResource("10_ta5l4")]
+
+[connection signal="pressed" from="MenuCanvas/menu_control/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]

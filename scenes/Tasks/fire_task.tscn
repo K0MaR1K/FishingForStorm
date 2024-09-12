@@ -1,0 +1,263 @@
+[gd_scene load_steps=22 format=3 uid="uid://caoay3qn5rgmh"]
+
+[ext_resource type="Script" path="res://scripts/Tasks/fire_task.gd" id="1_kwjyv"]
+[ext_resource type="Shader" uid="uid://c5t1y6u06dyih" path="res://shaders/fire_shader.tres" id="2_yu8nu"]
+[ext_resource type="Texture2D" uid="uid://08d40dg3x7rn" path="res://assets/sprites/fire_02.png" id="3_fkubc"]
+[ext_resource type="Texture2D" uid="uid://bx4llqsmp3k1p" path="res://assets/sprites/Voronoi01.png" id="3_sg1yd"]
+[ext_resource type="Shader" uid="uid://nonavgqabdc0" path="res://shaders/fire_sparkles_shader.tres" id="5_uld7n"]
+[ext_resource type="Texture2D" uid="uid://bo85o5b5gvpgf" path="res://assets/sprites/Flare00.PNG" id="6_rg0g0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjqcn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2aph"]
+render_priority = 0
+shader = ExtResource("2_yu8nu")
+shader_parameter/DissolveTiling = Vector2(0.5, 0.5)
+shader_parameter/DissolveSpeed = Vector2(0.5, 0.5)
+shader_parameter/dissolveAmount = 0.5
+shader_parameter/Texture2DParameter = ExtResource("3_fkubc")
+shader_parameter/DissolveTexture = ExtResource("3_sg1yd")
+
+[sub_resource type="Curve" id="Curve_4rftd"]
+_data = [Vector2(0, 0.415468), 0.0, 3.03597, 0, 0, Vector2(0.170616, 1), 0.0, 0.0, 0, 0, Vector2(0.890995, 0), -1.89344, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dnma3"]
+curve = SubResource("Curve_4rftd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j6hfn"]
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 5, 0)
+damping_min = 0.2
+damping_max = 1.0
+scale_min = 3.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_dnma3")
+color = Color(4, 1.25, 0.6, 0.85)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1fnki"]
+resource_local_to_scene = true
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h7jpd"]
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 5, 0)
+damping_min = 0.2
+damping_max = 1.0
+scale_min = 3.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_dnma3")
+color = Color(0.0728426, 0.0728426, 0.0728426, 0.946)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7vu1"]
+render_priority = 0
+shader = ExtResource("5_uld7n")
+shader_parameter/Texture2DParameter = ExtResource("6_rg0g0")
+
+[sub_resource type="Curve" id="Curve_hoofe"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.489011, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_o6wba"]
+curve = SubResource("Curve_hoofe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4dslt"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3(0, 5, 0)
+scale_min = 0.05
+scale_max = 0.15
+color = Color(4, 1.25, 0.6, 0.85)
+alpha_curve = SubResource("CurveTexture_o6wba")
+turbulence_enabled = true
+turbulence_noise_scale = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_kedud"]
+
+[sub_resource type="Animation" id="Animation_g8n4o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sparkles:amount_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("smoke:amount_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:process_material:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0728426, 0.0728426, 0.0728426, 0.946)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fire:lifetime")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fire:amount_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_aasrd"]
+resource_name = "dying"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("smoke:amount_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sparkles:amount_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:process_material:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.144, 0.144, 0.144, 0.946), Color(0.654232, 0.654232, 0.654232, 0.476)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fire:lifetime")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 10.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fire:amount_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_34q2p"]
+_data = {
+"RESET": SubResource("Animation_g8n4o"),
+"dying": SubResource("Animation_aasrd")
+}
+
+[node name="fire_task" type="Area3D"]
+collision_layer = 8
+script = ExtResource("1_kwjyv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144882, 0.35939, -0.0362701)
+shape = SubResource("BoxShape3D_qjqcn")
+disabled = true
+
+[node name="fire" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_v2aph")
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_j6hfn")
+draw_pass_1 = SubResource("QuadMesh_1fnki")
+
+[node name="smoke" type="GPUParticles3D" parent="."]
+sorting_offset = -1.0
+material_override = SubResource("ShaderMaterial_v2aph")
+amount = 64
+lifetime = 4.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_h7jpd")
+draw_pass_1 = SubResource("QuadMesh_1fnki")
+
+[node name="sparkles" type="GPUParticles3D" parent="."]
+sorting_offset = 1.0
+material_override = SubResource("ShaderMaterial_y7vu1")
+amount = 48
+lifetime = 6.0
+process_material = SubResource("ParticleProcessMaterial_4dslt")
+draw_pass_1 = SubResource("QuadMesh_kedud")
+
+[node name="fire_growth_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="check_ship_ray" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.5, 0)
+collision_mask = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_34q2p")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="fire_growth_timer" to="." method="_on_fire_growth_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

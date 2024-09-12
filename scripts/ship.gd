@@ -43,7 +43,8 @@ func _process(delta: float) -> void:
 	if water_filled < 1:
 		water_filled += water_fill_speed * delta * hole_count
 	else:
-		print("YOU LOSE")
+		if get_parent().has_method("game_over"): #is ship in main menu or game?
+			get_parent().game_over("Your ship has sunk!")
 	$MeshInstance3D.mesh.size.y = end_dim_y * water_filled + start_dim_y * (1 - water_filled)
 	$MeshInstance3D.position.y = end_pos_y * water_filled + start_pos_y * (1 - water_filled)
 
