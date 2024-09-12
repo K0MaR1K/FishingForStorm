@@ -17,7 +17,7 @@ var bone_end_pos = [Quaternion(-0.069, -0.001, -0.011, 0.999), Quaternion( -0.14
 var marker_start_pos = Vector3(-0.003, 0.408, -2.371)
 var marker_end_pos = Vector3(0.25,-0.9, -2.1)
 
-var pull_strength: float = 1
+var pull_strength: float = 0
 
 enum {IDLE, WAIT, HOOK, CATCH}
 
