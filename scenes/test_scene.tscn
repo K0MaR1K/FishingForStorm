@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
 [ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
 [ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="11_kt2kk"]
+
 [ext_resource type="Script" path="res://scripts/ui_canvas.gd" id="12_8012a"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]
+[ext_resource type="PackedScene" uid="uid://pm3gj0d7gkf3" path="res://scenes/ui_canvas.tscn" id="13_0el7f"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_rbxda")
@@ -58,82 +60,9 @@ texture = ExtResource("12_hkfgt")
 
 [node name="FireControl" parent="." instance=ExtResource("11_kt2kk")]
 
-[node name="UICanvas" type="CanvasLayer" parent="."]
-process_mode = 3
-script = ExtResource("12_8012a")
+[node name="UICanvas" parent="." instance=ExtResource("13_0el7f")]
 
-[node name="game_over_panel" type="PanelContainer" parent="UICanvas"]
-process_mode = 2
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -101.5
-offset_top = -29.0
-offset_right = 101.5
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UICanvas/game_over_panel"]
-layout_mode = 2
-
-[node name="game_over_label" type="Label" parent="UICanvas/game_over_panel/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Your ship has sunk!
-Game Over"
-horizontal_alignment = 1
-
-[node name="game_time_label" type="Label" parent="UICanvas/game_over_panel/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Time: "
-horizontal_alignment = 1
-
-[node name="main_menu_button" type="Button" parent="UICanvas/game_over_panel/VBoxContainer"]
-layout_mode = 2
-text = "MAIN MENU"
-
-[node name="game_paused_panel" type="PanelContainer" parent="UICanvas"]
-process_mode = 2
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -101.5
-offset_top = -29.0
-offset_right = 101.5
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UICanvas/game_paused_panel"]
-layout_mode = 2
-
-[node name="game_paused_label" type="Label" parent="UICanvas/game_paused_panel/VBoxContainer"]
-layout_mode = 2
-text = "Game paused"
-horizontal_alignment = 1
-
-[node name="unpause_button" type="Button" parent="UICanvas/game_paused_panel/VBoxContainer"]
-layout_mode = 2
-text = "UNPAUSE"
-
-[node name="main_menu_button" type="Button" parent="UICanvas/game_paused_panel/VBoxContainer"]
-layout_mode = 2
-text = "MAIN MENU (NO SAVES)"
-
-[node name="game_timer" type="Timer" parent="UICanvas"]
-process_mode = 1
-autostart = true
+[node name="PlayerRespawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91573, 0)
 
 [connection signal="timeout" from="BlinkCanvas/BlinkTimer" to="." method="_on_blink_timer_timeout"]
-[connection signal="pressed" from="UICanvas/game_over_panel/VBoxContainer/main_menu_button" to="UICanvas" method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="UICanvas/game_paused_panel/VBoxContainer/unpause_button" to="UICanvas" method="_on_unpause_button_pressed"]
-[connection signal="pressed" from="UICanvas/game_paused_panel/VBoxContainer/main_menu_button" to="UICanvas" method="_on_main_menu_button_pressed"]
-[connection signal="timeout" from="UICanvas/game_timer" to="UICanvas" method="_on_game_timer_timeout"]

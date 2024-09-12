@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/fire_control.gd" id="1_qumvh"]
 
-[node name="FireControl" type="Node"]
+[node name="FireControl" type="Node3D"]
 script = ExtResource("1_qumvh")

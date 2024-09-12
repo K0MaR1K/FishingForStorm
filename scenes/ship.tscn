@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=21 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://rroto8ytb5fs" path="res://assets/models/items/Ship4.3.glb" id="1_21q6d"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
@@ -22,7 +22,10 @@ size = Vector3(1.5, 3.11551, 0.2)
 material = ExtResource("4_6m6rm")
 size = Vector3(9.215, 0, 19.51)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xkuoq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_20tr0"]
+size = Vector3(9.215, 0, 19.51)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_11hpi"]
 size = Vector3(29.4331, 7.01654, 44.7451)
 
 [sub_resource type="Animation" id="Animation_o78py"]
@@ -186,9 +189,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.29255, -1.49116)
 [node name="RepairTimer" type="Timer" parent="." index="4"]
 wait_time = 15.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5"]
+[node name="WaterRising" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.489, -2.073)
 mesh = SubResource("BoxMesh_ayuu1")
+
+[node name="Area3D" type="Area3D" parent="WaterRising" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterRising/Area3D" index="0"]
+shape = SubResource("BoxShape3D_20tr0")
 
 [node name="Props" type="Node3D" parent="." index="6"]
 
@@ -251,7 +259,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.007
 [node name="DroppedItems" type="Area3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
 collision_layer = 16
-collision_mask = 4
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DroppedItems" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335205, -2.84164, 1.58243)
@@ -316,4 +324,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0732412, -0.695077, 13.913
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70154, 0.981849, -9.43336)
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
-[connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]

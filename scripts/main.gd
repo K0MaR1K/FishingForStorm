@@ -19,8 +19,9 @@ var blinks_to_storm: int = 1
 
 
 func _ready():
+	
 	water_mesh = water.get_node("WaterMesh")
-	blink_timer.wait_time = randf_range(5.0, 10.0)
+	blink_timer.wait_time = randf_range(25.0, 60.0)
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 	$Player.get_node("rain").hide()
@@ -29,9 +30,17 @@ func _ready():
 	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
 	water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, -0.01))
 	water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(1, 1, 1))
+	ship.get_node("DroppedItems").body_entered.connect(_on_body_overboard)
 
 func _process(_delta):
 	pass
+	
+func _on_body_overboard(body: Node3D):
+	if body is Player:
+		body.global_position = $PlayerRespawn.global_position
+	else:
+		body.global_position = ship.get_node("DroppedItems/ItemsRespawn").global_position
+		body.linear_velocity = Vector3.ZERO
 
 func _on_blink_timer_timeout():
 	blink_timer.wait_time = randf_range(15.0, 20.0)
