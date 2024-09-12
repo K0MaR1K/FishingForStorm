@@ -1,5 +1,7 @@
 extends Node3D
-
+					#THIS IS MAIN MENU
+					
+var main_game_scene = preload("res://scenes/test_scene.tscn")
 @onready var blink_timer: Timer = $BlinkCanvas/BlinkTimer
 
 var is_storm: bool = false
@@ -23,7 +25,6 @@ func _ready():
 	blink_timer.wait_time = randf_range(5.0, 10.0)
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
-	$Player.get_node("rain").hide()
 	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.02))
 	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, -0.01))
 	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
@@ -57,7 +58,6 @@ func storm_start():
 		for c in ship.get_node("LightningStrikePositions").get_children():
 			fire_control.striking_ship_positions.append(c.global_position)
 	storm_node.striking_ship_positions = fire_control.striking_ship_positions
-	$Player.get_node("rain").show()
 	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.06))
 	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, 0.02))
 	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.06))
@@ -71,7 +71,6 @@ func storm_end():
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 	storm_node.queue_free()
-	$Player.get_node("rain").hide()
 	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.02))
 	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, -0.01))
 	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
@@ -79,9 +78,9 @@ func storm_end():
 	water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(1, 1, 1))
 	is_storm = false
 	ship.is_storm = false
+
+
+func _on_start_button_pressed():
+	var error = get_tree().change_scene_to_packed(main_game_scene)
+	print("error loading main game scene " + error)
 	
-func game_over(reason):
-	#rn this function is called from two places
-	#1. ship's _proccess function (sinking)
-	#2. fire_control's _proccess function (burning)
-	$UICanvas.game_over(reason)

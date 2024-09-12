@@ -7,8 +7,10 @@ var water_filled: float = 0.0
 var water_fill_speed: float = 0.01
 var water_drain_speed: float = 0.1
 
-var start_y: float = -0.57
-var end_y: float = 1
+var start_dim_y: float = 0
+var end_dim_y: float = 1
+var start_pos_y: float = -4.489
+var end_pos_y: float = -3.969
 
 var is_storm: 
 	set(value):
@@ -34,17 +36,17 @@ func _ready() -> void:
 	for repair in $RepairTasks.get_children():
 		repair.covered_up.connect(covered_up_a_hole)
 	
-
 func drain(delta):
 	water_filled -=water_drain_speed * delta
 	
-
 func _process(delta: float) -> void:
 	if water_filled < 1:
 		water_filled += water_fill_speed * delta * hole_count
 	else:
-		print("YOU LOSE")
-	$MeshInstance3D.mesh.size.y = end_y * water_filled + start_y * (1 - water_filled)
+		if get_parent().has_method("game_over"): #is ship in main menu or game?
+			get_parent().game_over("Your ship has sunk!")
+	$MeshInstance3D.mesh.size.y = end_dim_y * water_filled + start_dim_y * (1 - water_filled)
+	$MeshInstance3D.position.y = end_pos_y * water_filled + start_pos_y * (1 - water_filled)
 
 
 func _on_repair_timer_timeout() -> void:

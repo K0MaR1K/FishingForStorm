@@ -44,6 +44,16 @@ func interact(delta, task):
 		spilling_particles.restart()
 		
 		filled = 0
+	elif task.task_name == "fire" and filled > 0:
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "rotation", Vector3(deg_to_rad(-120), 0, 0), 0.3)
+		
+		await get_tree().create_timer(0.10).timeout
+		
+		spilling_particles.restart()
+		if task.fire_health > 0:
+			task.fire_health -= filled
+		filled = 0
 	
 	water_level(filled)
 	
