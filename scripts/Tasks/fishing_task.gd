@@ -20,6 +20,7 @@ var marker_start_pos = Vector3(-0.003, 0.408, -2.371)
 var marker_end_pos = Vector3(0.25,-0.9, -2.1)
 
 var pull_strength: float = 0
+var pull_speed: float = 0
 var fish_caught: float = 0
 
 enum {IDLE, WAIT, HOOK, CATCH}
@@ -31,6 +32,8 @@ var is_fishing: bool = false:
 		is_fishing = value
 		if is_fishing:
 			$fish_timer.start(randf_range(7.0, 15.0))
+			floaty.hide()
+			floaty.freeze = true
 			floaty.global_position = marker_3d.global_position
 			$AnimationPlayer.play("throw")
 		else:
@@ -70,18 +73,20 @@ func _process(delta: float) -> void:
 	elif fishing_line.lines.size():
 		fishing_line.erase_line()
 		
+		
 	if state == CATCH:
 		fishing_rod.rotation.z = lerp(fishing_rod.rotation.z, -0.7 * floaty.move_ratio + 0.7 * (1 - floaty.move_ratio), delta)
 		fishing_rod.rotation.y = lerp(fishing_rod.rotation.y, -PI*2/3 * floaty.move_ratio -PI/4 * (1 - floaty.move_ratio), delta)
 		fishing_rod.rotation.y += sin(10*pull_strength*Time.get_ticks_msec())*0.05*pull_strength
 		if fishing_rod.rotation.z * (floaty.move_ratio - 0.5) < 0:
 			if pull_strength < 1:
-				pull_strength += delta * 0.2
+				pull_strength += delta * pull_speed
 			else:
 				state = IDLE
 				is_fishing = false
 				player.is_fishing = false
 				pull_strength = 0
+				fish_caught = 0
 		else:
 			if fish_caught < 1:
 				fish_caught += delta * 0.05
