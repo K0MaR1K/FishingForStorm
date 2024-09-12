@@ -32,8 +32,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91573, 0)
 [node name="BlinkCanvas" parent="." instance=ExtResource("6_qtd7q")]
 
 [node name="BlinkTimer" type="Timer" parent="BlinkCanvas"]
-wait_time = 0.001
-autostart = true
 
 [node name="Items" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12085, 0)
