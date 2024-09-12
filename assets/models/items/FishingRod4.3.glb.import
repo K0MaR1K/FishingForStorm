@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://rroto8ytb5fs"
-path="res://.godot/imported/Ship4.3.glb-429c6e710144b08e5b000006d48508c5.scn"
+uid="uid://b5xvxlyyhfpmg"
+path="res://.godot/imported/FishingRod4.3.glb-162ffe47f8e95b3bac938ad471b2c76f.scn"
 
 [deps]
 
-source_file="res://assets/models/items/Ship4.3.glb"
-dest_files=["res://.godot/imported/Ship4.3.glb-429c6e710144b08e5b000006d48508c5.scn"]
+source_file="res://assets/models/items/FishingRod4.3.glb"
+dest_files=["res://.godot/imported/FishingRod4.3.glb-162ffe47f8e95b3bac938ad471b2c76f.scn"]
 
 [params]
 

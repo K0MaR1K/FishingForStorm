@@ -25,7 +25,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	get_parent().remove_child.call_deferred(self)
-	get_tree().get_root().add_child.call_deferred(self)
+	get_tree().get_root().get_node("TestScene").add_child.call_deferred(self)
 
 func _process(delta: float) -> void:
 	if global_position.y < water_level:
