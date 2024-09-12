@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
 [ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
-[ext_resource type="PackedScene" uid="uid://8aelntkceqfj" path="res://scenes/fire_control.tscn" id="11_kt2kk"]
+[ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="11_kt2kk"]
 [ext_resource type="PackedScene" uid="uid://dtewlwncrv3wx" path="res://assets/models/items/FishingRod4.2.glb" id="11_s1mve"]
 [ext_resource type="Script" path="res://scripts/ui_canvas.gd" id="12_8012a"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]

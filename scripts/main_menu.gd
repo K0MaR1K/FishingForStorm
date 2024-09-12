@@ -82,5 +82,5 @@ func storm_end():
 
 func _on_start_button_pressed():
 	var error = get_tree().change_scene_to_packed(main_game_scene)
-	print("error loading main game scene " + error)
+	print("error loading main game scene " + str(error))
 	
