@@ -19,8 +19,9 @@ var blinks_to_storm: int = 1
 
 
 func _ready():
+	
 	water_mesh = water.get_node("WaterMesh")
-	blink_timer.wait_time = randf_range(5.0, 10.0)
+	blink_timer.wait_time = randf_range(25.0, 60.0)
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 	$Player.get_node("rain").hide()
