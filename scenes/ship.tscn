@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=24 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://rroto8ytb5fs" path="res://assets/models/items/Ship4.3.glb" id="1_21q6d"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
-[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
+[ext_resource type="Material" path="res://assets/textures/water.tres" id="4_6m6rm"]
 [ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="5_3byml"]
 [ext_resource type="PackedScene" uid="uid://bwqv8jh10h2q6" path="res://scenes/box.tscn" id="6_xowsk"]
 [ext_resource type="PackedScene" uid="uid://3s1npfpa23e2" path="res://scenes/large_box.tscn" id="7_j0384"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dt77syxstk6xr" path="res://scenes/lantern_stand.tscn" id="10_cs0w4"]
 [ext_resource type="PackedScene" uid="uid://cc8qp57y3od0" path="res://scenes/wheelstand.tscn" id="13_a5p8e"]
 [ext_resource type="PackedScene" uid="uid://ccp86xleoy0as" path="res://scenes/wheel.tscn" id="13_yiiy2"]
+[ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="14_ohcoj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu6a7"]
 size = Vector3(1.5, 4.81273, 0.230859)
@@ -123,7 +124,6 @@ _data = {
 }
 
 [node name="Ship" instance=ExtResource("1_21q6d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("2_0o2k5")
 
 [node name="collision" parent="." index="1"]
@@ -233,6 +233,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.489, -2.073)
 mesh = SubResource("BoxMesh_ayuu1")
 
 [node name="Area3D" type="Area3D" parent="WaterRising" index="0"]
+collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterRising/Area3D" index="0"]
 shape = SubResource("BoxShape3D_1ic1t")
@@ -367,6 +368,8 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.0778105, 0.675436, -4
 
 [node name="wheelstand" parent="." index="13" instance=ExtResource("13_a5p8e")]
 transform = Transform3D(0.599444, -0.0258156, -0.000893909, 0.0258065, 0.599421, -0.00540114, 0.00112543, 0.00535769, 0.599975, 0.0866636, 0.451106, -4.52255)
+
+[node name="FireControl" parent="." index="14" instance=ExtResource("14_ohcoj")]
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
 [connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]

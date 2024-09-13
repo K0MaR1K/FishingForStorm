@@ -10,7 +10,6 @@ var storm_node;
 
 @onready var blink_canvas: CanvasLayer = $BlinkCanvas
 @onready var ship: Node3D = $Ship
-@onready var fire_control = $FireControl
 @onready var water: Node3D = $Water
 var water_mesh
 
@@ -21,7 +20,7 @@ var blinks_to_storm: int = 1
 func _ready():
 	
 	water_mesh = water.get_node("WaterMesh")
-	blink_timer.wait_time = randf_range(25.0, 60.0)
+	blink_timer.wait_time = randf_range(15.0, 25.0)
 	blink_timer.start()
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
@@ -63,10 +62,7 @@ func storm_start():
 	$WorldEnvironment/DirectionalLight3D.light_energy = 0.05
 	storm_node = storm_effects_scene.instantiate()
 	add_child(storm_node)
-	if fire_control.striking_ship_positions.is_empty():
-		for c in ship.get_node("LightningStrikePositions").get_children():
-			fire_control.striking_ship_positions.append(c.global_position)
-	storm_node.striking_ship_positions = fire_control.striking_ship_positions
+	storm_node.striking_ship_positions = ship.striking_ship_positions
 	$Player.get_node("rain").show()
 	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.06))
 	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, 0.02))

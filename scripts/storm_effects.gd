@@ -29,7 +29,7 @@ func _on_lightning_timer_timeout():
 				c.emitting = true;
 			await get_tree().create_timer(0.6).timeout
 			impact.queue_free()
-			get_parent().fire_control.start_fire(pos, Vector3.ZERO)
+			get_parent().ship.get_node("FireControl").start_fire(Vector3.ZERO, pos)
 				
 		else:
 			var ship_pos = get_parent().ship.global_position
