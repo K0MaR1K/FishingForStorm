@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dt77syxstk6xr" path="res://scenes/lantern_stand.tscn" id="10_cs0w4"]
 [ext_resource type="PackedScene" uid="uid://cc8qp57y3od0" path="res://scenes/wheelstand.tscn" id="13_a5p8e"]
 [ext_resource type="PackedScene" uid="uid://ccp86xleoy0as" path="res://scenes/wheel.tscn" id="13_yiiy2"]
+
 [ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="14_ohcoj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu6a7"]
@@ -48,7 +49,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Wheel:rotation")
+tracks/1/path = NodePath("WheelStand/Wheel:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -77,7 +78,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Wheel:rotation")
+tracks/1/path = NodePath("WheelStand/Wheel:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -106,7 +107,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Wheel:rotation")
+tracks/1/path = NodePath("WheelStand/Wheel:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -135,6 +136,9 @@ subdivide_depth = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wtmm5"]
 size = Vector3(5, 5, 5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_21id1"]
+radius = 3.37908
 
 [node name="Ship" instance=ExtResource("1_21q6d")]
 script = ExtResource("2_0o2k5")
@@ -376,11 +380,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0732412, -0.695077, 13.913
 [node name="Marker3D5" type="Marker3D" parent="LightningStrikePositions" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70154, 0.981849, -9.43336)
 
-[node name="Wheel" parent="." index="12" instance=ExtResource("13_yiiy2")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.0778105, 0.675436, -4.86958)
-
-[node name="wheelstand" parent="." index="13" instance=ExtResource("13_a5p8e")]
+[node name="WheelStand" parent="." index="12" instance=ExtResource("13_a5p8e")]
 transform = Transform3D(0.599444, -0.0258156, -0.000893909, 0.0258065, 0.599421, -0.00540114, 0.00112543, 0.00535769, 0.599975, 0.0866636, 0.451106, -4.52255)
+
+[node name="Wheel" parent="WheelStand" index="2" instance=ExtResource("13_yiiy2")]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0.000254706, 0.368992, -0.581703)
+
+[node name="MapArea" type="Area3D" parent="WheelStand" index="3"]
+transform = Transform3D(1, 7.79073e-09, 1.16415e-10, 2.41926e-10, 1, 0, -1.16415e-10, 0, 1, -0.00197452, -0.00939983, -1.05263)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WheelStand/MapArea" index="0"]
+shape = SubResource("SphereShape3D_21id1")
+
+[node name="MapCanvas" parent="." index="13" instance=ExtResource("14_kbctm")]
+visible = false
 
 [node name="FireControl" parent="." index="14" instance=ExtResource("14_ohcoj")]
 
@@ -434,3 +447,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94241, -0.0999992)
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
 [connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]
+[connection signal="body_entered" from="WheelStand/MapArea" to="." method="_on_map_area_body_entered"]
+[connection signal="body_exited" from="WheelStand/MapArea" to="." method="_on_map_area_body_exited"]

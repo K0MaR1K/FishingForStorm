@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
 [ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]
+
 [ext_resource type="PackedScene" uid="uid://pm3gj0d7gkf3" path="res://scenes/ui_canvas.tscn" id="13_0el7f"]
 
 [node name="TestScene" type="Node3D"]

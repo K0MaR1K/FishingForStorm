@@ -66,3 +66,11 @@ func _on_repair_timer_timeout() -> void:
 
 func covered_up_a_hole():
 	hole_count -= 1
+
+
+func _on_map_area_body_entered(body: Node3D) -> void:
+	$MapCanvas.open_map()
+
+
+func _on_map_area_body_exited(body: Node3D) -> void:
+	$MapCanvas.close_map()

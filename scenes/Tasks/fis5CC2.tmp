@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwq07dt6pmxma"]
+[gd_scene load_steps=16 format=3 uid="uid://dwq07dt6pmxma"]
 
 [ext_resource type="Script" path="res://scripts/Tasks/fishing_task.gd" id="1_nfejs"]
 [ext_resource type="PackedScene" uid="uid://b5xvxlyyhfpmg" path="res://assets/models/items/FishingRod4.3.glb" id="2_a1r5x"]
 [ext_resource type="Script" path="res://scripts/line.gd" id="3_rtant"]
 [ext_resource type="Script" path="res://scripts/floating.gd" id="4_vhx3v"]
 [ext_resource type="AudioStream" uid="uid://drd1h57k2i44k" path="res://assets/sounds_and_music/rope-stretch.mp3" id="5_vqfhy"]
-[ext_resource type="AudioStream" uid="uid://deqo2la4gbt7h" path="res://assets/sounds_and_music/pop.mp3" id="6_2apee"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_351xk"]
 size = Vector3(2.86456, 1, 1.79443)
@@ -204,10 +203,6 @@ wait_time = 3.0
 [node name="TensionAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_vqfhy")
 volume_db = -30.0
-parameters/looping = false
-
-[node name="PopAudio" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_2apee")
 parameters/looping = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
