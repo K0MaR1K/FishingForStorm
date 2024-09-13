@@ -7,7 +7,13 @@ extends CanvasLayer
 
 func _ready() -> void:
 	hide()
-	deadman_button.pressed.emit()
+
+	stormbreaker_button.disabled = false
+	seawitch_button.disabled = false
+	buccaneer_button.disabled = false
+	deadman_button.disabled = true
+	Global.zone = Global.ZONE.DEADMAN
+
 
 func open_map():
 	$OpeningSound.play()
@@ -27,6 +33,7 @@ func _on_stormbreaker_button_pressed() -> void:
 		seawitch_button.disabled = false
 		buccaneer_button.disabled = false
 		deadman_button.disabled = false
+		Global.blink_canvas.blink()
 		Global.zone = Global.ZONE.STORMBREAKER
 		print("STORMBREAKER")
 
@@ -39,6 +46,7 @@ func _on_seawitch_button_pressed() -> void:
 		seawitch_button.disabled = true
 		buccaneer_button.disabled = false
 		deadman_button.disabled = false
+		Global.blink_canvas.blink()
 		Global.zone = Global.ZONE.SEAWITCH
 		print("SEAWITCH")
 
@@ -51,6 +59,7 @@ func _on_buccaneer_button_pressed() -> void:
 		seawitch_button.disabled = false
 		buccaneer_button.disabled = true
 		deadman_button.disabled = false
+		Global.blink_canvas.blink()
 		Global.zone = Global.ZONE.BUCCANEER
 		print("BUCCANEER")
 
@@ -63,5 +72,6 @@ func _on_deadman_button_pressed() -> void:
 		seawitch_button.disabled = false
 		buccaneer_button.disabled = false
 		deadman_button.disabled = true
+		Global.blink_canvas.blink()
 		Global.zone = Global.ZONE.DEADMAN
 		print("DEADMAN")

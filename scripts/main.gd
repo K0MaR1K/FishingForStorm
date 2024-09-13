@@ -33,7 +33,6 @@ func _on_body_overboard(body: Node3D):
 		body.global_position = ship.get_node("DroppedItems/ItemsRespawn").global_position
 		body.linear_velocity = Vector3.ZERO
 		
-	
 func storm_changed(value):
 	await get_tree().create_timer(0.10).timeout
 	if value:
@@ -43,22 +42,12 @@ func storm_changed(value):
 		add_child(storm_node)
 		storm_node.striking_ship_positions = ship.striking_ship_positions
 		$Player.get_node("rain").show()
-		water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.06))
-		water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, 0.02))
-		water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.06))
-		water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, 0.02))
-		water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(2, 2, 2))
 		ship.is_storm = true
 	else:
 		$WorldEnvironment.environment = peace_env
 		$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 		storm_node.queue_free()
 		$Player.get_node("rain").hide()
-		water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.02))
-		water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, -0.01))
-		water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
-		water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, -0.01))
-		water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(1, 1, 1))
 		ship.is_storm = false
 	
 func game_over(reason):
