@@ -31,7 +31,7 @@ var is_fishing: bool = false:
 	set(value):
 		is_fishing = value
 		if is_fishing:
-			$fish_timer.start(randf_range(7.0, 15.0))
+			$FishTimer.start(randf_range(7.0, 15.0))
 			floaty.hide()
 			floaty.freeze = true
 			floaty.global_position = marker_3d.global_position
@@ -41,6 +41,7 @@ var is_fishing: bool = false:
 			floaty.freeze = true
 			floaty.global_position = marker_3d.global_position
 			rotation_degrees.z = starting_rotation
+			$FishTimer.stop()
 			fishing_line.erase_line()
 			line_thrown = false
 
