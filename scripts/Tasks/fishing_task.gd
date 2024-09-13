@@ -165,7 +165,7 @@ func interact() -> void:
 			state = CATCH
 			floaty.fish_pull_timer.stop()
 			floaty.fish_move_timer.start()
-			floaty._on_fish_move_timer_timeout()
+			floaty.fish_move_timer.wait_time = 3
 		CATCH:
 			pass
 

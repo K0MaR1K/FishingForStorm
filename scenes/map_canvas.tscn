@@ -1,17 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://cacrsub4xm8ki"]
+[gd_scene load_steps=20 format=3 uid="uid://cacrsub4xm8ki"]
 
 [ext_resource type="Script" path="res://scripts/map_canvas.gd" id="1_n0epv"]
 [ext_resource type="Texture2D" uid="uid://bv5r080c1hd4u" path="res://assets/sprites/map.png" id="2_nropq"]
 [ext_resource type="Texture2D" uid="uid://cdnm25ttywahy" path="res://assets/sprites/stormbreaker.png" id="3_o5yil"]
 [ext_resource type="Texture2D" uid="uid://cphkqcdtn5mj8" path="res://assets/sprites/stormbreaker_hover.png" id="4_4y2ru"]
 [ext_resource type="Texture2D" uid="uid://j3ycgv1xem21" path="res://assets/sprites/seawitch.png" id="5_3mepw"]
+[ext_resource type="Texture2D" uid="uid://0op3pjtco0m" path="res://assets/sprites/stormbreaker_sel.png" id="5_koeoa"]
 [ext_resource type="Texture2D" uid="uid://dunea0ai5boay" path="res://assets/sprites/seawitch_hover.png" id="6_k3oow"]
 [ext_resource type="Texture2D" uid="uid://rw31pumdurd3" path="res://assets/sprites/bucaneer.png" id="7_dppfy"]
+[ext_resource type="Texture2D" uid="uid://okl04qgduuh" path="res://assets/sprites/seawitch_sel.png" id="8_23pk3"]
 [ext_resource type="Texture2D" uid="uid://dg4247bvr8l51" path="res://assets/sprites/bucaneer_hover.png" id="8_nou16"]
 [ext_resource type="Texture2D" uid="uid://ct0j6r0ih36uw" path="res://assets/sprites/deadman.png" id="9_k7214"]
 [ext_resource type="Texture2D" uid="uid://ce2thhd5yhspu" path="res://assets/sprites/deadman_hover.png" id="10_dlosl"]
 [ext_resource type="AudioStream" uid="uid://yrignwo8a4el" path="res://assets/sounds_and_music/open_map.mp3" id="11_rfh66"]
+[ext_resource type="Texture2D" uid="uid://dqce0i8naesxs" path="res://assets/sprites/bucaneer_sel.png" id="11_too5o"]
 [ext_resource type="AudioStream" uid="uid://fl1pnmc2tsq2" path="res://assets/sounds_and_music/close_map.mp3" id="12_tyywv"]
+[ext_resource type="Texture2D" uid="uid://5iqlb0khc8k8" path="res://assets/sprites/deadman_sel.png" id="14_0fguc"]
 
 [sub_resource type="Animation" id="Animation_481vw"]
 length = 0.001
@@ -100,6 +104,7 @@ offset_bottom = 374.0
 texture_normal = ExtResource("3_o5yil")
 texture_pressed = ExtResource("3_o5yil")
 texture_hover = ExtResource("4_4y2ru")
+texture_disabled = ExtResource("5_koeoa")
 
 [node name="SeawitchButton" type="TextureButton" parent="."]
 anchors_preset = 8
@@ -116,6 +121,7 @@ grow_vertical = 2
 texture_normal = ExtResource("5_3mepw")
 texture_pressed = ExtResource("5_3mepw")
 texture_hover = ExtResource("6_k3oow")
+texture_disabled = ExtResource("8_23pk3")
 
 [node name="BuccaneerButton" type="TextureButton" parent="."]
 offset_left = 768.0
@@ -125,6 +131,7 @@ offset_bottom = 347.0
 texture_normal = ExtResource("7_dppfy")
 texture_pressed = ExtResource("7_dppfy")
 texture_hover = ExtResource("8_nou16")
+texture_disabled = ExtResource("11_too5o")
 
 [node name="DeadmanButton" type="TextureButton" parent="."]
 offset_left = 731.0
@@ -134,6 +141,7 @@ offset_bottom = 534.0
 texture_normal = ExtResource("9_k7214")
 texture_pressed = ExtResource("9_k7214")
 texture_hover = ExtResource("10_dlosl")
+texture_disabled = ExtResource("14_0fguc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -142,9 +150,11 @@ libraries = {
 
 [node name="OpeningSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_rfh66")
+volume_db = -12.0
 
 [node name="ClosingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_tyywv")
+volume_db = -5.0
 
 [connection signal="pressed" from="StormbreakerButton" to="." method="_on_stormbreaker_button_pressed"]
 [connection signal="pressed" from="SeawitchButton" to="." method="_on_seawitch_button_pressed"]

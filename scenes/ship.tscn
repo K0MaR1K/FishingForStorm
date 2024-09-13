@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=29 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://rroto8ytb5fs" path="res://assets/models/items/Ship4.3.glb" id="1_21q6d"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
@@ -124,6 +124,9 @@ _data = {
 "light_rocking": SubResource("Animation_kno1v")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_21id1"]
+radius = 2.55764
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ebee"]
 cull_mode = 2
 albedo_color = Color(0.741385, 0.741385, 0.741385, 1)
@@ -136,9 +139,6 @@ subdivide_depth = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wtmm5"]
 size = Vector3(5, 5, 5)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_21id1"]
-radius = 2.55764
 
 [node name="Ship" instance=ExtResource("1_21q6d")]
 script = ExtResource("2_0o2k5")
@@ -405,16 +405,16 @@ simulation_precision = 10
 pinned_points = [90, 99, 9, 0]
 attachments/0/point_index = 90
 attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D")
-attachments/0/offset = Vector3(0.11645, 0.0853102, 0.0678499)
+attachments/0/offset = Vector3(4, 0, -3)
 attachments/1/point_index = 99
 attachments/1/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D2")
-attachments/1/offset = Vector3(-0.0263698, 0.0853102, 0.0678499)
+attachments/1/offset = Vector3(-4, 0, -3)
 attachments/2/point_index = 9
 attachments/2/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D4")
-attachments/2/offset = Vector3(-0.0263698, 0.0853099, 0.199771)
+attachments/2/offset = Vector3(-4, 0, 3)
 attachments/3/point_index = 0
 attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D3")
-attachments/3/offset = Vector3(0.11645, 0.0853099, 0.199771)
+attachments/3/offset = Vector3(4, 0, 3)
 
 [node name="SailAttachementPoints" type="Node3D" parent="." index="16"]
 
