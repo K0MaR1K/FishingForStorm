@@ -1,9 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=26 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://rroto8ytb5fs" path="res://assets/models/items/Ship4.3.glb" id="1_21q6d"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
-[ext_resource type="Material" path="res://assets/textures/water.tres" id="4_6m6rm"]
+[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
 [ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="5_3byml"]
 [ext_resource type="PackedScene" uid="uid://bwqv8jh10h2q6" path="res://scenes/box.tscn" id="6_xowsk"]
 [ext_resource type="PackedScene" uid="uid://3s1npfpa23e2" path="res://scenes/large_box.tscn" id="7_j0384"]
@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dt77syxstk6xr" path="res://scenes/lantern_stand.tscn" id="10_cs0w4"]
 [ext_resource type="PackedScene" uid="uid://cc8qp57y3od0" path="res://scenes/wheelstand.tscn" id="13_a5p8e"]
 [ext_resource type="PackedScene" uid="uid://ccp86xleoy0as" path="res://scenes/wheel.tscn" id="13_yiiy2"]
-
-[ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="14_ohcoj"]
+[ext_resource type="PackedScene" uid="uid://cacrsub4xm8ki" path="res://scenes/map_canvas.tscn" id="14_kbctm"]
+[ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="15_8uel7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu6a7"]
 size = Vector3(1.5, 4.81273, 0.230859)
@@ -125,7 +125,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_21id1"]
-radius = 3.37908
+radius = 2.55764
 
 [node name="Ship" instance=ExtResource("1_21q6d")]
 script = ExtResource("2_0o2k5")
@@ -237,7 +237,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.489, -2.073)
 mesh = SubResource("BoxMesh_ayuu1")
 
 [node name="Area3D" type="Area3D" parent="WaterRising" index="0"]
-collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterRising/Area3D" index="0"]
 shape = SubResource("BoxShape3D_1ic1t")
@@ -375,14 +374,14 @@ transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0.000254706, 0.
 
 [node name="MapArea" type="Area3D" parent="WheelStand" index="3"]
 transform = Transform3D(1, 7.79073e-09, 1.16415e-10, 2.41926e-10, 1, 0, -1.16415e-10, 0, 1, -0.00197452, -0.00939983, -1.05263)
+collision_layer = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WheelStand/MapArea" index="0"]
 shape = SubResource("SphereShape3D_21id1")
 
 [node name="MapCanvas" parent="." index="13" instance=ExtResource("14_kbctm")]
-visible = false
 
-[node name="FireControl" parent="." index="14" instance=ExtResource("14_ohcoj")]
+[node name="FireControl" parent="." index="14" instance=ExtResource("15_8uel7")]
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
 [connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]

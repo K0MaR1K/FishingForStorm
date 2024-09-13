@@ -25,6 +25,7 @@ var is_storm:
 			$RockingAnimation.play("light_rocking")
 			for lantern in lanterns.get_children():
 				lantern.get_node("Light").visible = false
+		Global.is_storm = value
 		is_storm = value
 		
 var striking_ship_positions: Array:
@@ -46,6 +47,7 @@ func _ready() -> void:
 	
 func drain(delta):
 	water_filled -=water_drain_speed * delta
+	water_filled = 0 if water_filled < 0 else water_filled
 	
 func _process(delta: float) -> void:
 	if water_filled < 1:
@@ -68,9 +70,9 @@ func covered_up_a_hole():
 	hole_count -= 1
 
 
-func _on_map_area_body_entered(body: Node3D) -> void:
+func _on_map_area_body_entered(_body: Node3D) -> void:
 	$MapCanvas.open_map()
 
 
-func _on_map_area_body_exited(body: Node3D) -> void:
+func _on_map_area_body_exited(_body: Node3D) -> void:
 	$MapCanvas.close_map()

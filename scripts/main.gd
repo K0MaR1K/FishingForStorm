@@ -2,7 +2,6 @@ extends Node3D
 
 @onready var blink_timer: Timer = $BlinkCanvas/BlinkTimer
 
-var is_storm: bool = false
 var storm_env = load("res://environments/storm_env.tres")
 var peace_env = load("res://environments/peace_env.tres")
 var storm_effects_scene = load("res://scenes/storm_effects.tscn")
@@ -49,7 +48,7 @@ func _on_blink_timer_timeout():
 		blink_counter += 1
 	else:
 		blink_counter = 0
-		if is_storm:
+		if Global.is_storm:
 			storm_end()
 		else:
 			storm_start()
@@ -69,7 +68,6 @@ func storm_start():
 	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.06))
 	water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, 0.02))
 	water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(2, 2, 2))
-	is_storm = true
 	ship.is_storm = true
 	
 func storm_end():
@@ -83,7 +81,6 @@ func storm_end():
 	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
 	water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, -0.01))
 	water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(1, 1, 1))
-	is_storm = false
 	ship.is_storm = false
 	
 func game_over(reason):

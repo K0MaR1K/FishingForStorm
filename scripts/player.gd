@@ -80,6 +80,8 @@ func _physics_process(delta):
 	if %Hand.get_child_count() and !is_fishing:
 		if Input.is_action_just_pressed("interact1"):
 			var item = %Hand.get_child(0)
+			var s = item.scale
+			print(s)
 			item.sleeping = false
 			item.freeze = false
 			var global_pos = item.global_position
@@ -90,6 +92,8 @@ func _physics_process(delta):
 			item.global_position = global_pos
 			item.global_rotation = global_rot
 			item.is_picked_up = false
+			item.scale = s
+			print(item.scale)
 	
 	if !is_fishing:
 		handle_pointing()

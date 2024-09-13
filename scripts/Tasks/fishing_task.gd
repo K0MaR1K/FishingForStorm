@@ -28,9 +28,35 @@ enum {IDLE, WAIT, HOOK, CATCH}
 
 var state = IDLE
 
+func handle_fish_price():
+	var fish = FISH.instantiate()
+	match Global.zone:
+		Global.ZONE.DEADMAN:
+			var s = randf_range(0.5, 0.8)
+			fish.scale = Vector3(s, s, s)
+			fish.price = 2 + 5.0 * s
+			
+		Global.ZONE.BUCCANEER:
+			var s = randf_range(0.6, 1.0)
+			fish.scale = Vector3(s, s, s)
+			fish.price = 5 + 10.0 * s
+			
+		Global.ZONE.SEAWITCH:
+			var s = randf_range(0.8, 1.3)
+			fish.scale = Vector3(s, s, s)
+			fish.price = 8 + 10.0 * s
+			
+		Global.ZONE.STORMBREAKER:
+			var s = randf_range(1.3, 2)
+			fish.scale = Vector3(s, s, s)
+			fish.price = 15 + 10.0 * s
+			
+	print(fish.price)
+	return fish
+
 func end_fishing(win):
 	if win:
-		var fish = FISH.instantiate()
+		var fish = handle_fish_price()
 		player.hand.add_child(fish)
 	state = IDLE
 	player.is_fishing = false
@@ -49,7 +75,7 @@ func end_fishing(win):
 	for i in range(1,4):
 		skeleton.set_bone_pose_rotation(i, bone_end_pos[i-1] * pull_strength + bone_start_pos[i-1] * (1 - pull_strength))
 		marker_3d.position = marker_end_pos * pull_strength + marker_start_pos * (1 - pull_strength)
-			
+
 var is_fishing: bool = false:
 	set(value):
 		is_fishing = value
@@ -98,7 +124,6 @@ func _process(delta: float) -> void:
 	if state == CATCH:
 		handle_tension(delta)
 	
-	
 func handle_tension(delta):
 	
 	for i in range(1,4):
@@ -111,8 +136,7 @@ func handle_tension(delta):
 	
 	tension_audio.pitch_scale = 1 + 2 * pull_strength
 	tension_audio.volume_db = lerp(tension_audio.volume_db, pull_strength * 30 - 30, delta)
-	if not tension_audio.playing:
-		tension_audio.playing = true
+	tension_audio.playing = true
 	
 	if fishing_rod.rotation.z * (floaty.move_ratio - 0.5) < 0:
 		if pull_strength < 1:
@@ -141,6 +165,7 @@ func interact() -> void:
 			state = CATCH
 			floaty.fish_pull_timer.stop()
 			floaty.fish_move_timer.start()
+			floaty._on_fish_move_timer_timeout()
 		CATCH:
 			pass
 
