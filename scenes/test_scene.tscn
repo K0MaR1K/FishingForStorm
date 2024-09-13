@@ -41,10 +41,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, -1.03597, 2.1735)
 
 [node name="Hammer" parent="Items" instance=ExtResource("11_1mdt6")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicStream" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("10_8awv5")
-volume_db = -30.0
 autoplay = true
+bus = &"Music"
 
 [node name="Ship" parent="." instance=ExtResource("10_x831h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.30893, 0)

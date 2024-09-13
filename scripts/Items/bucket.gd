@@ -54,6 +54,9 @@ func interact(delta, task):
 		if task.fire_health > 0:
 			task.fire_health -= filled
 		filled = 0
+	elif task.task_name == "tank" and filled < 1:
+		filled += delta * fill_speed
+		
 	
 	water_level(filled)
 	

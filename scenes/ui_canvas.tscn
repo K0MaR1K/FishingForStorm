@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8q86kob2js7n"]
+[gd_scene load_steps=3 format=3 uid="uid://b8q86kob2js7n"]
 
 [ext_resource type="Script" path="res://scripts/ui_canvas.gd" id="1_n0oe2"]
+[ext_resource type="PackedScene" uid="uid://7qtnxsy8axa7" path="res://scenes/settings_panel.tscn" id="2_hxgfn"]
 
 [node name="UICanvas" type="CanvasLayer"]
 process_mode = 3
@@ -64,6 +65,9 @@ layout_mode = 2
 text = "Game paused"
 horizontal_alignment = 1
 
+[node name="SettingsPanel" parent="game_paused_panel/VBoxContainer" instance=ExtResource("2_hxgfn")]
+layout_mode = 2
+
 [node name="unpause_button" type="Button" parent="game_paused_panel/VBoxContainer"]
 layout_mode = 2
 text = "UNPAUSE"
@@ -72,6 +76,10 @@ text = "UNPAUSE"
 layout_mode = 2
 text = "MAIN MENU (NO SAVES)"
 
+[node name="exit_button" type="Button" parent="game_paused_panel/VBoxContainer"]
+layout_mode = 2
+text = "EXIT GAME"
+
 [node name="game_timer" type="Timer" parent="."]
 process_mode = 1
 autostart = true
@@ -79,4 +87,5 @@ autostart = true
 [connection signal="pressed" from="game_over_panel/VBoxContainer/main_menu_button" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="game_paused_panel/VBoxContainer/unpause_button" to="." method="_on_unpause_button_pressed"]
 [connection signal="pressed" from="game_paused_panel/VBoxContainer/main_menu_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="game_paused_panel/VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]

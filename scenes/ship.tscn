@@ -1,9 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=30 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://rroto8ytb5fs" path="res://assets/models/items/Ship4.3.glb" id="1_21q6d"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
-[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
+[ext_resource type="Material" path="res://assets/textures/water.tres" id="4_6m6rm"]
 [ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="5_3byml"]
 [ext_resource type="PackedScene" uid="uid://bwqv8jh10h2q6" path="res://scenes/box.tscn" id="6_xowsk"]
 [ext_resource type="PackedScene" uid="uid://3s1npfpa23e2" path="res://scenes/large_box.tscn" id="7_j0384"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ccp86xleoy0as" path="res://scenes/wheel.tscn" id="13_yiiy2"]
 [ext_resource type="PackedScene" uid="uid://cacrsub4xm8ki" path="res://scenes/map_canvas.tscn" id="14_kbctm"]
 [ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="15_8uel7"]
+[ext_resource type="PackedScene" uid="uid://docxycwgwkxtv" path="res://scenes/water_tank.tscn" id="16_xjd1j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu6a7"]
 size = Vector3(1.5, 4.81273, 0.230859)
@@ -124,6 +125,9 @@ _data = {
 "light_rocking": SubResource("Animation_kno1v")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_21id1"]
+radius = 2.55764
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ebee"]
 cull_mode = 2
 albedo_color = Color(0.741385, 0.741385, 0.741385, 1)
@@ -136,9 +140,6 @@ subdivide_depth = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wtmm5"]
 size = Vector3(5, 5, 5)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_21id1"]
-radius = 2.55764
 
 [node name="Ship" instance=ExtResource("1_21q6d")]
 script = ExtResource("2_0o2k5")
@@ -443,6 +444,9 @@ shape = SubResource("BoxShape3D_wtmm5")
 
 [node name="Marker3D" type="Marker3D" parent="Wind" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94241, -0.0999992)
+
+[node name="tank" parent="." index="18" instance=ExtResource("16_xjd1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.31167, -4.28889, -5.52536)
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
 [connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]

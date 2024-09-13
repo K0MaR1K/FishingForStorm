@@ -37,3 +37,7 @@ func game_over(reason: String):
 
 func _on_game_timer_timeout():
 	elapsed_time += 1
+
+
+func _on_exit_button_pressed():
+	get_tree().quit()
