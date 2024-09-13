@@ -26,6 +26,13 @@ var is_storm:
 			for lantern in lanterns.get_children():
 				lantern.get_node("Light").visible = false
 		is_storm = value
+		
+var striking_ship_positions: Array:
+	get():
+		if striking_ship_positions.is_empty():
+			for c in $LightningStrikePositions.get_children():
+				striking_ship_positions.append(c.global_position)
+		return striking_ship_positions
 
 var hole_count: int = 0
 
