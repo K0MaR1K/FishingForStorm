@@ -47,7 +47,7 @@ func _ready() -> void:
 	
 func drain(delta):
 	water_filled -=water_drain_speed * delta
-	water_filled = 0 if water_filled < 0 else water_filled
+	water_filled = 0 if water_filled <= 0 else water_filled
 	
 func _process(delta: float) -> void:
 	if water_filled < 1:

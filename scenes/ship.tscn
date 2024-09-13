@@ -406,16 +406,16 @@ simulation_precision = 10
 pinned_points = [90, 99, 9, 0]
 attachments/0/point_index = 90
 attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D")
-attachments/0/offset = Vector3(0.11645, 0.0853102, 0.0678499)
+attachments/0/offset = Vector3(4, 0, -3)
 attachments/1/point_index = 99
 attachments/1/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D2")
-attachments/1/offset = Vector3(-0.0263698, 0.0853102, 0.0678499)
+attachments/1/offset = Vector3(-4, 0, -3)
 attachments/2/point_index = 9
 attachments/2/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D4")
-attachments/2/offset = Vector3(-0.0263698, 0.0853099, 0.199771)
+attachments/2/offset = Vector3(-4, 0, 3)
 attachments/3/point_index = 0
 attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D3")
-attachments/3/offset = Vector3(0.11645, 0.0853099, 0.199771)
+attachments/3/offset = Vector3(4, 0, 3)
 
 [node name="SailAttachementPoints" type="Node3D" parent="." index="16"]
 
