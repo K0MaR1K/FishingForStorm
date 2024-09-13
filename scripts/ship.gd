@@ -19,12 +19,12 @@ var is_storm:
 			$RepairTimer.start()
 			$RockingAnimation.play("heavy_rocking")
 			for lantern in lanterns.get_children():
-				lantern.get_node("Light").visible = true
+				lantern.get_node("Cube/Light").visible = true
 		else:
 			$RepairTimer.stop()
 			$RockingAnimation.play("light_rocking")
 			for lantern in lanterns.get_children():
-				lantern.get_node("Light").visible = false
+				lantern.get_node("Cube/Light").visible = false
 		Global.is_storm = value
 		is_storm = value
 		
@@ -41,7 +41,7 @@ func _ready() -> void:
 	$RepairTimer.stop()
 	$RockingAnimation.play("light_rocking")
 	for lantern in lanterns.get_children():
-		lantern.get_node("Light").visible = false
+		lantern.get_node("Cube/Light").visible = false
 	for repair in $RepairTasks.get_children():
 		repair.covered_up.connect(covered_up_a_hole)
 	

@@ -40,9 +40,6 @@ func _on_body_overboard(body: Node3D):
 	else:
 		body.global_position = ship.get_node("DroppedItems/ItemsRespawn").global_position
 		body.linear_velocity = Vector3.ZERO
-
-func _on_blink_timer_timeout():
-	blink_timer.wait_time = randf_range(15.0, 20.0)
 		
 	if blink_counter < blinks_to_storm:
 		blink_counter += 1

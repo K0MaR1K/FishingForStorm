@@ -1,7 +1,7 @@
-[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cpucfkuoog7e3"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://n7jlqk1wmy8t"]
 
 [ext_resource type="Texture2D" uid="uid://dw6uhmh8qaydk" path="res://assets/models/items/LanternHookAlpha_Light.png" id="1_wrjhd"]
-[ext_resource type="Material" uid="uid://dyuo50h0ugc4e" path="res://assets/textures/Material.004.tres" id="2_tl2km"]
+[ext_resource type="Material" uid="uid://4yeuy6o2cpe2" path="res://assets/textures/Material.004.tres" id="2_tl2km"]
 
 [resource]
 resource_name = "Material.002"
