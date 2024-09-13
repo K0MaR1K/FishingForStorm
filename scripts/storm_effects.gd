@@ -40,11 +40,11 @@ func _on_lightning_timer_timeout():
 			
 func generate_random_pos(ship_pos):
 	var potential_pos = Vector3(
-		randf_range(-30.0, 30.0),
-		randf_range(15.0,30.0), 
-		randf_range(-30.0, 30.0)
+		randf_range(-40.0, 40.0),
+		randf_range(15.0,40.0), 
+		randf_range(-40.0, 40.0)
 		)
-	if potential_pos.distance_to(ship_pos) < 10:
+	if potential_pos.distance_to(ship_pos) < 20:
 		return generate_random_pos(ship_pos)
 	else:
 		return potential_pos

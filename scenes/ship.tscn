@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=27 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://rroto8ytb5fs" path="res://assets/models/items/Ship4.3.glb" id="1_21q6d"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
@@ -122,6 +122,19 @@ _data = {
 "heavy_rocking": SubResource("Animation_vuw7w"),
 "light_rocking": SubResource("Animation_kno1v")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ebee"]
+cull_mode = 2
+albedo_color = Color(0.741385, 0.741385, 0.741385, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_10ndp"]
+material = SubResource("StandardMaterial3D_7ebee")
+size = Vector2(8, 6)
+subdivide_width = 8
+subdivide_depth = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wtmm5"]
+size = Vector3(5, 5, 5)
 
 [node name="Ship" instance=ExtResource("1_21q6d")]
 script = ExtResource("2_0o2k5")
@@ -370,6 +383,54 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.0778105, 0.675436, -4
 transform = Transform3D(0.599444, -0.0258156, -0.000893909, 0.0258065, 0.599421, -0.00540114, 0.00112543, 0.00535769, 0.599975, 0.0866636, 0.451106, -4.52255)
 
 [node name="FireControl" parent="." index="14" instance=ExtResource("14_ohcoj")]
+
+[node name="Sail" type="SoftBody3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.62313, 0.934835)
+mesh = SubResource("PlaneMesh_10ndp")
+collision_layer = 2
+parent_collision_ignore = NodePath("../collision")
+simulation_precision = 10
+pinned_points = [90, 99, 9, 0]
+attachments/0/point_index = 90
+attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D")
+attachments/0/offset = Vector3(0.11645, 0.0853102, 0.0678499)
+attachments/1/point_index = 99
+attachments/1/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D2")
+attachments/1/offset = Vector3(-0.0263698, 0.0853102, 0.0678499)
+attachments/2/point_index = 9
+attachments/2/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D4")
+attachments/2/offset = Vector3(-0.0263698, 0.0853099, 0.199771)
+attachments/3/point_index = 0
+attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D3")
+attachments/3/offset = Vector3(0.11645, 0.0853099, 0.199771)
+
+[node name="SailAttachementPoints" type="Node3D" parent="." index="16"]
+
+[node name="Marker3D" type="Marker3D" parent="SailAttachementPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.88355, 5.69098, 0.849525)
+
+[node name="Marker3D2" type="Marker3D" parent="SailAttachementPoints" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.97363, 5.69098, 0.849525)
+
+[node name="Marker3D3" type="Marker3D" parent="SailAttachementPoints" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.88355, -0.177099, 0.849525)
+
+[node name="Marker3D4" type="Marker3D" parent="SailAttachementPoints" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.97363, -0.177099, 0.849525)
+
+[node name="Wind" type="Area3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.62313, 2.51538)
+collision_layer = 2
+collision_mask = 2
+wind_force_magnitude = 4.0
+wind_attenuation_factor = 1.0
+wind_source_path = NodePath("Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wind" index="0"]
+shape = SubResource("BoxShape3D_wtmm5")
+
+[node name="Marker3D" type="Marker3D" parent="Wind" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94241, -0.0999992)
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
 [connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]
