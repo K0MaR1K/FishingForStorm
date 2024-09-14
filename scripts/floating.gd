@@ -22,7 +22,7 @@ var target_pos: Vector3
 @onready var fish_pull_timer: Timer = $FishPullTimer
 @onready var task: Area3D = $".."
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var pull_count: int = 0
 
 func _ready() -> void:
 	get_parent().remove_child.call_deferred(self)
@@ -45,7 +45,10 @@ func fish_eating():
 	fish_pull_timer.start()
 
 func _on_fish_pull_timer_timeout() -> void:
-	print("pull")
+	pull_count += 1
+	if pull_count == 5:
+		Global.hint("Press RMB to start pulling")
+		pull_count = -10
 	linear_velocity.y -= 10
 	$PullParticles.restart()
 

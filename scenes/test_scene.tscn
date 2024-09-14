@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlb2spdov4i25"]
+[gd_scene load_steps=12 format=3 uid="uid://dlb2spdov4i25"]
 
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="1_8mnwv"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_rbxda"]
@@ -7,12 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
 [ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
-[ext_resource type="PackedScene" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
+[ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
 [ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="11_kt2kk"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]
-
-[ext_resource type="PackedScene" uid="uid://dn1si52xax4ut" path="res://assets/models/items/ExplainingAnimation.glb" id="12_sasl4"]
-[ext_resource type="PackedScene" uid="uid://b8q86kob2js7n" path="res://scenes/ui_canvas.tscn" id="13_0el7f"]
+[ext_resource type="PackedScene" uid="uid://b8q86kob2js7n" path="res://scenes/canvas_and_ui/ui_canvas.tscn" id="13_0el7f"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_rbxda")
@@ -39,7 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, -1.03597, 2.1735)
 [node name="Hammer" parent="Items" instance=ExtResource("11_1mdt6")]
 
 [node name="MusicStream" type="AudioStreamPlayer" parent="."]
-process_mode = 3
 stream = ExtResource("10_8awv5")
 volume_db = -15.0
 autoplay = true
@@ -59,6 +56,3 @@ texture = ExtResource("12_hkfgt")
 
 [node name="PlayerRespawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91573, 0)
-
-[node name="ExplainingAnimation" parent="." instance=ExtResource("12_sasl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24995, 6.93919, -0.468441)

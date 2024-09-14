@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cic0wqomped3c"]
+
+[ext_resource type="PackedScene" uid="uid://cteerjfue6mem" path="res://assets/models/props/StoreToghter.glb" id="1_75ok0"]
+
+[node name="Store" type="Node3D"]
+
+[node name="StoreToghter" parent="." instance=ExtResource("1_75ok0")]

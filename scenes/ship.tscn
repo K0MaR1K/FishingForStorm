@@ -127,12 +127,12 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_21id1"]
 radius = 2.55764
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ebee"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0g4c2"]
 cull_mode = 2
 albedo_color = Color(0.741385, 0.741385, 0.741385, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_10ndp"]
-material = SubResource("StandardMaterial3D_7ebee")
+material = SubResource("StandardMaterial3D_0g4c2")
 size = Vector2(8, 6)
 subdivide_width = 8
 subdivide_depth = 8

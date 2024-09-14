@@ -2,7 +2,7 @@ extends Node3D
 					#THIS IS MAIN MENU
 					
 var main_game_scene = preload("res://scenes/test_scene.tscn")
-@onready var blink_timer: Timer = $BlinkCanvas/BlinkTimer
+@onready var blink_timer: Timer = $BlinkTimer
 
 var is_storm: bool = false
 var storm_env = load("res://environments/storm_env.tres")
@@ -10,7 +10,6 @@ var peace_env = load("res://environments/peace_env.tres")
 var storm_effects_scene = load("res://scenes/storm_effects.tscn")
 var storm_node;
 
-@onready var blink_canvas: CanvasLayer = $BlinkCanvas
 @onready var ship: Node3D = $Ship
 @onready var fire_control = $FireControl
 @onready var water: Node3D = $Water
@@ -45,8 +44,6 @@ func _on_blink_timer_timeout():
 			storm_end()
 		else:
 			storm_start()
-			
-	blink_canvas.blink()
 	
 func storm_start():
 	await get_tree().create_timer(0.10).timeout
