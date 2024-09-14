@@ -23,6 +23,7 @@ enum ZONE {DEADMAN, BUCCANEER, SEAWITCH, STORMBREAKER}
 
 var zone: ZONE:
 	set(value):
+		zone = value
 		overall_storms_survived += this_zone_storms_survived
 		this_zone_storms_survived = 0;
 		zone_changed.emit(value)
@@ -30,7 +31,7 @@ var zone: ZONE:
 func _ready() -> void:
 	hint_canvas.hide()
 	zone = ZONE.DEADMAN
-	blink_timer.wait_time = randf_range(30.0, 60.0)
+	blink_timer.wait_time = randf_range(35.0, 60.0)
 	blink_timer.start()
 
 func _on_blink_timer_timeout():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ik6isrf6c2jt"]
+[gd_scene load_steps=35 format=3 uid="uid://dxfa4bjft64qc"]
 
 [ext_resource type="PackedScene" uid="uid://kkpyneoktu4q" path="res://assets/models/props/Ship4.3.glb" id="1_jhw8i"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
