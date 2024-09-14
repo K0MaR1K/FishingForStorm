@@ -10,7 +10,14 @@ var starting_rotation
 @onready var fishing_rod: Node3D = $FishingRod
 @onready var tension_audio: AudioStreamPlayer3D = $TensionAudio
 
-const FISH = preload("res://scenes/Items/fish.tscn")
+var fishes: Array[PackedScene] = [
+ preload("res://scenes/fish/fish1.tscn"), #3.0 D B
+ preload("res://scenes/fish/fish3.tscn"), #10.0 D B SW SB
+ preload("res://scenes/fish/fish6.tscn"), #35.0 D B SW
+ preload("res://scenes/fish/fish7.tscn"), #50.0 B SW SB
+ preload("res://scenes/fish/fish5.tscn"), #80.0 SW SB
+ preload("res://scenes/fish/fish4.tscn"), #100.0 SB
+ preload("res://scenes/fish/fish2.tscn")] #150.0 SB
 
 var player: PhysicsBody3D
 var skeleton: Skeleton3D
@@ -29,29 +36,71 @@ enum {IDLE, WAIT, HOOK, CATCH}
 var state = IDLE
 
 func handle_fish_price():
-	var fish = FISH.instantiate()
+	var fish
+	var f = randf()
 	match Global.zone:
 		Global.ZONE.DEADMAN:
-			var s = randf_range(0.5, 0.8)
-			fish.scale = Vector3(s, s, s)
-			fish.price = 2 + 5.0 * s
+			if f > 0.9:
+				fish = fishes[2].instantiate()
+			elif f > 0.5:
+				fish = fishes[1].instantiate()
+			else:
+				fish = fishes[0].instantiate()
 			
 		Global.ZONE.BUCCANEER:
-			var s = randf_range(0.6, 1.0)
-			fish.scale = Vector3(s, s, s)
-			fish.price = 5 + 10.0 * s
+			if f > 0.9:
+				fish = fishes[3].instantiate()
+			elif f > 0.6:
+				fish = fishes[2].instantiate()
+			elif f > 0.2:
+				fish = fishes[1].instantiate()
+			else:
+				fish = fishes[0].instantiate()
 			
 		Global.ZONE.SEAWITCH:
-			var s = randf_range(0.8, 1.3)
-			fish.scale = Vector3(s, s, s)
-			fish.price = 8 + 10.0 * s
+			if f > 0.9:
+				fish = fishes[4].instantiate()
+			elif f > 0.5:
+				fish = fishes[3].instantiate()
+			elif f > 0.3:
+				fish = fishes[2].instantiate()
+			else:
+				fish = fishes[1].instantiate()
 			
 		Global.ZONE.STORMBREAKER:
-			var s = randf_range(1.3, 2)
+			if f > 0.9:
+				fish = fishes[6].instantiate()
+			elif f > 0.75:
+				fish = fishes[5].instantiate()
+			elif f > 0.4:
+				fish = fishes[4].instantiate()
+			elif f > 0.1:
+				fish = fishes[3].instantiate()
+			else:
+				fish = fishes[1].instantiate()
+	
+	match Global.zone:
+		Global.ZONE.DEADMAN:
+			var s = randf_range(0.7, 1.3)
 			fish.scale = Vector3(s, s, s)
-			fish.price = 15 + 10.0 * s
+			fish.adjusted_price = fish.base_price + round(5.0 * s)
 			
-	print(fish.price)
+		Global.ZONE.BUCCANEER:
+			var s = randf_range(0.7, 1.3)
+			fish.scale = Vector3(s, s, s)
+			fish.adjusted_price = fish.base_price + round(10.0 * s)
+			
+		Global.ZONE.SEAWITCH:
+			var s = randf_range(0.7, 1.3)
+			fish.scale = Vector3(s, s, s)
+			fish.adjusted_price = fish.base_price + round(15.0 * s)
+			
+		Global.ZONE.STORMBREAKER:
+			var s = randf_range(0.7, 1.3)
+			fish.scale = Vector3(s, s, s)
+			fish.adjusted_price = fish.base_price + round(20.0 * s)
+			
+	print(fish.adjusted_price)
 	return fish
 
 func end_fishing(win):

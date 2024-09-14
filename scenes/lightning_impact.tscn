@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dvl2ffg427hb1"]
+[gd_scene load_steps=21 format=3 uid="uid://o6jecckq5778"]
 
-[ext_resource type="Shader" uid="uid://cevillkpmrdif" path="res://shaders/lightning_strike_impact.tres" id="1_4lcrl"]
+[ext_resource type="Shader" uid="uid://dfnyw8j83538c" path="res://shaders/lightning_strike_impact.tres" id="1_4lcrl"]
 [ext_resource type="Texture2D" uid="uid://dqkcyy3s2utop" path="res://assets/sprites/star_05.png" id="2_kwegn"]
-[ext_resource type="Shader" uid="uid://bob56dujxgbea" path="res://shaders/lightning_strike_impact2.tres" id="3_gu2t4"]
+[ext_resource type="Shader" uid="uid://bw7wjidyj7b80" path="res://shaders/lightning_strike_impact2.tres" id="3_gu2t4"]
 [ext_resource type="Texture2D" uid="uid://6lcywunqx5r1" path="res://assets/sprites/circle_05.png" id="4_w125s"]
 
 [sub_resource type="Curve" id="Curve_7qxli"]

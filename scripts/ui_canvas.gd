@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var main_menu_scene = load("res://scenes/main_menu_scene.tscn")
+var main_menu_scene = load("res://scenes/canvas_and_ui/main_menu_scene.tscn")
 @onready var game_timer = $game_timer
 var elapsed_time: int = 0
 
