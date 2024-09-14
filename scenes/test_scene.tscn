@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
 [ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="11_kt2kk"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]
-[ext_resource type="PackedScene" uid="uid://dn1si52xax4ut" path="res://assets/models/items/ExplainingAnimation.glb" id="12_sasl4"]
+[ext_resource type="PackedScene" uid="uid://bl1kh1ppqag0q" path="res://assets/models/items/ExplainingAnimation.glb" id="12_sasl4"]
 [ext_resource type="PackedScene" uid="uid://b8q86kob2js7n" path="res://scenes/ui_canvas.tscn" id="13_0el7f"]
 
 [node name="TestScene" type="Node3D"]
