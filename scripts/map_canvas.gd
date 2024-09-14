@@ -5,7 +5,10 @@ extends CanvasLayer
 @onready var deadman_button: TextureButton = $DeadmanButton
 @onready var buccaneer_button: TextureButton = $BuccaneerButton
 
-#var bool:
+var travel_to_stormbreaker = false
+var travel_to_seawitch = false
+var travel_to_buccaneer = false
+var travel_to_deadman = false
 
 func _ready() -> void:
 	hide()
@@ -31,6 +34,9 @@ func _on_stormbreaker_button_pressed() -> void:
 	if Global.is_storm:
 		Global.hint("CANNOT TRAVEL IN STORM!")
 	else:
+		if !travel_to_stormbreaker:
+			Global.hint("Beware, storms here are cruel!")
+			travel_to_stormbreaker = true
 		stormbreaker_button.disabled = true
 		seawitch_button.disabled = false
 		buccaneer_button.disabled = false
@@ -44,6 +50,10 @@ func _on_seawitch_button_pressed() -> void:
 	if Global.is_storm:
 		Global.hint("CANNOT TRAVEL IN STORM!")
 	else:
+		if !travel_to_seawitch:
+			Global.hint("They say the water is purple here\n
+			from the blood of the Sea Witch")
+			travel_to_seawitch = true
 		stormbreaker_button.disabled = false
 		seawitch_button.disabled = true
 		buccaneer_button.disabled = false
@@ -57,6 +67,9 @@ func _on_buccaneer_button_pressed() -> void:
 	if Global.is_storm:
 		Global.hint("CANNOT TRAVEL IN STORM!")
 	else:
+		if !travel_to_buccaneer:
+			Global.hint("Harder storm means better fish")
+			travel_to_buccaneer = true
 		stormbreaker_button.disabled = false
 		seawitch_button.disabled = false
 		buccaneer_button.disabled = true
@@ -70,6 +83,9 @@ func _on_deadman_button_pressed() -> void:
 	if Global.is_storm:
 		Global.hint("CANNOT TRAVEL IN STORM!")
 	else:
+		if !travel_to_deadman:
+			Global.hint("There are no storms here, drill your fishing skills!")
+			travel_to_deadman = true
 		stormbreaker_button.disabled = false
 		seawitch_button.disabled = false
 		buccaneer_button.disabled = false
