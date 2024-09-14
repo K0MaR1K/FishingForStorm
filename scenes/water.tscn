@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cng3pn2mfl6t7"]
+[gd_scene load_steps=5 format=3 uid="uid://cng3pn2mfl6t7"]
 
+[ext_resource type="Script" path="res://scripts/water.gd" id="1_amhng"]
 [ext_resource type="Shader" uid="uid://8hyparm7lrhb" path="res://shaders/water.tres" id="1_lwulx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lq00n"]
@@ -8,7 +9,7 @@ shader = ExtResource("1_lwulx")
 shader_parameter/Speed3 = Vector2(0.01, 0.06)
 shader_parameter/Speed4 = Vector2(-0.01, 0.02)
 shader_parameter/Multiplier = Vector3(2, 2, 2)
-shader_parameter/ColorParameter = Color(0, 0.266667, 0.533333, 1)
+shader_parameter/ColorParameter = Color(0, 0.25175, 0.548837, 1)
 shader_parameter/Speed1 = Vector2(0.01, 0.06)
 shader_parameter/Speed2 = Vector2(-0.01, 0.02)
 
@@ -21,6 +22,7 @@ subdivide_width = 40
 subdivide_depth = 40
 
 [node name="Water" type="Node3D"]
+script = ExtResource("1_amhng")
 
 [node name="WaterMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_k7gw0")
