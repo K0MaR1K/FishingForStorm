@@ -89,6 +89,7 @@ script = ExtResource("1_wwoii")
 
 [node name="rain" type="GPUParticles3D" parent="."]
 amount = 1800
+lifetime = 2.0
 randomness = 1.0
 visibility_aabb = AABB(-20, -4, -20, 40, 20, 40)
 trail_enabled = true

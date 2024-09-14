@@ -44,11 +44,11 @@ func _on_sail_destruction_timer_timeout():
 		4:
 			set_point_pinned(0, false)
 			pinned_points -= 1;
-			$sail_destruction_timer.start(sail_unpin_time * 2.0)
+			$sail_destruction_timer.start(sail_unpin_time * 1.5)
 		3:
 			set_point_pinned(9, false)
 			pinned_points -= 1;
-			$sail_destruction_timer.start(sail_unpin_time * 2.0)
+			$sail_destruction_timer.start(sail_unpin_time * 1.5)
 		2:
 			set_point_pinned(90, false)
 			pinned_points -= 1;

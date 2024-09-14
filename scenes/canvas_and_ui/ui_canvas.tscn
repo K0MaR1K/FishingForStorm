@@ -32,11 +32,14 @@ text = "Your ship has sunk!
 Game Over"
 horizontal_alignment = 1
 
-[node name="game_time_label" type="Label" parent="game_over_panel/VBoxContainer"]
+[node name="game_info_label" type="Label" parent="game_over_panel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Time: "
 horizontal_alignment = 1
+
+[node name="restart_button" type="Button" parent="game_over_panel/VBoxContainer"]
+layout_mode = 2
+text = "RESTART"
 
 [node name="main_menu_button" type="Button" parent="game_over_panel/VBoxContainer"]
 layout_mode = 2
@@ -84,6 +87,7 @@ text = "EXIT GAME"
 process_mode = 1
 autostart = true
 
+[connection signal="pressed" from="game_over_panel/VBoxContainer/restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="game_over_panel/VBoxContainer/main_menu_button" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="game_paused_panel/VBoxContainer/unpause_button" to="." method="_on_unpause_button_pressed"]
 [connection signal="pressed" from="game_paused_panel/VBoxContainer/main_menu_button" to="." method="_on_main_menu_button_pressed"]

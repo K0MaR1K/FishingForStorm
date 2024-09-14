@@ -216,6 +216,7 @@ _data = {
 
 [node name="fire_task" type="Area3D"]
 collision_layer = 8
+collision_mask = 19
 script = ExtResource("1_kwjyv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -259,6 +260,7 @@ libraries = {
 "": SubResource("AnimationLibrary_34q2p")
 }
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="fire_growth_timer" to="." method="_on_fire_growth_timer_timeout"]

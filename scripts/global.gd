@@ -7,6 +7,8 @@ extends Node
 
 signal is_storm_changed(value)
 signal zone_changed(value)
+var this_zone_storms_survived: int = 0
+var overall_storms_survived: int = 0
 
 var is_storm: bool:
 	set(value):
@@ -17,7 +19,8 @@ enum ZONE {DEADMAN, BUCCANEER, SEAWITCH, STORMBREAKER}
 
 var zone: ZONE:
 	set(value):
-		zone = value
+		overall_storms_survived += this_zone_storms_survived
+		this_zone_storms_survived = 0;
 		zone_changed.emit(value)
 
 func _ready() -> void:
@@ -27,9 +30,13 @@ func _ready() -> void:
 	blink_timer.start()
 
 func _on_blink_timer_timeout():
-	blink_timer.wait_time = randf_range(35.0, 60.0)
-
 	is_storm = !is_storm
+	if is_storm:
+		blink_timer.wait_time = randf_range(35.0, 60.0)
+	else:
+		this_zone_storms_survived += 1
+		blink_timer.wait_time = randf_range(35.0, 60.0) + (this_zone_storms_survived * 2.0 * zone)
+		
 	blink_canvas.blink()
 
 func hint(text: String):

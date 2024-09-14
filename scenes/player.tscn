@@ -63,6 +63,7 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" groups=["player_camera"]]
+current = true
 fov = 60.0
 script = ExtResource("2_fd0wo")
 
@@ -100,6 +101,7 @@ stretch_mode = 3
 [node name="rain" type="GPUParticles3D" parent="."]
 visible = false
 amount = 600
+lifetime = 2.0
 randomness = 0.5
 trail_enabled = true
 trail_lifetime = 0.2

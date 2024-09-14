@@ -117,12 +117,18 @@ func get_random_pos() -> Vector3:
 			return global_position + Vector3(-another_fire_offset, 0, another_fire_offset)
 		_:
 			return global_position + Vector3(another_fire_offset, 0, -another_fire_offset)
+			
+	
+func _on_body_entered(body):
+	if body is Player:
+		super(body)
+	else:
+		is_falling = false
+		
+func _on_body_exited(body):
+	if body is Player:
+		super(body)
 
-
-func _on_area_for_ship_area_entered(_area):
+func _on_area_entered(_area):
 	#water
 	kill_fire()
-
-
-func _on_area_for_ship_body_entered(_body):
-	is_falling = false;
