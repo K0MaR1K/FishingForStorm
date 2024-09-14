@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://br4op248hs8u1"]
+[gd_scene load_steps=14 format=3 uid="uid://br4op248hs8u1"]
 
 [ext_resource type="PackedScene" uid="uid://dpj31vqw30y1f" path="res://assets/models/props/LanternHookAlpha.glb" id="1_kf6o7"]
 [ext_resource type="Script" path="res://scripts/lantern_hook.gd" id="2_nbxdo"]
 [ext_resource type="Texture2D" uid="uid://d5oje64vht4l" path="res://assets/sprites/fire_01.png" id="3_f0a4y"]
+[ext_resource type="Material" uid="uid://3i4ldvafstpl" path="res://assets/textures/Material.003.tres" id="3_npo5e"]
 [ext_resource type="PackedScene" uid="uid://w1px3kre3x65" path="res://assets/models/props/HookForLantern.glb" id="4_yq7yu"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w5w3f"]
@@ -124,6 +125,7 @@ script = ExtResource("2_nbxdo")
 
 [node name="Cube" parent="." index="0"]
 transform = Transform3D(0.05, 0, 0, 0, 0.034, 0, 0, 0, 0.055, 0, 0, 0)
+material_override = ExtResource("3_npo5e")
 
 [node name="Light" type="OmniLight3D" parent="Cube" index="0"]
 transform = Transform3D(20, 0, 0, 0, 29.4118, 0, 0, -2.38419e-07, 18.1818, 0, -7.39418, 5.96046e-08)

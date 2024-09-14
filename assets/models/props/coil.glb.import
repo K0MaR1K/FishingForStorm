@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8dxv38fmwxuh"
-path="res://.godot/imported/tank.glb-76f82d6558c0a3a4a1c3aff1a8d57a88.scn"
+uid="uid://ddtcym6u5sh4e"
+path="res://.godot/imported/coil.glb-e0bd0c5090297f6d402fe840568727b6.scn"
 
 [deps]
 
-source_file="res://assets/models/tank.glb"
-dest_files=["res://.godot/imported/tank.glb-76f82d6558c0a3a4a1c3aff1a8d57a88.scn"]
+source_file="res://assets/models/props/coil.glb"
+dest_files=["res://.godot/imported/coil.glb-e0bd0c5090297f6d402fe840568727b6.scn"]
 
 [params]
 

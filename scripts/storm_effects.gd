@@ -1,7 +1,6 @@
 extends Node3D
 
 var lightning_impact_scene = load("res://scenes/lightning_impact.tscn")
-var is_lightning_to_hit_ship = true;
 var striking_ship_positions = []
 
 # Called when the node enters the scene tree for the first time.
@@ -14,8 +13,7 @@ func _on_lightning_timer_timeout():
 		$lightning.hide()
 		$lightning_timer.start(randf_range(2.0,10.0))
 	else:
-		if is_lightning_to_hit_ship:
-			is_lightning_to_hit_ship = false
+		if is_lightning_to_hit_ship():
 			var pos = striking_ship_positions.pick_random()
 			striking_ship_positions.erase(pos)
 			$lightning.global_position = pos
@@ -23,6 +21,8 @@ func _on_lightning_timer_timeout():
 			$LightningAnimation.play("lightning")
 			$lightning_timer.start(0.5)
 			var impact = lightning_impact_scene.instantiate();
+			for camera in get_tree().get_nodes_in_group("player_camera"):
+				camera._camera_shake()
 			add_child(impact)
 			impact.global_position = pos
 			for c in impact.get_children():
@@ -37,6 +37,10 @@ func _on_lightning_timer_timeout():
 			$lightning.show()
 			$LightningAnimation.play("lightning")
 			$lightning_timer.start(0.5)
+			
+func is_lightning_to_hit_ship():
+	var zone_multiplayer = Global.zone * 0.2 + 0.1
+	return randf_range(0, 1) > zone_multiplayer
 			
 func generate_random_pos(ship_pos):
 	var potential_pos = Vector3(

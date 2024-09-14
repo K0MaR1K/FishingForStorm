@@ -31,9 +31,22 @@ var pull_strength: float = 0
 var pull_speed: float = 0.2
 var fish_caught: float = 0
 
+var first_fish: bool = true
+
 enum {IDLE, WAIT, HOOK, CATCH}
 
 var state = IDLE
+
+func zone_changed(value):
+	match value:
+		Global.ZONE.DEADMAN:
+			pull_speed = 0.1
+		Global.ZONE.BUCCANEER:
+			pull_speed = 0.2
+		Global.ZONE.SEAWITCH:
+			pull_speed = 0.3
+		Global.ZONE.STORMBREAKER:
+			pull_speed = 0.4
 
 func handle_fish_price():
 	var fish
@@ -47,6 +60,10 @@ func handle_fish_price():
 			else:
 				fish = fishes[0].instantiate()
 			
+			var s = randf_range(0.7, 1.3)
+			fish.scale = Vector3(s, s, s)
+			fish.adjusted_price = fish.base_price + round(5.0 * s)
+			
 		Global.ZONE.BUCCANEER:
 			if f > 0.9:
 				fish = fishes[3].instantiate()
@@ -57,6 +74,10 @@ func handle_fish_price():
 			else:
 				fish = fishes[0].instantiate()
 			
+			var s = randf_range(0.7, 1.3)
+			fish.scale = Vector3(s, s, s)
+			fish.adjusted_price = fish.base_price + round(10.0 * s)
+			
 		Global.ZONE.SEAWITCH:
 			if f > 0.9:
 				fish = fishes[4].instantiate()
@@ -66,6 +87,10 @@ func handle_fish_price():
 				fish = fishes[2].instantiate()
 			else:
 				fish = fishes[1].instantiate()
+			
+			var s = randf_range(0.7, 1.3)
+			fish.scale = Vector3(s, s, s)
+			fish.adjusted_price = fish.base_price + round(15.0 * s)
 			
 		Global.ZONE.STORMBREAKER:
 			if f > 0.9:
@@ -78,24 +103,7 @@ func handle_fish_price():
 				fish = fishes[3].instantiate()
 			else:
 				fish = fishes[1].instantiate()
-	
-	match Global.zone:
-		Global.ZONE.DEADMAN:
-			var s = randf_range(0.7, 1.3)
-			fish.scale = Vector3(s, s, s)
-			fish.adjusted_price = fish.base_price + round(5.0 * s)
-			
-		Global.ZONE.BUCCANEER:
-			var s = randf_range(0.7, 1.3)
-			fish.scale = Vector3(s, s, s)
-			fish.adjusted_price = fish.base_price + round(10.0 * s)
-			
-		Global.ZONE.SEAWITCH:
-			var s = randf_range(0.7, 1.3)
-			fish.scale = Vector3(s, s, s)
-			fish.adjusted_price = fish.base_price + round(15.0 * s)
-			
-		Global.ZONE.STORMBREAKER:
+				
 			var s = randf_range(0.7, 1.3)
 			fish.scale = Vector3(s, s, s)
 			fish.adjusted_price = fish.base_price + round(20.0 * s)
@@ -105,6 +113,9 @@ func handle_fish_price():
 
 func end_fishing(win):
 	if win:
+		if first_fish:
+			first_fish = false
+			Global.hint("Price of the fish depends on it's rarity")
 		var fish = handle_fish_price()
 		player.hand.add_child(fish)
 	state = IDLE
@@ -145,7 +156,7 @@ func _input(event):
 		fishing_rod.rotation.y += -event.relative.x * mouse_sens
 		fishing_rod.rotation.z = clamp($FishingRod.rotation.z, -0.7, 0.7)
 		fishing_rod.rotation.y = clamp($FishingRod.rotation.y, -PI*2/3, -PI/4)
-		
+
 func throw():
 	floaty.show()
 	floaty.freeze = false
@@ -159,6 +170,7 @@ func _ready() -> void:
 	required_object = null
 	task_name = "fishing"
 	starting_rotation = rotation_degrees.z
+	Global.zone_changed.connect(zone_changed)
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact1") and state != IDLE:

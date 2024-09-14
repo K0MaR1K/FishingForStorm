@@ -14,19 +14,19 @@ var end_dim_y: float = 1
 var start_pos_y: float = -4.489
 var end_pos_y: float = -3.969
 
-var is_storm: 
-	set(value):
-		if value:
-			repair_timer.start()
-			$RockingAnimation.play("heavy_rocking")
-			for lantern in lanterns.get_children():
-				lantern.get_node("Cube/Light").visible = true
-		else:
-			repair_timer.stop()
-			$RockingAnimation.play("light_rocking")
-			for lantern in lanterns.get_children():
-				lantern.get_node("Cube/Light").visible = false
-		is_storm = value
+func storm_changed(value):
+	if value:
+		repair_timer.start()
+		$RockingAnimation.play("heavy_rocking")
+		for lantern in lanterns.get_children():
+			lantern.get_node("Cube/Light").visible = true
+		$Sail/sail_destruction_timer.start($Sail.sail_unpin_time)
+	else:
+		repair_timer.stop()
+		$RockingAnimation.play("light_rocking")
+		for lantern in lanterns.get_children():
+			lantern.get_node("Cube/Light").visible = false
+		$Sail/sail_destruction_timer.stop()
 		
 var striking_ship_positions: Array:
 	get():
@@ -44,10 +44,12 @@ func _ready() -> void:
 		lantern.get_node("Cube/Light").visible = false
 	for repair in $RepairTasks.get_children():
 		repair.covered_up.connect(covered_up_a_hole)
+		
+	Global.is_storm_changed.connect(storm_changed)
 	
 func drain(delta):
-	water_filled -=water_drain_speed * delta
-	water_filled = 0 if water_filled <= 0 else water_filled
+	water_filled -= water_drain_speed * delta
+	water_filled = 0 if water_filled < 0 else water_filled
 	
 func _process(delta: float) -> void:
 	if water_filled < 1:

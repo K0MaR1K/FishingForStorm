@@ -248,7 +248,6 @@ process_material = SubResource("ParticleProcessMaterial_4dslt")
 draw_pass_1 = SubResource("QuadMesh_kedud")
 
 [node name="fire_growth_timer" type="Timer" parent="."]
-one_shot = true
 
 [node name="check_ship_ray" type="RayCast3D" parent="."]
 target_position = Vector3(0, -0.5, 0)

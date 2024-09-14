@@ -1,10 +1,11 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://4yeuy6o2cpe2"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c33qr478idr6l"]
 
-[ext_resource type="Texture2D" uid="uid://b1spfuxper2xy" path="res://assets/models/props/LanternHookAlpha_Body.png" id="1_j05gj"]
+[ext_resource type="Texture2D" uid="uid://dw6uhmh8qaydk" path="res://assets/models/props/LanternHookAlpha_Light.png" id="1_jcjap"]
 
 [resource]
-resource_name = "Material.001"
+resource_name = "Material.002"
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("1_j05gj")
+albedo_color = Color(1, 1, 1, 0.190909)
+albedo_texture = ExtResource("1_jcjap")
 roughness = 0.5

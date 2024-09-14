@@ -3,6 +3,7 @@ extends Node3D
 @export var line_dots = 10
 @onready var marker_3d_2: Marker3D = $"../Floaty/Marker3D2"
 @onready var marker_3d: Marker3D = $"../FishingRod/Marker3D"
+@onready var task: Area3D = $".."
 
 var lines: Array
 
@@ -14,7 +15,7 @@ func erase_line():
 
 func calc_line():
 	erase_line()
-	var a = 0.01
+	var a = 0.01 - 0.01 * task.pull_strength
 	var x1 = marker_3d.global_position.x
 	var y1 = marker_3d.global_position.y
 	var z1 = marker_3d.global_position.z

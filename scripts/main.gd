@@ -18,13 +18,9 @@ func _ready():
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 	$Player.get_node("rain").hide()
-	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, -0.01))
-	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, -0.01))
-	water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(1, 1, 1))
 	ship.get_node("DroppedItems").body_entered.connect(_on_body_overboard)
 	Global.is_storm_changed.connect(storm_changed)
+	Global.zone_changed.connect(zone_changed)
 	
 func _on_body_overboard(body: Node3D):
 	if body is Player:
@@ -32,6 +28,13 @@ func _on_body_overboard(body: Node3D):
 	else:
 		body.global_position = ship.get_node("DroppedItems/ItemsRespawn").global_position
 		body.linear_velocity = Vector3.ZERO
+		
+func zone_changed(value):
+	await get_tree().create_timer(0.10).timeout
+	if value == Global.ZONE.DEADMAN:
+		$Store.enable()
+	else:
+		$Store.disable()
 		
 func storm_changed(value):
 	await get_tree().create_timer(0.10).timeout
@@ -42,16 +45,15 @@ func storm_changed(value):
 		add_child(storm_node)
 		storm_node.striking_ship_positions = ship.striking_ship_positions
 		$Player.get_node("rain").show()
-		ship.is_storm = true
 	else:
 		$WorldEnvironment.environment = peace_env
 		$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 		storm_node.queue_free()
 		$Player.get_node("rain").hide()
-		ship.is_storm = false
 	
 func game_over(reason):
 	#rn this function is called from two places
 	#1. ship's _proccess function (sinking)
 	#2. fire_control's _proccess function (burning)
+	#3 ship's sail unpin timer (losing sail)
 	$UICanvas.game_over(reason)

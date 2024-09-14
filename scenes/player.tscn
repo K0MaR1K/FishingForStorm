@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bj0g4qj3mcc8c"]
+[gd_scene load_steps=11 format=3 uid="uid://bj0g4qj3mcc8c"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uxt2i"]
 [ext_resource type="Texture2D" uid="uid://b12dimdr3qc6c" path="res://assets/sprites/pointer.png" id="2_a8wba"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_fd0wo"]
 [ext_resource type="Texture2D" uid="uid://6lcywunqx5r1" path="res://assets/sprites/circle_05.png" id="3_8rqvh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a133h"]
@@ -61,8 +62,9 @@ disabled = true
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="Camera3D" type="Camera3D" parent="Head" groups=["player_camera"]]
 fov = 60.0
+script = ExtResource("2_fd0wo")
 
 [node name="PointRay" type="RayCast3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.485208)
