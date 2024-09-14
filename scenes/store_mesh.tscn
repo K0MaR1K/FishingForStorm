@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5r2qvrb2t8vn"]
+
+[ext_resource type="PackedScene" uid="uid://cteerjfue6mem" path="res://assets/models/props/StoreToghter.glb" id="1_n2j5w"]
+
+[node name="StoreMesh" instance=ExtResource("1_n2j5w")]
+
+[node name="collision" parent="." index="1"]
+collision_layer = 2
+collision_mask = 5

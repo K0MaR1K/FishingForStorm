@@ -20,6 +20,7 @@ func _ready():
 	$Player.get_node("rain").hide()
 	ship.get_node("DroppedItems").body_entered.connect(_on_body_overboard)
 	Global.is_storm_changed.connect(storm_changed)
+	Global.zone_changed.connect(zone_changed)
 	
 func _on_body_overboard(body: Node3D):
 	if body is Player:
@@ -27,6 +28,13 @@ func _on_body_overboard(body: Node3D):
 	else:
 		body.global_position = ship.get_node("DroppedItems/ItemsRespawn").global_position
 		body.linear_velocity = Vector3.ZERO
+		
+func zone_changed(value):
+	await get_tree().create_timer(0.10).timeout
+	if value == Global.ZONE.DEADMAN:
+		$Store.enable()
+	else:
+		$Store.disable()
 		
 func storm_changed(value):
 	await get_tree().create_timer(0.10).timeout
