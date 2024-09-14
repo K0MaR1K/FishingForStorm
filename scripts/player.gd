@@ -169,11 +169,14 @@ func handle_tasks(delta):
 						break
 		else:
 			for task in tasks:
-				#this one could be useful for tasks that might not require item
-				#it is only fishing rn
 				if !task.required_object:
 					task.interact()
 					break
+	if Input.is_action_just_released("interact2"):
+		for task in tasks:
+			if task.has_method("release_interaction"):
+				task.release_interaction()
+				break
 
 # CHANGED
 func entered_interaction(new_task: Node3D):
