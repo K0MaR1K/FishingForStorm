@@ -34,6 +34,10 @@ folder_colors={
 "res://shaders/": "green"
 }
 
+[global_group]
+
+player_camera=""
+
 [input]
 
 forward={

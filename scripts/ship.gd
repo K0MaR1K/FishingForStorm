@@ -28,7 +28,6 @@ var is_storm:
 			for lantern in lanterns.get_children():
 				lantern.get_node("Cube/Light").visible = false
 			$Sail/sail_destruction_timer.stop()
-		Global.is_storm = value
 		is_storm = value
 		
 var striking_ship_positions: Array:

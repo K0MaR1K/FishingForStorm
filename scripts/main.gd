@@ -54,4 +54,5 @@ func game_over(reason):
 	#rn this function is called from two places
 	#1. ship's _proccess function (sinking)
 	#2. fire_control's _proccess function (burning)
+	#3 ship's sail unpin timer (losing sail)
 	$UICanvas.game_over(reason)
