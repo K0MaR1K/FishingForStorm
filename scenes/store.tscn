@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgebk02xdh0yb"]
+[gd_scene load_steps=4 format=3 uid="uid://cgebk02xdh0yb"]
 
-[ext_resource type="PackedScene" uid="uid://cteerjfue6mem" path="res://assets/models/props/StoreToghter.glb" id="1_75ok0"]
+[ext_resource type="Script" path="res://scripts/store.gd" id="1_4mnwu"]
+[ext_resource type="PackedScene" uid="uid://sr44degwwstg" path="res://scenes/shopkeeper.tscn" id="3_2ianb"]
+[ext_resource type="PackedScene" uid="uid://b5r2qvrb2t8vn" path="res://scenes/store_mesh.tscn" id="3_ey4hh"]
 
 [node name="Store" type="Node3D"]
+script = ExtResource("1_4mnwu")
 
-[node name="StoreToghter" parent="." instance=ExtResource("1_75ok0")]
+[node name="Shopkeeper" parent="." instance=ExtResource("3_2ianb")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.01457, 0.0272474, -2.35091)
+
+[node name="StoreMesh" parent="." instance=ExtResource("3_ey4hh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
