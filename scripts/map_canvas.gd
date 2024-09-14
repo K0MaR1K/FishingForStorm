@@ -5,6 +5,8 @@ extends CanvasLayer
 @onready var deadman_button: TextureButton = $DeadmanButton
 @onready var buccaneer_button: TextureButton = $BuccaneerButton
 
+var sail
+
 var travel_to_stormbreaker = false
 var travel_to_seawitch = false
 var travel_to_buccaneer = false
@@ -18,6 +20,8 @@ func _ready() -> void:
 	buccaneer_button.disabled = false
 	deadman_button.disabled = true
 	Global.zone = Global.ZONE.DEADMAN
+	
+	sail = get_tree().get_root().get_node("TestScene/Ship/Sail")
 
 
 func open_map():
@@ -33,6 +37,8 @@ func close_map():
 func _on_stormbreaker_button_pressed() -> void:
 	if Global.is_storm:
 		Global.hint("CANNOT TRAVEL IN STORM!")
+	elif sail.are_sails_down:
+		Global.hint("Cannot travel without sails!")
 	else:
 		if !travel_to_stormbreaker:
 			Global.hint("Beware, storms here are cruel!")
@@ -49,6 +55,8 @@ func _on_stormbreaker_button_pressed() -> void:
 func _on_seawitch_button_pressed() -> void:
 	if Global.is_storm:
 		Global.hint("CANNOT TRAVEL IN STORM!")
+	elif sail.are_sails_down:
+		Global.hint("Cannot travel without sails!")
 	else:
 		if !travel_to_seawitch:
 			Global.hint("They say the water is purple here\n
@@ -66,6 +74,8 @@ func _on_seawitch_button_pressed() -> void:
 func _on_buccaneer_button_pressed() -> void:
 	if Global.is_storm:
 		Global.hint("CANNOT TRAVEL IN STORM!")
+	elif sail.are_sails_down:
+		Global.hint("Cannot travel without sails!")
 	else:
 		if !travel_to_buccaneer:
 			Global.hint("Harder storm means better fish")
@@ -82,6 +92,8 @@ func _on_buccaneer_button_pressed() -> void:
 func _on_deadman_button_pressed() -> void:
 	if Global.is_storm:
 		Global.hint("CANNOT TRAVEL IN STORM!")
+	elif sail.are_sails_down:
+		Global.hint("Cannot travel without sails!")
 	else:
 		if !travel_to_deadman:
 			Global.hint("There are no storms here, drill your fishing skills!")

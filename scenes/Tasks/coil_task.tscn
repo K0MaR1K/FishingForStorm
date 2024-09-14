@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cdm1qc6wx48oe"]
 
 [ext_resource type="Script" path="res://scripts/Tasks/coil_task.gd" id="1_56red"]
-[ext_resource type="PackedScene" uid="uid://ddtcym6u5sh4e" path="res://assets/models/coil.glb" id="1_fi3b3"]
+[ext_resource type="PackedScene" uid="uid://ddtcym6u5sh4e" path="res://assets/models/props/coil.glb" id="1_fi3b3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bobff"]
 size = Vector3(1.5, 1, 1.5)

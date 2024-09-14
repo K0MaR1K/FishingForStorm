@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cr6md325q0s7y"]
+[gd_scene load_steps=11 format=3 uid="uid://cnx0qoigfwowt"]
 
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_ns8u2"]
 [ext_resource type="PackedScene" uid="uid://yochq87itm7n" path="res://scenes/canvas_and_ui/blink_canvas.tscn" id="2_hhiff"]

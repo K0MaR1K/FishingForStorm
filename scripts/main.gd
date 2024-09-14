@@ -18,11 +18,6 @@ func _ready():
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 	$Player.get_node("rain").hide()
-	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, -0.01))
-	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, -0.01))
-	water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(1, 1, 1))
 	ship.get_node("DroppedItems").body_entered.connect(_on_body_overboard)
 	Global.is_storm_changed.connect(storm_changed)
 	
@@ -42,13 +37,11 @@ func storm_changed(value):
 		add_child(storm_node)
 		storm_node.striking_ship_positions = ship.striking_ship_positions
 		$Player.get_node("rain").show()
-		ship.is_storm = true
 	else:
 		$WorldEnvironment.environment = peace_env
 		$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
 		storm_node.queue_free()
 		$Player.get_node("rain").hide()
-		ship.is_storm = false
 	
 func game_over(reason):
 	#rn this function is called from two places
