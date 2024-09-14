@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc8qp57y3od0"]
-
-[ext_resource type="PackedScene" uid="uid://nreduerbgdd6" path="res://assets/models/items/wheelstand.glb" id="1_67hxn"]
-
-[node name="wheelstand" instance=ExtResource("1_67hxn")]
-
-[node name="collision" parent="." index="0"]
-collision_layer = 2
-collision_mask = 5

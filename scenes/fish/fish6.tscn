@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://21xyvxw8u8u"]
+
+[ext_resource type="Script" path="res://scripts/fish/fish_6.gd" id="1_nqxf8"]
+[ext_resource type="PackedScene" uid="uid://bqpno77fd47gt" path="res://assets/models/fish/Fish5.glb" id="2_g2rh3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g3a5s"]
+size = Vector3(0.140991, 1, 0.607178)
+
+[node name="fish" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_nqxf8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00750732, -0.020874, -9.12433e-10)
+shape = SubResource("BoxShape3D_g3a5s")
+
+[node name="Fish5" parent="." instance=ExtResource("2_g2rh3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
