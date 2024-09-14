@@ -35,11 +35,11 @@ _subresources={
 "materials": {
 "Material.001": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/textures/Material.004.tres"
+"use_external/path": "res://assets/textures/Material.003.tres"
 },
 "Material.002": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/textures/Material.003.tres"
+"use_external/path": "res://assets/textures/Material.004.tres"
 }
 }
 }

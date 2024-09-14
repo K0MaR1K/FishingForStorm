@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ddtcym6u5sh4e"
-path="res://.godot/imported/coil.glb-e774a56d0b9854e5d82bae0ce7342375.scn"
+path="res://.godot/imported/coil.glb-e0bd0c5090297f6d402fe840568727b6.scn"
 
 [deps]
 
-source_file="res://assets/models/coil.glb"
-dest_files=["res://.godot/imported/coil.glb-e774a56d0b9854e5d82bae0ce7342375.scn"]
+source_file="res://assets/models/props/coil.glb"
+dest_files=["res://.godot/imported/coil.glb-e0bd0c5090297f6d402fe840568727b6.scn"]
 
 [params]
 
