@@ -26,6 +26,15 @@ var fire_health: float = 0.1:
 func _ready():
 	required_object = preload("res://scenes/Items/bucket.tscn")
 	task_name = "fire"
+	match Global.zone:
+		Global.ZONE.DEADMAN:
+			fire_growth_time = 6.0
+		Global.ZONE.BUCCANEER:
+			fire_growth_time = 5.0
+		Global.ZONE.SEAWITCH:
+			fire_growth_time = 4.0
+		Global.ZONE.STORMBREAKER:
+			fire_growth_time = 3.0
 	$fire_growth_timer.start(fire_growth_time) #DONT FORGET TO CHANGE
 	ship_collision = get_parent().get_parent().get_node("collision")
 		

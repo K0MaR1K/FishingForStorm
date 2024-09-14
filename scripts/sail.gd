@@ -14,6 +14,15 @@ var are_sails_down: bool = false:
 			
 func _ready():
 	raise_sail()
+	match Global.zone:
+		Global.ZONE.DEADMAN:
+			sail_unpin_time = 10.0
+		Global.ZONE.BUCCANEER:
+			sail_unpin_time = 6.0
+		Global.ZONE.SEAWITCH:
+			sail_unpin_time = 5.0
+		Global.ZONE.STORMBREAKER:
+			sail_unpin_time = 4.0
 		
 func lower_sail():
 	wrapped_sail.show()
@@ -35,11 +44,11 @@ func _on_sail_destruction_timer_timeout():
 		4:
 			set_point_pinned(0, false)
 			pinned_points -= 1;
-			$sail_destruction_timer.start(sail_unpin_time * 2)
+			$sail_destruction_timer.start(sail_unpin_time * 2.0)
 		3:
 			set_point_pinned(9, false)
 			pinned_points -= 1;
-			$sail_destruction_timer.start(sail_unpin_time * 2)
+			$sail_destruction_timer.start(sail_unpin_time * 2.0)
 		2:
 			set_point_pinned(90, false)
 			pinned_points -= 1;
