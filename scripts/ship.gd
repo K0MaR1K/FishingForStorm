@@ -20,11 +20,13 @@ var is_storm:
 			$RockingAnimation.play("heavy_rocking")
 			for lantern in lanterns.get_children():
 				lantern.get_node("Light").visible = true
+			$Sail/sail_destruction_timer.start($Sail.sail_unpin_time)
 		else:
 			$RepairTimer.stop()
 			$RockingAnimation.play("light_rocking")
 			for lantern in lanterns.get_children():
 				lantern.get_node("Light").visible = false
+			$Sail/sail_destruction_timer.stop()
 		Global.is_storm = value
 		is_storm = value
 		
