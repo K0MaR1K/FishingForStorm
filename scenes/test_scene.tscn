@@ -39,9 +39,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80023, -1.03597, 2.1735)
 
 [node name="MusicStream" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("10_8awv5")
-volume_db = -15.0
-autoplay = true
 
 [node name="Ship" parent="." instance=ExtResource("10_x831h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.30893, 0)
@@ -61,3 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91573, 0)
 
 [node name="Store" parent="." instance=ExtResource("13_vpemg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.92382, 2.74474, 3.57602)
+
+[node name="TransitionCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.593939, 0, 0.80451, 0, 1, 0, -0.80451, 0, 0.593939, 19.2749, 9.66759, 21.0336)
+

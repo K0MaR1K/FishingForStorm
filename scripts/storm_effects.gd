@@ -14,6 +14,7 @@ func _on_lightning_timer_timeout():
 		$lightning_timer.start(randf_range(2.0,10.0))
 	else:
 		if is_lightning_to_hit_ship():
+			if striking_ship_positions.is_empty(): return
 			var pos = striking_ship_positions.pick_random()
 			striking_ship_positions.erase(pos)
 			$lightning.global_position = pos

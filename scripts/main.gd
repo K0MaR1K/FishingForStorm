@@ -7,6 +7,7 @@ var storm_node;
 
 @onready var ship: Node3D = $Ship
 @onready var water: Node3D = $Water
+@onready var music_stream = $MusicStream
 var water_mesh
 
 var blink_counter: int = 0
@@ -20,7 +21,19 @@ func _ready():
 	$Player.get_node("rain").hide()
 	ship.get_node("DroppedItems").body_entered.connect(_on_body_overboard)
 	Global.is_storm_changed.connect(storm_changed)
+	play_music(load("res://assets/sounds_and_music/music.wav"))
 	Global.zone_changed.connect(zone_changed)
+	
+func play_music(_stream: AudioStream):
+	music_stream.stream = _stream;
+	music_stream.play()
+	
+func _input(event):
+	if event.is_action_pressed("restart"):
+		restart()
+		
+func restart():
+	get_tree().change_scene_to_packed(load("res://scenes/test_scene.tscn"))
 	
 func _on_body_overboard(body: Node3D):
 	if body is Player:
@@ -43,7 +56,7 @@ func storm_changed(value):
 		$WorldEnvironment/DirectionalLight3D.light_energy = 0.05
 		storm_node = storm_effects_scene.instantiate()
 		add_child(storm_node)
-		storm_node.striking_ship_positions = ship.striking_ship_positions
+		storm_node.striking_ship_positions = ship.get("striking_ship_positions")
 		$Player.get_node("rain").show()
 	else:
 		$WorldEnvironment.environment = peace_env
@@ -56,4 +69,8 @@ func game_over(reason):
 	#1. ship's _proccess function (sinking)
 	#2. fire_control's _proccess function (burning)
 	#3 ship's sail unpin timer (losing sail)
+	$Player.get_node("Head/Camera3D").current = false;
+	$Player.set_process(false);
+	$TransitionCamera.current = true;
+	play_music(load("res://assets/sounds_and_music/game_over.wav"))
 	$UICanvas.game_over(reason)

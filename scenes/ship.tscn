@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dxfa4bjft64qc"]
+[gd_scene load_steps=35 format=3 uid="uid://ik6isrf6c2jt"]
 
 [ext_resource type="PackedScene" uid="uid://kkpyneoktu4q" path="res://assets/models/props/Ship4.3.glb" id="1_jhw8i"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
@@ -266,6 +266,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.489, -2.073)
 mesh = SubResource("BoxMesh_ayuu1")
 
 [node name="Area3D" type="Area3D" parent="WaterRising" index="0"]
+collision_layer = 16
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterRising/Area3D" index="0"]
 shape = SubResource("BoxShape3D_1ic1t")
@@ -387,7 +389,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84778, 0.981848, -9.85572)
 
 [node name="Marker3D2" type="Marker3D" parent="LightningStrikePositions" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97684, -0.30699, -5.93838)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191843, -3.86187, 5.09361)
 
 [node name="Marker3D3" type="Marker3D" parent="LightningStrikePositions" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52348, -1.17378, 10.2058)
@@ -396,7 +398,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52348, -1.17378, 10.2058)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0732412, -0.695077, 13.9136)
 
 [node name="Marker3D5" type="Marker3D" parent="LightningStrikePositions" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70154, 0.981849, -9.43336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70154, 0.981849, -10.526)
 
 [node name="WheelStand" parent="." index="10" instance=ExtResource("13_a5p8e")]
 transform = Transform3D(0.599444, -0.0258156, -0.000893909, 0.0258065, 0.599421, -0.00540114, 0.00112543, 0.00535769, 0.599975, 0.0866636, 0.451106, -4.52255)

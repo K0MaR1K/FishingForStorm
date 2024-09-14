@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="10_4s66f"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="10_illt2"]
 [ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="10_ta5l4"]
-[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="11_6simm"]
+[ext_resource type="Material" path="res://assets/textures/water.tres" id="11_6simm"]
 [ext_resource type="PackedScene" uid="uid://bwqv8jh10h2q6" path="res://scenes/props/box.tscn" id="12_fyklh"]
 [ext_resource type="PackedScene" uid="uid://3s1npfpa23e2" path="res://scenes/props/large_box.tscn" id="13_wtq6p"]
 [ext_resource type="PackedScene" uid="uid://dt77syxstk6xr" path="res://scenes/props/lantern_stand.tscn" id="14_ot7sp"]

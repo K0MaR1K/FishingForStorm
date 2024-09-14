@@ -31,7 +31,12 @@ func game_over(reason: String):
 	var minutes = int(elapsed_time / 60)
 	var seconds = int(elapsed_time % 60)
 	%game_over_label.text = reason + "\n Game is over"
-	%game_time_label.text += "%02d" % minutes + ":" + "%02d" % seconds
+	%game_info_label.text = "Time: %02d" % minutes + ":" + "%02d" % seconds
+	var storms = Global.overall_storms_survived + Global.this_zone_storms_survived
+	var s = " storms"
+	if storms == 1:
+		s = " storm"
+	%game_info_label.text +=  "\n" + str(storms) + s + " survived"
 	
 	$game_over_panel.show()
 
@@ -41,3 +46,7 @@ func _on_game_timer_timeout():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
+
+func _on_restart_button_pressed():
+	get_parent().restart()
