@@ -30,10 +30,14 @@ func game_over(reason: String):
 	toggle_pause(true)
 	var minutes = int(elapsed_time / 60)
 	var seconds = int(elapsed_time % 60)
-	%game_time_label.text += "%02d" % minutes + ":" + "%02d" % seconds
 	%game_over_label.text = reason + "\n Game is over"
+	%game_time_label.text += "%02d" % minutes + ":" + "%02d" % seconds
 	
 	$game_over_panel.show()
 
 func _on_game_timer_timeout():
 	elapsed_time += 1
+
+
+func _on_exit_button_pressed():
+	get_tree().quit()

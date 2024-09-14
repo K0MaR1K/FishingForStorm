@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 # PLAYER NODES
 
@@ -9,6 +10,7 @@ extends CharacterBody3D
 @onready var point_ray = $Head/PointRay
 @onready var test_scene: Node3D = $".."
 @onready var pointer_indicator: TextureRect = $PointerIndicator
+@onready var hand: Node3D = %Hand
 
 #SPEED VARS
 
@@ -40,17 +42,20 @@ var head_start_pos: float
 #OTHER VARS
 
 var tasks: Array[Node3D]
+var floaty: RigidBody3D
 
 var is_fishing: bool:
 	set(value):
+		floaty = get_tree().get_root().get_node("TestScene/Floaty")
 		is_fishing = value
-		global_rotation = Vector3(0, -PI*3/5, 0)
+		if value:
+			position = Vector3(2.803, 5.688, 11.063)
+		head.rotation = Vector3.ZERO
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	is_fishing = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hand_start_pos =  %Hand.position.y
 	head_start_pos = head.position.y
@@ -75,22 +80,25 @@ func _physics_process(delta):
 	if %Hand.get_child_count() and !is_fishing:
 		if Input.is_action_just_pressed("interact1"):
 			var item = %Hand.get_child(0)
+			var s = item.scale
 			item.sleeping = false
 			item.freeze = false
 			var global_pos = item.global_position
 			var global_rot = item.global_rotation
 			%Hand.remove_child(item)
-			var items = test_scene.get_node("Items")
-			items.add_child(item)
+			test_scene.get_node("Items").add_child(item)
 			item.global_position = global_pos
 			item.global_rotation = global_rot
 			item.is_picked_up = false
+			item.scale = s
 	
 	if !is_fishing:
 		handle_pointing()
 		handle_movement_state(delta)
 		handle_walking(delta)
 		move_and_slide()
+	else:
+		head.look_at(floaty.global_position + Vector3.UP * 2)
 	handle_tasks(delta)
 	
 func handle_walking(delta):

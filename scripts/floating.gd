@@ -14,6 +14,7 @@ var far_left: Vector3 = Vector3(-1, 0, 1).normalized() * 8
 var move_ratio: float
 
 var center: Vector3
+var actual_center: Vector3
 
 var target_pos: Vector3
 
@@ -25,7 +26,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	get_parent().remove_child.call_deferred(self)
-	get_tree().get_root().add_child.call_deferred(self)
+	if get_tree().get_root().get_node("TestScene"):
+		get_tree().get_root().get_node("TestScene").add_child.call_deferred(self)
 
 func _process(delta: float) -> void:
 	if global_position.y < water_level:
@@ -33,6 +35,7 @@ func _process(delta: float) -> void:
 		linear_velocity = lerp(linear_velocity, Vector3.ZERO, water_damp * delta)
 	if task.state == CATCH:
 		global_position = lerp(global_position, target_pos, delta)
+		actual_center = center * (1 - task.fish_caught + 0.3) + task.position * (task.fish_caught - 0.3)
 	
 	move_and_collide(linear_velocity * delta)
 
@@ -43,10 +46,10 @@ func fish_eating():
 
 func _on_fish_pull_timer_timeout() -> void:
 	print("pull")
-	linear_velocity.y -= 5
+	linear_velocity.y -= 10
 	$PullParticles.restart()
 
 
 func _on_fish_move_timer_timeout() -> void:
 	move_ratio = randf()
-	target_pos = center + far_left * move_ratio + far_right * (1 - move_ratio)
+	target_pos = actual_center + far_left * move_ratio + far_right * (1 - move_ratio)

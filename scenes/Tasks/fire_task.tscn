@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://caoay3qn5rgmh"]
 
 [ext_resource type="Script" path="res://scripts/Tasks/fire_task.gd" id="1_kwjyv"]
-[ext_resource type="Shader" uid="uid://c5t1y6u06dyih" path="res://shaders/fire_shader.tres" id="2_yu8nu"]
+[ext_resource type="Shader" uid="uid://cq66sd7t1ixul" path="res://shaders/fire_shader.tres" id="2_yu8nu"]
 [ext_resource type="Texture2D" uid="uid://08d40dg3x7rn" path="res://assets/sprites/fire_02.png" id="3_fkubc"]
 [ext_resource type="Texture2D" uid="uid://bx4llqsmp3k1p" path="res://assets/sprites/Voronoi01.png" id="3_sg1yd"]
-[ext_resource type="Shader" uid="uid://nonavgqabdc0" path="res://shaders/fire_sparkles_shader.tres" id="5_uld7n"]
+[ext_resource type="Shader" uid="uid://nag35shadc2s" path="res://shaders/fire_sparkles_shader.tres" id="5_uld7n"]
 [ext_resource type="Texture2D" uid="uid://bo85o5b5gvpgf" path="res://assets/sprites/Flare00.PNG" id="6_rg0g0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qjqcn"]
@@ -43,6 +43,7 @@ resource_local_to_scene = true
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h7jpd"]
+resource_local_to_scene = true
 direction = Vector3(0, 1, 0)
 spread = 30.0
 initial_velocity_min = 1.0
@@ -224,6 +225,7 @@ disabled = true
 
 [node name="fire" type="GPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_v2aph")
+amount = 4
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_j6hfn")
 draw_pass_1 = SubResource("QuadMesh_1fnki")
@@ -250,7 +252,8 @@ one_shot = true
 
 [node name="check_ship_ray" type="RayCast3D" parent="."]
 target_position = Vector3(0, -0.5, 0)
-collision_mask = 2
+collision_mask = 18
+collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://7qtnxsy8axa7"]
+
+[ext_resource type="Script" path="res://scripts/settings_panel.gd" id="1_mktbn"]
+
+[node name="SettingsPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mktbn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="music_slider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Sound effects"
+horizontal_alignment = 1
+
+[node name="SF_slider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[connection signal="value_changed" from="VBoxContainer/music_slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SF_slider" to="." method="_on_sf_slider_value_changed"]

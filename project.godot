@@ -14,6 +14,10 @@ config/name="BrackeysGameJam"
 run/main_scene="res://scenes/test_scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
+[autoload]
+
+Global="*res://scenes/global.tscn"
+
 [display]
 
 window/size/viewport_width=1280
@@ -89,3 +93,5 @@ pause={
 3d_physics/layer_2="FloorAndWalls"
 3d_physics/layer_3="Items"
 3d_physics/layer_4="Tasks"
+3d_physics/layer_5="Water"
+3d_physics/layer_6="Wheel"

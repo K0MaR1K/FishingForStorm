@@ -29,7 +29,7 @@ func _on_lightning_timer_timeout():
 				c.emitting = true;
 			await get_tree().create_timer(0.6).timeout
 			impact.queue_free()
-			get_parent().fire_control.start_fire(pos, Vector3.ZERO)
+			get_parent().ship.get_node("FireControl").start_fire(Vector3.ZERO, pos)
 				
 		else:
 			var ship_pos = get_parent().ship.global_position
@@ -40,11 +40,11 @@ func _on_lightning_timer_timeout():
 			
 func generate_random_pos(ship_pos):
 	var potential_pos = Vector3(
-		randf_range(-30.0, 30.0),
-		randf_range(15.0,30.0), 
-		randf_range(-30.0, 30.0)
+		randf_range(-40.0, 40.0),
+		randf_range(15.0,40.0), 
+		randf_range(-40.0, 40.0)
 		)
-	if potential_pos.distance_to(ship_pos) < 10:
+	if potential_pos.distance_to(ship_pos) < 20:
 		return generate_random_pos(ship_pos)
 	else:
 		return potential_pos
