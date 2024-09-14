@@ -3,9 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-
 uid="uid://bl1kh1ppqag0q"
-
 path="res://.godot/imported/ExplainingAnimation.glb-3424f1ea2ee25d296f18fc4958bd80cb.scn"
 
 [deps]
@@ -1836,6 +1834,5 @@ _subresources={
 }
 }
 }
-
 gltf/naming_version=1
 gltf/embedded_image_handling=1

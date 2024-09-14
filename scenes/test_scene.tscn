@@ -6,12 +6,12 @@
 [ext_resource type="Environment" uid="uid://lquvw8gqo4ha" path="res://environments/storm_env.tres" id="3_lq5wc"]
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="10_8awv5"]
-[ext_resource type="PackedScene" uid="uid://ik6isrf6c2jt" path="res://scenes/ship.tscn" id="10_x831h"]
-[ext_resource type="PackedScene" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
+[ext_resource type="PackedScene" uid="uid://dxfa4bjft64qc" path="res://scenes/ship.tscn" id="10_x831h"]
+[ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
 [ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="11_kt2kk"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]
-[ext_resource type="PackedScene" uid="uid://bl1kh1ppqag0q" path="res://assets/models/items/ExplainingAnimation.glb" id="12_sasl4"]
-[ext_resource type="PackedScene" uid="uid://b8q86kob2js7n" path="res://scenes/ui_canvas.tscn" id="13_0el7f"]
+[ext_resource type="PackedScene" uid="uid://b8q86kob2js7n" path="res://scenes/canvas_and_ui/ui_canvas.tscn" id="13_0el7f"]
+[ext_resource type="PackedScene" uid="uid://cgebk02xdh0yb" path="res://scenes/store.tscn" id="13_vpemg"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_rbxda")
@@ -59,5 +59,5 @@ texture = ExtResource("12_hkfgt")
 [node name="PlayerRespawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91573, 0)
 
-[node name="ExplainingAnimation" parent="." instance=ExtResource("12_sasl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24995, 6.93919, -0.468441)
+[node name="Store" parent="." instance=ExtResource("13_vpemg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.92382, 2.74474, 3.57602)

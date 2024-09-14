@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://wvlbvsfieghp"
-path="res://.godot/imported/Shark.glb-617437205e09134399a52e0641833fbd.scn"
+uid="uid://ywnytsb8f5b6"
+path="res://.godot/imported/shop.glb-7070f91586e745d9cd12ea4ceb89e226.scn"
 
 [deps]
 
-source_file="res://assets/models/items/Shark.glb"
-dest_files=["res://.godot/imported/Shark.glb-617437205e09134399a52e0641833fbd.scn"]
+source_file="res://assets/models/items/shop.glb"
+dest_files=["res://.godot/imported/shop.glb-7070f91586e745d9cd12ea4ceb89e226.scn"]
 
 [params]
 
