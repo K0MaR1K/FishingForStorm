@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ci8auaomjhng8"
-path="res://.godot/imported/Ship4.3.glb-429c6e710144b08e5b000006d48508c5.scn"
+uid="uid://dk4nbfd5jsa3k"
+path="res://.godot/imported/StoreToghter.glb-435b405ed781ae462f41b11102d02c31.scn"
 
 [deps]
 
-source_file="res://assets/models/items/Ship4.3.glb"
-dest_files=["res://.godot/imported/Ship4.3.glb-429c6e710144b08e5b000006d48508c5.scn"]
+source_file="res://assets/models/items/StoreToghter.glb"
+dest_files=["res://.godot/imported/StoreToghter.glb-435b405ed781ae462f41b11102d02c31.scn"]
 
 [params]
 
