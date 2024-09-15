@@ -112,5 +112,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_k6nbu")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_bho6c")
 volume_db = 3.225
+bus = &"SF"
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

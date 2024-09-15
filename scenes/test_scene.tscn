@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dxfa4bjft64qc" path="res://scenes/ship.tscn" id="10_x831h"]
 [ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
 [ext_resource type="AudioStream" uid="uid://en2o47c442sg" path="res://assets/sounds_and_music/sounds/boat_sounds.ogg" id="11_bruxn"]
-[ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="11_kt2kk"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]
 [ext_resource type="PackedScene" uid="uid://b8q86kob2js7n" path="res://scenes/canvas_and_ui/ui_canvas.tscn" id="13_0el7f"]
 [ext_resource type="PackedScene" uid="uid://cgebk02xdh0yb" path="res://scenes/store.tscn" id="13_vpemg"]

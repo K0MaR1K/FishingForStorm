@@ -18,6 +18,7 @@ var game_scene = load("res://scenes/test_scene.tscn")
 var main_menu_scene = load("res://scenes/canvas_and_ui/main_menu_scene.tscn")
 
 var current_game_scene;
+var rstrt: bool = false
 
 var score: int = 0
 var interaction_queue: Array = []
@@ -61,7 +62,8 @@ var first_storm: bool = true
 var is_storm: bool:
 	set(value):
 		is_storm = value
-		is_storm_changed.emit(value)
+		if not rstrt:
+			is_storm_changed.emit(value)
 
 enum ZONE {DEADMAN, BUCCANEER, SEAWITCH, STORMBREAKER}
 
@@ -92,13 +94,16 @@ func _on_blink_timer_timeout():
 		blink_canvas.blink()
 		
 func restart():
+	rstrt = true
 	current_game_scene.queue_free()
 	var game_node = game_scene.instantiate()
-	get_tree().get_root().add_child(game_node);
+	get_tree().get_root().add_child(game_node)
+	is_storm = false
 	this_zone_storms_survived = 0
 	overall_storms_survived = 0
 	score = 0
 	map_canvas._ready()
+	rstrt = false
 	
 func main_menu():
 	current_game_scene.queue_free()

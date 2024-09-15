@@ -1,9 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://dxfa4bjft64qc"]
+[gd_scene load_steps=39 format=3 uid="uid://dxfa4bjft64qc"]
 
-[ext_resource type="PackedScene" uid="uid://kkpyneoktu4q" path="res://assets/models/props/Ship4.3.glb" id="1_jhw8i"]
+[ext_resource type="PackedScene" uid="uid://cu653tvams74o" path="res://assets/models/Ship4.4.glb" id="1_r2s58"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
-[ext_resource type="Material" path="res://assets/textures/water.tres" id="4_6m6rm"]
+[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
 [ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="5_3byml"]
 [ext_resource type="PackedScene" uid="uid://bwqv8jh10h2q6" path="res://scenes/props/box.tscn" id="6_xowsk"]
 [ext_resource type="PackedScene" uid="uid://3s1npfpa23e2" path="res://scenes/props/large_box.tscn" id="7_j0384"]
@@ -17,24 +17,25 @@
 [ext_resource type="Script" path="res://scripts/sail.gd" id="16_1q6yi"]
 [ext_resource type="Script" path="res://scripts/wind.gd" id="16_csdcf"]
 [ext_resource type="PackedScene" uid="uid://docxycwgwkxtv" path="res://scenes/props/water_tank.tscn" id="16_xjd1j"]
+[ext_resource type="AudioStream" uid="uid://b6k1vgvrp5u2o" path="res://assets/sounds_and_music/sounds/sail_break.wav" id="18_8vfbo"]
 [ext_resource type="PackedScene" uid="uid://cdm1qc6wx48oe" path="res://scenes/Tasks/coil_task.tscn" id="19_ktrm4"]
 [ext_resource type="Theme" uid="uid://dpx7360fa1xhk" path="res://assets/fonts/global.tres" id="19_tdrf6"]
 [ext_resource type="PackedScene" uid="uid://dp81xfi248twa" path="res://scenes/props/barrel.tscn" id="20_ojijr"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nu6a7"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_lu25e"]
 size = Vector3(1.5, 4.81273, 0.230859)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1rwji"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_idefu"]
 size = Vector3(1.5, 3.11551, 0.2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ayuu1"]
+[sub_resource type="BoxMesh" id="BoxMesh_cgog8"]
 material = ExtResource("4_6m6rm")
 size = Vector3(9.215, 0, 19.51)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1ic1t"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ojkx1"]
 size = Vector3(9.215, 0, 19.51)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xkuoq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wnkuw"]
 size = Vector3(29.4331, 7.01654, 44.7451)
 
 [sub_resource type="Animation" id="Animation_o78py"]
@@ -129,23 +130,23 @@ _data = {
 "light_rocking": SubResource("Animation_kno1v")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_21id1"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_afrax"]
 radius = 2.55764
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wtmm5"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_n660n"]
 size = Vector3(5, 5, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ebee"]
 cull_mode = 2
 albedo_color = Color(0.741385, 0.741385, 0.741385, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_10ndp"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_fcx84"]
 material = SubResource("StandardMaterial3D_7ebee")
 size = Vector2(8, 6)
 subdivide_width = 8
 subdivide_depth = 8
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_78ctt"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_0lcus"]
 top_radius = 0.3
 bottom_radius = 0.3
 height = 8.0
@@ -154,7 +155,7 @@ radial_segments = 18
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yy37"]
 albedo_color = Color(0.717631, 0.63883, 0.450977, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_wkur2"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_1skyi"]
 material = SubResource("StandardMaterial3D_7yy37")
 top_radius = 0.02
 bottom_radius = 0.02
@@ -162,13 +163,17 @@ height = 10.0
 radial_segments = 5
 rings = 8
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jf583"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ca3bx"]
 viewport_path = NodePath("ScoreTracker/SubViewport")
 
-[node name="Ship" instance=ExtResource("1_jhw8i")]
+[node name="Ship" instance=ExtResource("1_r2s58")]
 script = ExtResource("2_0o2k5")
 
-[node name="StairColliders" type="Node3D" parent="." index="0"]
+[node name="collision" parent="." index="1"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="StairColliders" type="Node3D" parent="." index="2"]
 transform = Transform3D(1, -7.10543e-15, -7.10543e-15, 0, 1, 0, -4.30333e-22, 0, 1, 9.31323e-10, 0, -5.03451e-17)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StairColliders" index="0"]
@@ -178,7 +183,7 @@ collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StairColliders/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0789809, -0.124574)
-shape = SubResource("BoxShape3D_nu6a7")
+shape = SubResource("BoxShape3D_lu25e")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="StairColliders" index="1"]
 transform = Transform3D(-1, 5.93986e-08, -6.41447e-08, -1.32432e-08, 0.622337, 0.782749, 8.64139e-08, 0.782749, -0.622337, -3.49101, -3.08701, 6.38875)
@@ -187,7 +192,7 @@ collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StairColliders/StaticBody3D2" index="0"]
 transform = Transform3D(1, -7.44713e-10, -6.83031e-10, 7.38254e-10, 0.999936, -0.0115714, 6.91589e-10, 0.0115726, 0.999933, 0, -0.0139308, 0.0211959)
-shape = SubResource("BoxShape3D_1rwji")
+shape = SubResource("BoxShape3D_idefu")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="StairColliders" index="2"]
 transform = Transform3D(-1, 5.93986e-08, -6.41447e-08, -1.32432e-08, 0.622337, 0.782749, 8.64139e-08, 0.782749, -0.622337, 2.85913, -3.08701, 6.38875)
@@ -196,9 +201,9 @@ collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StairColliders/StaticBody3D3" index="0"]
 transform = Transform3D(1, -7.44713e-10, -6.83031e-10, 7.38254e-10, 0.999936, -0.0115714, 6.91589e-10, 0.0115726, 0.999933, 0, -0.0139308, 0.0211959)
-shape = SubResource("BoxShape3D_1rwji")
+shape = SubResource("BoxShape3D_idefu")
 
-[node name="RepairTasks" type="Node3D" parent="." index="1"]
+[node name="RepairTasks" type="Node3D" parent="." index="3"]
 
 [node name="RepairTask" parent="RepairTasks" index="0" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(0.407326, 0, -0.913283, 0, 1, 0, 0.913283, 0, 0.407326, 0, -4.23366, -0.58553)
@@ -263,21 +268,21 @@ transform = Transform3D(0.999876, -6.87352e-10, 0.0157248, -0.0157248, -4.3706e-
 [node name="RepairTask3" parent="RepairTasks" index="20" instance=ExtResource("2_2oxk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.29255, -1.49116)
 
-[node name="RepairTimer" type="Timer" parent="." index="2"]
+[node name="RepairTimer" type="Timer" parent="." index="4"]
 wait_time = 15.0
 
-[node name="WaterRising" type="MeshInstance3D" parent="." index="3"]
+[node name="WaterRising" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.489, -2.073)
-mesh = SubResource("BoxMesh_ayuu1")
+mesh = SubResource("BoxMesh_cgog8")
 
 [node name="Area3D" type="Area3D" parent="WaterRising" index="0"]
 collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterRising/Area3D" index="0"]
-shape = SubResource("BoxShape3D_1ic1t")
+shape = SubResource("BoxShape3D_ojkx1")
 
-[node name="Props" type="Node3D" parent="." index="4"]
+[node name="Props" type="Node3D" parent="." index="6"]
 
 [node name="Box5" parent="Props" index="0" instance=ExtResource("6_xowsk")]
 transform = Transform3D(0.852731, 0, -0.52235, 0, 1, 0, 0.52235, 0, 0.852731, 1.8331, -3.88039, -11.2014)
@@ -309,7 +314,19 @@ transform = Transform3D(0.863574, -0.0917753, 0.495799, 0.0289322, 0.990695, 0.1
 [node name="LargeBox" parent="Props" index="9" instance=ExtResource("7_j0384")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95938, -3.59356, -11.0007)
 
-[node name="Lanterns" type="Node3D" parent="." index="5"]
+[node name="Barrel" parent="Props" index="10" instance=ExtResource("20_ojijr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.28095, -3.74941, -10.3768)
+
+[node name="Barrel3" parent="Props" index="11" instance=ExtResource("20_ojijr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1875, -3.74941, -11.0822)
+
+[node name="Barrel4" parent="Props" index="12" instance=ExtResource("20_ojijr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09345, -3.74941, -2.81228)
+
+[node name="Barrel2" parent="Props" index="13" instance=ExtResource("20_ojijr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92133, -2.57482, -10.9607)
+
+[node name="Lanterns" type="Node3D" parent="." index="7"]
 
 [node name="LanternStand" parent="Lanterns" index="0" instance=ExtResource("10_cs0w4")]
 transform = Transform3D(0.95534, 0, -0.295508, 0, 1, 0, 0.295508, 0, 0.95534, -4.72838, -2.9916, -0.66089)
@@ -338,19 +355,19 @@ transform = Transform3D(-0.291771, 0, 0.956488, 0, 1, 0, -0.956488, 0, -0.291771
 [node name="LanternHookAlpha5" parent="Lanterns" index="8" instance=ExtResource("9_mcgqo")]
 transform = Transform3D(-0.993869, 0, 0.110567, 0, 1, 0, -0.110567, 0, -0.993869, -4.0805, -2.53792, -8.04)
 
-[node name="DroppedItems" type="Area3D" parent="." index="6"]
+[node name="DroppedItems" type="Area3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
 collision_layer = 16
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DroppedItems" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335205, -2.84164, 1.58243)
-shape = SubResource("BoxShape3D_xkuoq")
+shape = SubResource("BoxShape3D_wnkuw")
 
 [node name="ItemsRespawn" type="Marker3D" parent="DroppedItems" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 6)
 
-[node name="Tasks" type="Node3D" parent="." index="7"]
+[node name="Tasks" type="Node3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.38883, 0.271543)
 
 [node name="BucketSpillTask" parent="Tasks" index="0" instance=ExtResource("8_h62ty")]
@@ -383,12 +400,12 @@ transform = Transform3D(0.844581, -0.258189, -0.469064, 0.224808, 0.966093, -0.1
 [node name="BucketTask" parent="Tasks" index="9" instance=ExtResource("5_3byml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47883, 1.52846)
 
-[node name="RockingAnimation" type="AnimationPlayer" parent="." index="8"]
+[node name="RockingAnimation" type="AnimationPlayer" parent="." index="10"]
 libraries = {
 "": SubResource("AnimationLibrary_ynugp")
 }
 
-[node name="LightningStrikePositions" type="Node3D" parent="." index="9"]
+[node name="LightningStrikePositions" type="Node3D" parent="." index="11"]
 
 [node name="Marker3D" type="Marker3D" parent="LightningStrikePositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84778, 0.981848, -9.85572)
@@ -405,7 +422,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0732412, -0.695077, 13.913
 [node name="Marker3D5" type="Marker3D" parent="LightningStrikePositions" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70154, 0.981849, -10.526)
 
-[node name="WheelStand" parent="." index="10" instance=ExtResource("13_a5p8e")]
+[node name="WheelStand" parent="." index="12" instance=ExtResource("13_a5p8e")]
 transform = Transform3D(0.599444, -0.0258156, -0.000893909, 0.0258065, 0.599421, -0.00540114, 0.00112543, 0.00535769, 0.599975, 0.0866636, 0.451106, -4.52255)
 
 [node name="Wheel" parent="WheelStand" index="2" instance=ExtResource("13_yiiy2")]
@@ -416,11 +433,11 @@ transform = Transform3D(1, 7.79073e-09, 1.16415e-10, 2.41926e-10, 1, 0, -1.16415
 collision_layer = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WheelStand/MapArea" index="0"]
-shape = SubResource("SphereShape3D_21id1")
+shape = SubResource("SphereShape3D_afrax")
 
-[node name="FireControl" parent="." index="11" instance=ExtResource("15_8uel7")]
+[node name="FireControl" parent="." index="13" instance=ExtResource("15_8uel7")]
 
-[node name="Wind" type="Area3D" parent="." index="12"]
+[node name="Wind" type="Area3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.62313, 2.02961)
 collision_layer = 2
 collision_mask = 2
@@ -429,14 +446,14 @@ wind_source_path = NodePath("Marker3D")
 script = ExtResource("16_csdcf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wind" index="0"]
-shape = SubResource("BoxShape3D_wtmm5")
+shape = SubResource("BoxShape3D_n660n")
 
 [node name="Marker3D" type="Marker3D" parent="Wind" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94241, -0.0999992)
 
-[node name="Sail" type="SoftBody3D" parent="." index="13"]
+[node name="Sail" type="SoftBody3D" parent="." index="15"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.62313, 0.934835)
-mesh = SubResource("PlaneMesh_10ndp")
+mesh = SubResource("PlaneMesh_fcx84")
 collision_layer = 2
 collision_mask = 2
 parent_collision_ignore = NodePath("../collision")
@@ -460,10 +477,12 @@ script = ExtResource("16_1q6yi")
 wait_time = 4.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sail" index="1"]
+stream = ExtResource("18_8vfbo")
+bus = &"SF"
 
-[node name="SailWrapped" type="SoftBody3D" parent="." index="14"]
+[node name="SailWrapped" type="SoftBody3D" parent="." index="16"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 5.61079, 1.21466)
-mesh = SubResource("CylinderMesh_78ctt")
+mesh = SubResource("CylinderMesh_0lcus")
 parent_collision_ignore = NodePath("../collision")
 pinned_points = [11, 10, 106, 105]
 attachments/0/point_index = 11
@@ -479,12 +498,12 @@ attachments/3/point_index = 105
 attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_right")
 attachments/3/offset = Vector3(-0.02637, 0.0832273, -0.0224161)
 
-[node name="coil_task" parent="." index="15" instance=ExtResource("19_ktrm4")]
+[node name="coil_task" parent="." index="17" instance=ExtResource("19_ktrm4")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.7071, -4.41838, -2.71147)
 
-[node name="SailRope" type="SoftBody3D" parent="." index="16"]
+[node name="SailRope" type="SoftBody3D" parent="." index="18"]
 transform = Transform3D(0.737534, -0.0711822, -0.671546, -0.196044, 0.929036, -0.313782, 0.646227, 0.363078, 0.671241, 3.83964, 0.746564, -1.05602)
-mesh = SubResource("CylinderMesh_wkur2")
+mesh = SubResource("CylinderMesh_1skyi")
 skeleton = NodePath("../Sail")
 collision_layer = 2
 collision_mask = 3
@@ -497,7 +516,7 @@ attachments/1/point_index = 67
 attachments/1/spatial_attachment_path = NodePath("../coil_task")
 attachments/1/offset = Vector3(0.325634, 0.346509, -0.106627)
 
-[node name="SailAttachementPoints" type="Node3D" parent="." index="17"]
+[node name="SailAttachementPoints" type="Node3D" parent="." index="19"]
 
 [node name="upper_left" type="Marker3D" parent="SailAttachementPoints" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.88355, 5.69098, 0.849525)
@@ -511,18 +530,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.8835
 [node name="bottom_right" type="Marker3D" parent="SailAttachementPoints" index="3"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.97363, -0.177099, 0.849525)
 
-[node name="tank" parent="." index="18" instance=ExtResource("16_xjd1j")]
+[node name="tank" parent="." index="20" instance=ExtResource("16_xjd1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.31167, -4.28889, -5.52536)
 
-[node name="collision" parent="." index="20"]
-collision_layer = 2
-collision_mask = 5
-
-[node name="ToDelete" type="Node3D" parent="." index="21"]
-
-[node name="ScoreTracker" type="Sprite3D" parent="." index="22"]
+[node name="ScoreTracker" type="Sprite3D" parent="." index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225932, 1.08441, -11.4147)
-texture = SubResource("ViewportTexture_jf583")
+texture = SubResource("ViewportTexture_ca3bx")
 
 [node name="SubViewport" type="SubViewport" parent="ScoreTracker" index="0"]
 transparent_bg = true
@@ -567,20 +580,7 @@ layout_mode = 2
 theme = ExtResource("19_tdrf6")
 text = "number"
 
-[node name="Barrel" parent="ScoreTracker/SubViewport/VBoxContainer" index="2" instance=ExtResource("20_ojijr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.28095, -3.74941, -10.3768)
-
-[node name="Barrel3" parent="ScoreTracker/SubViewport/VBoxContainer" index="3" instance=ExtResource("20_ojijr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1875, -3.74941, -11.0822)
-
-[node name="Barrel4" parent="ScoreTracker/SubViewport/VBoxContainer" index="4" instance=ExtResource("20_ojijr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09345, -3.74941, -2.81228)
-
-[node name="Barrel2" parent="ScoreTracker/SubViewport/VBoxContainer" index="5" instance=ExtResource("20_ojijr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92133, -2.57482, -10.9607)
-
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
-[connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]
 [connection signal="body_entered" from="WheelStand/MapArea" to="." method="_on_map_area_body_entered"]
 [connection signal="body_exited" from="WheelStand/MapArea" to="." method="_on_map_area_body_exited"]
 [connection signal="timeout" from="Sail/sail_destruction_timer" to="Sail" method="_on_sail_destruction_timer_timeout"]

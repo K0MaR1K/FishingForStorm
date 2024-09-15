@@ -18,6 +18,8 @@ func interact(_delta, task):
 	if task.task_name == "repair":
 		if not task.deactivated:
 			task.repair()
-			$AnimationPlayer.play("impact")
-			$AudioStream.stream = hammer_hits.pick_random()
-			$AudioStream.play()
+			if not $AnimationPlayer.is_playing():
+				$AnimationPlayer.play("impact")
+			if not $AudioStream.playing:
+				$AudioStream.stream = hammer_hits.pick_random()
+				$AudioStream.play()

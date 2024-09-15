@@ -119,19 +119,22 @@ func handle_walking(delta):
 		if direction:
 			velocity.x = direction.x * current_speed
 			velocity.z = direction.z * current_speed
+			if not $AudioStreamPlayer.playing:
+				$AudioStreamPlayer.playing = true
 		else:
 			velocity.x = move_toward(velocity.x, 0, current_speed)
 			velocity.z = move_toward(velocity.z, 0, current_speed)
+			$AudioStreamPlayer.playing = false
 			
-		if velocity.length() > 0.1:
-			#$AudioStreamPlayer.play()
-			if !is_moving:
-				$AudioStreamPlayer.play()
-				is_moving = true
-		else:
-			if is_moving:
-				$AudioStreamPlayer.stop()
-				is_moving = false
+		#if velocity.length() > 0.1:
+			##$AudioStreamPlayer.play()
+			#if !is_moving:
+				#$AudioStreamPlayer.play()
+				#is_moving = true
+		#else:
+			#if is_moving:
+				#$AudioStreamPlayer.stop()
+				#is_moving = false
 
 func handle_movement_state(delta):
 	if Input.is_action_pressed("crouch"):

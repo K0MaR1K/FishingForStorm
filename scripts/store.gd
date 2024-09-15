@@ -74,7 +74,6 @@ func _on_talking_timer_timeout() -> void:
 func _on_fish_sell_area_body_entered(body: Node3D) -> void:
 	if body.has_node("Fish"):
 		if Global.money == 0:
-			Global.interaction_queue.append(Global.interactions["succeed2"])
 			Global.interaction_queue.append(Global.interactions["tutorial21"])
 			Global.interaction_queue.append(Global.interactions["tutorial22"])
 			Global.interaction_queue.append(Global.interactions["tutorial23"])
