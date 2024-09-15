@@ -50,6 +50,7 @@ text = "MAIN MENU"
 
 [node name="game_paused_panel" type="PanelContainer" parent="."]
 process_mode = 2
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
