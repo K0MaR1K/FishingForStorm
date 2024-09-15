@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=4 uid="uid://bh3j5huvwwt33"]
+[gd_scene load_steps=41 format=4 uid="uid://bh3j5huvwwt33"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_18tpf"]
 [ext_resource type="PackedScene" uid="uid://cng3pn2mfl6t7" path="res://scenes/water.tscn" id="2_hkhug"]
 [ext_resource type="Environment" uid="uid://lquvw8gqo4ha" path="res://environments/storm_env.tres" id="3_ph7t6"]
+[ext_resource type="PackedScene" uid="uid://7qtnxsy8axa7" path="res://scenes/canvas_and_ui/settings_panel.tscn" id="4_w3rrk"]
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="6_dj2v3"]
 [ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="7_jyowo"]
 [ext_resource type="AudioStream" uid="uid://co1dh5xkkf5kp" path="res://assets/sounds_and_music/music.wav" id="8_0cg83"]
@@ -244,13 +245,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="start_button" type="Button" parent="MenuCanvas/menu_control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuCanvas/menu_control"]
 layout_mode = 0
-offset_left = 111.0
-offset_top = 149.0
-offset_right = 311.0
-offset_bottom = 249.0
+offset_left = 100.0
+offset_top = 200.0
+offset_right = 400.0
+offset_bottom = 624.0
+
+[node name="start_button" type="Button" parent="MenuCanvas/menu_control/VBoxContainer"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_vertical = 0
 text = "START"
+
+[node name="SettingsPanel" parent="MenuCanvas/menu_control/VBoxContainer" instance=ExtResource("4_w3rrk")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuCanvas/menu_control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 6
+text = "Move: WASD
+Pick Up/Throw: LMB
+Interact: RMB
+Restart: R
+Pause: ESC"
 
 [node name="Items" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12085, 0)
@@ -494,16 +512,16 @@ simulation_precision = 10
 pinned_points = [90, 99, 9, 0]
 attachments/0/point_index = 90
 attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D")
-attachments/0/offset = Vector3(4, 0, -3)
+attachments/0/offset = Vector3(0.11645, 0.0853102, 0.0678501)
 attachments/1/point_index = 99
 attachments/1/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D2")
-attachments/1/offset = Vector3(-4, 0, -3)
+attachments/1/offset = Vector3(-0.0263698, 0.0853102, 0.0678501)
 attachments/2/point_index = 9
 attachments/2/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D4")
-attachments/2/offset = Vector3(-4, 0, 3)
+attachments/2/offset = Vector3(-0.0263698, 0.0853099, 0.199771)
 attachments/3/point_index = 0
 attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/Marker3D3")
-attachments/3/offset = Vector3(4, 0, 3)
+attachments/3/offset = Vector3(0.11645, 0.0853099, 0.199771)
 
 [node name="SailAttachementPoints" type="Node3D" parent="Ship"]
 
@@ -555,5 +573,5 @@ shape = SubResource("ConcavePolygonShape3D_x0vtx")
 [node name="FishingRod4_3" parent="Ship" instance=ExtResource("21_8u7tk")]
 transform = Transform3D(-0.458276, -0.255843, -0.851191, -0.0654846, 0.964792, -0.254732, 0.886394, -0.0609977, -0.458895, 3.70448, -0.0488095, 11.9986)
 
-[connection signal="pressed" from="MenuCanvas/menu_control/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuCanvas/menu_control/VBoxContainer/start_button" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
