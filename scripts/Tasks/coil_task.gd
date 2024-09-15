@@ -14,15 +14,20 @@ func _ready():
 func interact():
 	if !$AnimationPlayer.is_playing():
 		is_reverse = false
+		
 		if are_sails_down:
 			$AnimationPlayer.play("rotate_back")
 		else:
 			$AnimationPlayer.play("rotate", -1, 1.0)
+	if !$AudioStreamPlayer.playing:
+		$AudioStreamPlayer.play()
 		
 func release_interaction():
 	if $AnimationPlayer.is_playing():
 		is_reverse = true
 		$AnimationPlayer.play($AnimationPlayer.current_animation, -1.0, -1.0)
+		if !$AudioStreamPlayer.playing:
+			$AudioStreamPlayer.play()
 			
 func _on_body_exited(body):
 	super(body)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://caoay3qn5rgmh"]
+[gd_scene load_steps=23 format=3 uid="uid://caoay3qn5rgmh"]
 
 [ext_resource type="Script" path="res://scripts/Tasks/fire_task.gd" id="1_kwjyv"]
 [ext_resource type="Shader" uid="uid://cq66sd7t1ixul" path="res://shaders/fire_shader.tres" id="2_yu8nu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bx4llqsmp3k1p" path="res://assets/sprites/Voronoi01.png" id="3_sg1yd"]
 [ext_resource type="Shader" uid="uid://nag35shadc2s" path="res://shaders/fire_sparkles_shader.tres" id="5_uld7n"]
 [ext_resource type="Texture2D" uid="uid://bo85o5b5gvpgf" path="res://assets/sprites/Flare00.PNG" id="6_rg0g0"]
+[ext_resource type="AudioStream" uid="uid://b5ws454xvujcl" path="res://assets/sounds_and_music/sounds/wood_burning.wav" id="7_ob3fd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qjqcn"]
 
@@ -259,6 +260,13 @@ collide_with_areas = true
 libraries = {
 "": SubResource("AnimationLibrary_34q2p")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_ob3fd")
+max_db = 1.0
+autoplay = true
+max_distance = 20.0
+bus = &"SF"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

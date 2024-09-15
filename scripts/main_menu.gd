@@ -1,18 +1,14 @@
 extends Node3D
 					#THIS IS MAIN MENU
 					
-var main_game_scene = preload("res://scenes/test_scene.tscn")
-@onready var blink_timer: Timer = $BlinkTimer
-
-var is_storm: bool = false
 var storm_env = load("res://environments/storm_env.tres")
 var peace_env = load("res://environments/peace_env.tres")
 var storm_effects_scene = load("res://scenes/storm_effects.tscn")
 var storm_node;
 
 @onready var ship: Node3D = $Ship
-@onready var fire_control = $FireControl
 @onready var water: Node3D = $Water
+@onready var music_stream = $MusicStream
 var water_mesh
 
 var blink_counter: int = 0
@@ -20,64 +16,37 @@ var blinks_to_storm: int = 1
 
 
 func _ready():
+	Global.current_game_scene = self
 	water_mesh = water.get_node("WaterMesh")
-	blink_timer.wait_time = randf_range(5.0, 10.0)
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
-	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, -0.01))
-	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, -0.01))
-	water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(1, 1, 1))
-
-func _process(_delta):
-	pass
-
-func _on_blink_timer_timeout():
-	blink_timer.wait_time = randf_range(15.0, 20.0)
+	Global.is_storm_changed.connect(storm_changed)
+	play_music(load("res://assets/sounds_and_music/music.wav"))
+	
+func play_music(_stream: AudioStream):
+	music_stream.stream = _stream;
+	music_stream.play()
 		
-	if blink_counter < blinks_to_storm:
-		blink_counter += 1
+func storm_changed(value):
+	await get_tree().create_timer(0.10).timeout
+	if value:
+		$WorldEnvironment.environment = storm_env
+		$WorldEnvironment/DirectionalLight3D.light_energy = 0.05
+		storm_node = storm_effects_scene.instantiate()
+		add_child(storm_node)
+		storm_node.striking_ship_positions = ship.get("striking_ship_positions")
 	else:
-		blink_counter = 0
-		if is_storm:
-			storm_end()
-		else:
-			storm_start()
+		$WorldEnvironment.environment = peace_env
+		$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
+		storm_node.queue_free()
 	
-func storm_start():
-	await get_tree().create_timer(0.10).timeout
-	$WorldEnvironment.environment = storm_env
-	$WorldEnvironment/DirectionalLight3D.light_energy = 0.05
-	storm_node = storm_effects_scene.instantiate()
-	add_child(storm_node)
-	if fire_control.striking_ship_positions.is_empty():
-		for c in ship.get_node("LightningStrikePositions").get_children():
-			fire_control.striking_ship_positions.append(c.global_position)
-	storm_node.striking_ship_positions = fire_control.striking_ship_positions
-	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.06))
-	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.06))
-	water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(2, 2, 2))
-	is_storm = true
-	ship.is_storm = true
-	
-func storm_end():
-	await get_tree().create_timer(0.10).timeout
-	$WorldEnvironment.environment = peace_env
-	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
-	storm_node.queue_free()
-	water_mesh.mesh.material.set("shader_parameter/Speed1",Vector2(0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Speed2", Vector2(-0.01, -0.01))
-	water_mesh.mesh.material.set("shader_parameter/Speed3",Vector2(0.01, 0.02))
-	water_mesh.mesh.material.set("shader_parameter/Speed4", Vector2(-0.01, -0.01))
-	water_mesh.mesh.material.set("shader_parameter/Multiplier", Vector3(1, 1, 1))
-	is_storm = false
-	ship.is_storm = false
-
+func game_over(_reason):
+	#rn this function is called from two places
+	#1. ship's _proccess function (sinking)
+	#2. fire_control's _proccess function (burning)
+	#3 ship's sail unpin timer (losing sail)
+	Global.main_menu()
 
 func _on_start_button_pressed():
-	var error = get_tree().change_scene_to_packed(main_game_scene)
-	print("error loading main game scene " + str(error))
+	Global.restart()
 	
