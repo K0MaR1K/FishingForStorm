@@ -6,12 +6,12 @@ class_name Ship
 
 var ship_health: float = 100.0
 var water_filled: float = 0.0
-var water_fill_speed: float = 0.01
+var water_fill_speed: float = 0.005
 var water_drain_speed: float = 0.1
 
 var start_dim_y: float = 0
 var end_dim_y: float = 1
-var start_pos_y: float = -4.489
+var start_pos_y: float = -4.48
 var end_pos_y: float = -3.969
 
 var player_can_map: bool = false
@@ -96,9 +96,13 @@ func covered_up_a_hole():
 
 func _on_map_area_body_entered(_body: Node3D) -> void:
 	if first_entry:
+		first_entry = false
 		Global.hint("RMB to open the map")
 	player_can_map = true
 
 
 func _on_map_area_body_exited(_body: Node3D) -> void:
+	if map_opened:
+		Global.map_canvas.close_map()
+	map_opened = false
 	player_can_map = false

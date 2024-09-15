@@ -10,7 +10,7 @@ var lightning_sounds = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$lightning_timer.start(randf_range(2.0,10.0))
+	$lightning_timer.start(randf_range(5.0,10.0))
 	$lightning.hide()
 	
 
@@ -18,7 +18,7 @@ func _on_lightning_timer_timeout():
 	$lightning/Lightning_strike.stream = lightning_sounds.pick_random();
 	if $lightning.visible:
 		$lightning.hide()
-		$lightning_timer.start(randf_range(2.0,10.0))
+		$lightning_timer.start(randf_range(5.0,10.0))
 	else:
 		if is_lightning_to_hit_ship():
 			if striking_ship_positions.is_empty(): return
@@ -48,7 +48,7 @@ func _on_lightning_timer_timeout():
 			$lightning_timer.start(0.5)
 			
 func is_lightning_to_hit_ship():
-	var zone_multiplayer = 0.1 + Global.zone * 0.1
+	var zone_multiplayer = 0.05 + Global.zone * 0.05
 	return randf_range(0, 1) > zone_multiplayer
 			
 func generate_random_pos(ship_pos):

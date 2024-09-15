@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://caoay3qn5rgmh"]
+[gd_scene load_steps=23 format=3 uid="uid://cguhy3ulesal7"]
 
 [ext_resource type="Script" path="res://scripts/Tasks/fire_task.gd" id="1_kwjyv"]
 [ext_resource type="Shader" uid="uid://cq66sd7t1ixul" path="res://shaders/fire_shader.tres" id="2_yu8nu"]
