@@ -48,7 +48,7 @@ func _on_fish_pull_timer_timeout() -> void:
 	pull_count += 1
 	if pull_count == 5:
 		Global.hint("Press RMB to start pulling")
-		pull_count = -10
+		pull_count = 0
 	linear_velocity.y -= 10
 	$PullParticles.restart()
 

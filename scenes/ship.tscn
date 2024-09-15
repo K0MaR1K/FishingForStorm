@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dxfa4bjft64qc"]
+[gd_scene load_steps=37 format=3 uid="uid://dxfa4bjft64qc"]
 
 [ext_resource type="PackedScene" uid="uid://kkpyneoktu4q" path="res://assets/models/props/Ship4.3.glb" id="1_jhw8i"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://scripts/wind.gd" id="16_csdcf"]
 [ext_resource type="PackedScene" uid="uid://docxycwgwkxtv" path="res://scenes/props/water_tank.tscn" id="16_xjd1j"]
 [ext_resource type="PackedScene" uid="uid://cdm1qc6wx48oe" path="res://scenes/Tasks/coil_task.tscn" id="19_ktrm4"]
+[ext_resource type="Theme" uid="uid://dpx7360fa1xhk" path="res://assets/fonts/global.tres" id="19_tdrf6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu6a7"]
 size = Vector3(1.5, 4.81273, 0.230859)
@@ -159,6 +160,9 @@ bottom_radius = 0.02
 height = 10.0
 radial_segments = 5
 rings = 8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jf583"]
+viewport_path = NodePath("ScoreTracker/SubViewport")
 
 [node name="Ship" instance=ExtResource("1_jhw8i")]
 script = ExtResource("2_0o2k5")
@@ -439,16 +443,16 @@ simulation_precision = 10
 pinned_points = [90, 99, 0, 9]
 attachments/0/point_index = 90
 attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_left")
-attachments/0/offset = Vector3(4, 0, -3)
+attachments/0/offset = Vector3(0.11645, 0.0853102, 0.0678499)
 attachments/1/point_index = 99
 attachments/1/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_right")
-attachments/1/offset = Vector3(-4, 0, -3)
+attachments/1/offset = Vector3(-0.0263698, 0.0853102, 0.0678499)
 attachments/2/point_index = 0
 attachments/2/spatial_attachment_path = NodePath("../SailAttachementPoints/bottom_left")
-attachments/2/offset = Vector3(4, 0, 3)
+attachments/2/offset = Vector3(0.11645, 0.0853099, 0.199771)
 attachments/3/point_index = 9
 attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/bottom_right")
-attachments/3/offset = Vector3(-4, 0, 3)
+attachments/3/offset = Vector3(-0.0263698, 0.0853099, 0.199771)
 script = ExtResource("16_1q6yi")
 
 [node name="sail_destruction_timer" type="Timer" parent="Sail" index="0"]
@@ -463,16 +467,16 @@ parent_collision_ignore = NodePath("../collision")
 pinned_points = [11, 10, 106, 105]
 attachments/0/point_index = 11
 attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_left")
-attachments/0/offset = Vector3(-0.192836, 4, -0.229813)
+attachments/0/offset = Vector3(0.11645, 0.135322, -0.112646)
 attachments/1/point_index = 10
 attachments/1/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_left")
-attachments/1/offset = Vector3(-0.102606, 4, -0.281908)
+attachments/1/offset = Vector3(0.11645, 0.0832273, -0.0224157)
 attachments/2/point_index = 106
 attachments/2/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_right")
-attachments/2/offset = Vector3(-0.192836, -4, -0.229813)
+attachments/2/offset = Vector3(-0.02637, 0.135322, -0.112646)
 attachments/3/point_index = 105
 attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_right")
-attachments/3/offset = Vector3(-0.102606, -4, -0.281908)
+attachments/3/offset = Vector3(-0.02637, 0.0832273, -0.0224161)
 
 [node name="coil_task" parent="." index="15" instance=ExtResource("19_ktrm4")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.7071, -4.41838, -2.71147)
@@ -487,10 +491,10 @@ parent_collision_ignore = NodePath("../collision")
 pinned_points = [60, 67]
 attachments/0/point_index = 60
 attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_left")
-attachments/0/offset = Vector3(0, 5, 0)
+attachments/0/offset = Vector3(-0.399821, -0.0901549, 0.299236)
 attachments/1/point_index = 67
 attachments/1/spatial_attachment_path = NodePath("../coil_task")
-attachments/1/offset = Vector3(0, -5, 0)
+attachments/1/offset = Vector3(0.325634, 0.346509, -0.106627)
 
 [node name="SailAttachementPoints" type="Node3D" parent="." index="17"]
 
@@ -514,6 +518,53 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="ToDelete" type="Node3D" parent="." index="21"]
+
+[node name="ScoreTracker" type="Sprite3D" parent="." index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225932, 1.08441, -11.4147)
+texture = SubResource("ViewportTexture_jf583")
+
+[node name="SubViewport" type="SubViewport" parent="ScoreTracker" index="0"]
+transparent_bg = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScoreTracker/SubViewport" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -30.0
+offset_right = 72.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScoreTracker/SubViewport/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScoreTracker/SubViewport/VBoxContainer/HBoxContainer" index="0"]
+layout_mode = 2
+theme = ExtResource("19_tdrf6")
+text = "Score:"
+
+[node name="Label2" type="Label" parent="ScoreTracker/SubViewport/VBoxContainer/HBoxContainer" index="1"]
+layout_mode = 2
+theme = ExtResource("19_tdrf6")
+text = "number"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScoreTracker/SubViewport/VBoxContainer" index="1"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScoreTracker/SubViewport/VBoxContainer/HBoxContainer2" index="0"]
+layout_mode = 2
+theme = ExtResource("19_tdrf6")
+text = "Money:"
+
+[node name="Label2" type="Label" parent="ScoreTracker/SubViewport/VBoxContainer/HBoxContainer2" index="1"]
+layout_mode = 2
+theme = ExtResource("19_tdrf6")
+text = "number"
 
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
 [connection signal="body_entered" from="DroppedItems" to="." method="_on_dropped_items_body_entered"]

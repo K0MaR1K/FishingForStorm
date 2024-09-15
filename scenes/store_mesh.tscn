@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5r2qvrb2t8vn"]
+[gd_scene load_steps=4 format=3 uid="uid://b5r2qvrb2t8vn"]
 
-[ext_resource type="PackedScene" uid="uid://cteerjfue6mem" path="res://assets/models/props/StoreToghter.glb" id="1_n2j5w"]
+[ext_resource type="PackedScene" uid="uid://ywnytsb8f5b6" path="res://assets/models/items/shop.glb" id="1_o52ab"]
 
-[node name="StoreMesh" instance=ExtResource("1_n2j5w")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4u40k"]
+size = Vector3(10.7329, 1, 14.7747)
 
-[node name="collision" parent="." index="1"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ijpnq"]
+size = Vector3(13.0196, 6.97571, 1.0567)
+
+[node name="shop" instance=ExtResource("1_o52ab")]
+
+[node name="Col1" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
 collision_layer = 2
 collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Col1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59668, 1.05162, 2.93054)
+shape = SubResource("BoxShape3D_4u40k")
+
+[node name="Col2" type="StaticBody3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Col2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.406891, 5.018, 3.01751)
+shape = SubResource("BoxShape3D_ijpnq")
