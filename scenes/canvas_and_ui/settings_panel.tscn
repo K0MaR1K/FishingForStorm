@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://7qtnxsy8axa7"]
+[gd_scene load_steps=4 format=3 uid="uid://7qtnxsy8axa7"]
 
+[ext_resource type="Theme" uid="uid://dpx7360fa1xhk" path="res://assets/fonts/global.tres" id="1_mjqt5"]
 [ext_resource type="Script" path="res://scripts/settings_panel.gd" id="1_mktbn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oweqw"]
 
 [node name="SettingsPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 0)
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_mjqt5")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_oweqw")
 script = ExtResource("1_mktbn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -33,5 +38,16 @@ layout_mode = 2
 max_value = 1.0
 step = 0.05
 
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Ambience"
+horizontal_alignment = 1
+
+[node name="Ambience_slider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
 [connection signal="value_changed" from="VBoxContainer/music_slider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/SF_slider" to="." method="_on_sf_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Ambience_slider" to="." method="_on_ambience_slider_value_changed"]

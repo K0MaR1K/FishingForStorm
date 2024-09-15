@@ -38,6 +38,11 @@ folder_colors={
 
 player_camera=""
 
+[gui]
+
+theme/custom="res://assets/fonts/global.tres"
+theme/custom_font="res://assets/fonts/TCBI____.TTF"
+
 [input]
 
 forward={
