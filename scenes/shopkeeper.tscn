@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://sr44degwwstg"]
+[gd_scene load_steps=9 format=3 uid="uid://sr44degwwstg"]
 
 [ext_resource type="PackedScene" uid="uid://bltr3k1sx2kpy" path="res://assets/models/items/WavingAnimation.glb" id="1_jtufe"]
 [ext_resource type="Script" path="res://scripts/shopkeeper.gd" id="2_y4sgq"]
 [ext_resource type="Animation" uid="uid://cg1lj42n7fag" path="res://assets/animations/Talk.res" id="3_oaagk"]
 [ext_resource type="Theme" uid="uid://dpx7360fa1xhk" path="res://assets/fonts/global.tres" id="4_xtlvv"]
+[ext_resource type="AudioStream" uid="uid://d1qqc7ybfk4a0" path="res://assets/sounds_and_music/whistling.mp3" id="5_irj2c"]
 
 [sub_resource type="Animation" id="Animation_xsgko"]
 resource_name = "Wave"
@@ -448,4 +449,13 @@ theme_type_variation = &"TooltipLabel"
 wait_time = 5.0
 one_shot = true
 
+[node name="Whistle" type="AudioStreamPlayer3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+stream = ExtResource("5_irj2c")
+attenuation_model = 1
+volume_db = -20.0
+autoplay = true
+bus = &"SF"
+
 [connection signal="timeout" from="TalkingTimer" to="." method="_on_talking_timer_timeout"]
+[connection signal="finished" from="Whistle" to="." method="_on_whistle_finished"]

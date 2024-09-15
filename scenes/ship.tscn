@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dxfa4bjft64qc"]
+[gd_scene load_steps=39 format=3 uid="uid://dxfa4bjft64qc"]
 
 [ext_resource type="PackedScene" uid="uid://cu653tvams74o" path="res://assets/models/Ship4.4.glb" id="1_r2s58"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cdm1qc6wx48oe" path="res://scenes/Tasks/coil_task.tscn" id="19_ktrm4"]
 [ext_resource type="Theme" uid="uid://dpx7360fa1xhk" path="res://assets/fonts/global.tres" id="19_tdrf6"]
 [ext_resource type="PackedScene" uid="uid://dp81xfi248twa" path="res://scenes/props/barrel.tscn" id="20_ojijr"]
+[ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="21_pc1gc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lu25e"]
 size = Vector3(1.5, 4.81273, 0.230859)
@@ -395,6 +396,9 @@ transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.003996
 
 [node name="FishingTask" parent="Tasks" index="8" instance=ExtResource("9_kub6g")]
 transform = Transform3D(0.844581, -0.258189, -0.469064, 0.224808, 0.966093, -0.126988, 0.485947, 0.00180252, 0.873987, 3.682, 5.02995, 12.0324)
+
+[node name="BucketTask" parent="Tasks" index="9" instance=ExtResource("21_pc1gc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06188, -1.82794)
 
 [node name="RockingAnimation" type="AnimationPlayer" parent="." index="10"]
 libraries = {

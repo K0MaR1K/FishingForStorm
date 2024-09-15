@@ -94,7 +94,7 @@ func _on_fire_growth_timer_timeout():
 		$fire_growth_timer.start(fire_growth_time)
 
 func _on_animation_player_animation_finished(_anim_name):
-	get_parent().fires.erase(global_position)
+	get_parent().fires.erase(self)
 	queue_free()
 	
 func _on_my_position_tween_finished():

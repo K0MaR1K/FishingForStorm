@@ -16,9 +16,8 @@ func start_fire(parent_pos: Vector3, new_pos: Vector3) -> bool:
 		return true
 	else:
 		for fire in fires:
-			if fire:
-				if new_pos.distance_to(fire.global_position) < 1:
-					return false
+			if new_pos.distance_to(fire.global_position) < 1:
+				return false
 		add_fire(parent_pos, new_pos)
 		return true
 	

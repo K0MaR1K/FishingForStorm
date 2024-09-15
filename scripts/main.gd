@@ -15,6 +15,7 @@ var blinks_to_storm: int = 1
 
 
 func _ready():
+	Global.current_game_scene = self
 	water_mesh = water.get_node("WaterMesh")
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
