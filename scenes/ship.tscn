@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cu653tvams74o" path="res://assets/models/Ship4.4.glb" id="1_r2s58"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
-[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
+[ext_resource type="Material" path="res://assets/textures/water.tres" id="4_6m6rm"]
 [ext_resource type="PackedScene" uid="uid://bwqv8jh10h2q6" path="res://scenes/props/box.tscn" id="6_xowsk"]
 [ext_resource type="PackedScene" uid="uid://3s1npfpa23e2" path="res://scenes/props/large_box.tscn" id="7_j0384"]
 [ext_resource type="PackedScene" uid="uid://chxgbvh3j8dp3" path="res://scenes/Tasks/bucket_spill_task.tscn" id="8_h62ty"]
@@ -422,6 +422,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0732412, -0.695077, 13.913
 [node name="Marker3D5" type="Marker3D" parent="LightningStrikePositions" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70154, 0.981849, -10.526)
 
+[node name="Marker3D6" type="Marker3D" parent="LightningStrikePositions" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54709, 0.602434, -6.27991)
+
 [node name="WheelStand" parent="." index="12" instance=ExtResource("13_a5p8e")]
 transform = Transform3D(0.599444, -0.0258156, -0.000893909, 0.0258065, 0.599421, -0.00540114, 0.00112543, 0.00535769, 0.599975, 0.0866636, 0.451106, -4.52255)
 
@@ -461,16 +464,16 @@ simulation_precision = 10
 pinned_points = [90, 99, 0, 9]
 attachments/0/point_index = 90
 attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_left")
-attachments/0/offset = Vector3(0.11645, 0.0853102, 0.0678499)
+attachments/0/offset = Vector3(4, 0, -3)
 attachments/1/point_index = 99
 attachments/1/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_right")
-attachments/1/offset = Vector3(-0.0263698, 0.0853102, 0.0678499)
+attachments/1/offset = Vector3(-4, 0, -3)
 attachments/2/point_index = 0
 attachments/2/spatial_attachment_path = NodePath("../SailAttachementPoints/bottom_left")
-attachments/2/offset = Vector3(0.11645, 0.0853099, 0.199771)
+attachments/2/offset = Vector3(4, 0, 3)
 attachments/3/point_index = 9
 attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/bottom_right")
-attachments/3/offset = Vector3(-0.0263698, 0.0853099, 0.199771)
+attachments/3/offset = Vector3(-4, 0, 3)
 script = ExtResource("16_1q6yi")
 
 [node name="sail_destruction_timer" type="Timer" parent="Sail" index="0"]
@@ -487,19 +490,19 @@ parent_collision_ignore = NodePath("../collision")
 pinned_points = [11, 10, 106, 105]
 attachments/0/point_index = 11
 attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_left")
-attachments/0/offset = Vector3(0.11645, 0.135322, -0.112646)
+attachments/0/offset = Vector3(-0.192836, 4, -0.229813)
 attachments/1/point_index = 10
 attachments/1/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_left")
-attachments/1/offset = Vector3(0.11645, 0.0832273, -0.0224157)
+attachments/1/offset = Vector3(-0.102606, 4, -0.281908)
 attachments/2/point_index = 106
 attachments/2/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_right")
-attachments/2/offset = Vector3(-0.02637, 0.135322, -0.112646)
+attachments/2/offset = Vector3(-0.192836, -4, -0.229813)
 attachments/3/point_index = 105
 attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_right")
-attachments/3/offset = Vector3(-0.02637, 0.0832273, -0.0224161)
+attachments/3/offset = Vector3(-0.102606, -4, -0.281908)
 
 [node name="coil_task" parent="." index="17" instance=ExtResource("19_ktrm4")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.7071, -4.16546, -2.71147)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.7071, -4.22641, -2.71147)
 
 [node name="SailRope" type="SoftBody3D" parent="." index="18"]
 transform = Transform3D(0.737534, -0.0711822, -0.671546, -0.196044, 0.929036, -0.313782, 0.646227, 0.363078, 0.671241, 3.83964, 0.746564, -1.05602)
@@ -511,10 +514,10 @@ parent_collision_ignore = NodePath("../collision")
 pinned_points = [60, 67]
 attachments/0/point_index = 60
 attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/upper_left")
-attachments/0/offset = Vector3(-0.399821, -0.0901549, 0.299236)
+attachments/0/offset = Vector3(0, 5, 0)
 attachments/1/point_index = 67
 attachments/1/spatial_attachment_path = NodePath("../coil_task")
-attachments/1/offset = Vector3(0.325634, 0.177896, -0.106627)
+attachments/1/offset = Vector3(0, -5, 0)
 
 [node name="SailAttachementPoints" type="Node3D" parent="." index="19"]
 

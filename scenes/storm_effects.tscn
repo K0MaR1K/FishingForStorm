@@ -136,9 +136,10 @@ libraries = {
 }
 
 [node name="RainSounds" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("4_2u30r")
 autoplay = true
-bus = &"SF"
+bus = &"Ambience"
 
 [connection signal="timeout" from="lightning_timer" to="." method="_on_lightning_timer_timeout"]
 [connection signal="finished" from="RainSounds" to="." method="_on_rain_sounds_finished"]

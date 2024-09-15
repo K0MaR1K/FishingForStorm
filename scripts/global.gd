@@ -102,6 +102,7 @@ func restart():
 	rstrt = true
 	current_game_scene.queue_free()
 	var game_node = game_scene.instantiate()
+	current_game_scene = game_node
 	get_tree().get_root().add_child(game_node)
 	is_storm = false
 	this_zone_storms_survived = 0
