@@ -1,5 +1,11 @@
 extends "res://scripts/Items/item_template.gd"
 
+var hammer_hits = [
+	load("res://assets/sounds_and_music/sounds/hammer_hit.wav"),
+	load("res://assets/sounds_and_music/sounds/hammer_hit2.wav"),
+	load("res://assets/sounds_and_music/sounds/hammer_hit3.wav")
+]
+
 func _ready():
 	my_scene = preload("res://scenes/Items/hammer.tscn")
 	is_picked_up = false
@@ -13,3 +19,5 @@ func interact(_delta, task):
 		if not task.deactivated:
 			task.repair()
 			$AnimationPlayer.play("impact")
+			$AudioStream.stream = hammer_hits.pick_random()
+			$AudioStream.play()

@@ -24,7 +24,7 @@ func _on_unpause_button_pressed():
 
 func _on_main_menu_button_pressed():
 	get_tree().paused = !get_tree().paused
-	get_tree().change_scene_to_packed(main_menu_scene)
+	Global.main_menu()
 
 func game_over(reason: String):
 	toggle_pause(true)
@@ -47,6 +47,6 @@ func _on_game_timer_timeout():
 func _on_exit_button_pressed():
 	get_tree().quit()
 
-
 func _on_restart_button_pressed():
-	get_parent().restart()
+	toggle_pause()
+	Global.restart()

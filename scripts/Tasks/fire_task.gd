@@ -12,6 +12,9 @@ var velocity: Vector3 = Vector3.ZERO
 var occupied_points = []
 var ship_collision
 
+var fire_burning_stream = load("res://assets/sounds_and_music/sounds/wood_burning.wav")
+var fire_extinguished_stream = load("res://assets/sounds_and_music/sounds/fire_extinguished.wav")
+
 var fire_health: float = 0.1:
 	set(value):
 		fire_health = value;
@@ -73,6 +76,9 @@ func kill_fire():
 	$CollisionShape3D.set_deferred("disabled", true)
 	$fire_growth_timer.queue_free()
 	$AnimationPlayer.play("dying")
+	$AudioStreamPlayer3D.stop();
+	$AudioStreamPlayer3D.stream = fire_extinguished_stream;
+	$AudioStreamPlayer3D.play()
 
 func _on_fire_growth_timer_timeout():
 	if fire_health <= 0: return
@@ -88,13 +94,12 @@ func _on_fire_growth_timer_timeout():
 		$fire_growth_timer.start(fire_growth_time)
 
 func _on_animation_player_animation_finished(_anim_name):
-	get_parent().fire_positions.erase(global_position)
+	get_parent().fires.erase(global_position)
 	queue_free()
 	
 func _on_my_position_tween_finished():
 	if is_on_ground():
 		is_falling = false
-		get_parent().fire_positions.append(global_position)
 		$CollisionShape3D.disabled = false
 	else:
 		is_falling = true

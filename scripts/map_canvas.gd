@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var deadman_button: TextureButton = $DeadmanButton
 @onready var buccaneer_button: TextureButton = $BuccaneerButton
 
-var sail
+var sail;
 
 var travel_to_stormbreaker = false
 var travel_to_seawitch = false
@@ -14,17 +14,17 @@ var travel_to_deadman = false
 
 func _ready() -> void:
 	hide()
-
+	sail = null;
 	stormbreaker_button.disabled = false
 	seawitch_button.disabled = false
 	buccaneer_button.disabled = false
 	deadman_button.disabled = true
 	Global.zone = Global.ZONE.DEADMAN
-	
-	sail = get_tree().get_root().get_node("TestScene/Ship/Sail")
 
 
 func open_map():
+	if !sail:
+		sail = Global.current_game_scene.get_node("Ship/Sail")
 	$OpeningSound.play()
 	$AnimationPlayer.play("see_map")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

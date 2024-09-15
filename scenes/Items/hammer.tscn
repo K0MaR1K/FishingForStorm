@@ -133,3 +133,6 @@ libraries = {
 
 [node name="Hammer" parent="." index="3" instance=ExtResource("3_u42h7")]
 transform = Transform3D(-1.5299e-08, -0.35, 0, 0.35, -1.5299e-08, 0, 0, 0, 0.35, -0.199952, -8.74017e-09, 0)
+
+[node name="AudioStream" type="AudioStreamPlayer" parent="." index="4"]
+bus = &"SF"
