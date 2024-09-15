@@ -14,6 +14,10 @@ var end_dim_y: float = 1
 var start_pos_y: float = -4.489
 var end_pos_y: float = -3.969
 
+var player_can_map: bool = false
+var map_opened: bool = false
+var first_entry: bool = true
+
 func storm_changed(value):
 	if value:
 		repair_timer.start()
@@ -62,29 +66,39 @@ func _process(delta: float) -> void:
 	$WaterRising.position.y = end_pos_y * water_filled + start_pos_y * (1 - water_filled)
 	$WaterRising/Area3D/CollisionShape3D.shape.size.y = new_size_y
 	
+	if player_can_map and Input.is_action_just_pressed("interact2"):
+		if map_opened:
+			Global.map_canvas.close_map()
+		else:
+			Global.map_canvas.open_map()
+		map_opened = !map_opened
+	
 func _on_repair_timer_timeout() -> void:
 	match Global.ZONE:
 		Global.ZONE.DEADMAN:
-			repair_timer.wait_time = randi_range(20, 30)
+			repair_timer.wait_time = randi_range(30, 40)
 		Global.ZONE.BUCCANEER:
-			repair_timer.wait_time = randi_range(15, 25)
+			repair_timer.wait_time = randi_range(20, 25)
 		Global.ZONE.SEAWITCH:
-			repair_timer.wait_time = randi_range(10, 15)
+			repair_timer.wait_time = randi_range(10, 20)
 		Global.ZONE.STORMBREAKER:
-			repair_timer.wait_time = randi_range(5, 15)
+			repair_timer.wait_time = randi_range(8, 15)
 
 	var repairs = $RepairTasks.get_child_count()
 	var repair = $RepairTasks.get_child(randi_range(0, repairs - 1))
 	hole_count += 1
 	repair.make_a_hole()
 
+
 func covered_up_a_hole():
 	hole_count -= 1
 
 
 func _on_map_area_body_entered(_body: Node3D) -> void:
-	Global.map_canvas.open_map()
+	if first_entry:
+		Global.hint("RMB to open the map")
+	player_can_map = true
 
 
 func _on_map_area_body_exited(_body: Node3D) -> void:
-	Global.map_canvas.close_map()
+	player_can_map = false

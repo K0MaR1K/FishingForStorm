@@ -1,10 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://dxfa4bjft64qc"]
+[gd_scene load_steps=38 format=3 uid="uid://dxfa4bjft64qc"]
 
 [ext_resource type="PackedScene" uid="uid://cu653tvams74o" path="res://assets/models/Ship4.4.glb" id="1_r2s58"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="2_0o2k5"]
 [ext_resource type="PackedScene" uid="uid://cy0cnc8uccist" path="res://scenes/Tasks/repair_task.tscn" id="2_2oxk1"]
 [ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="4_6m6rm"]
-[ext_resource type="PackedScene" uid="uid://c0moaioc8dy8s" path="res://scenes/Tasks/bucket_task.tscn" id="5_3byml"]
 [ext_resource type="PackedScene" uid="uid://bwqv8jh10h2q6" path="res://scenes/props/box.tscn" id="6_xowsk"]
 [ext_resource type="PackedScene" uid="uid://3s1npfpa23e2" path="res://scenes/props/large_box.tscn" id="7_j0384"]
 [ext_resource type="PackedScene" uid="uid://chxgbvh3j8dp3" path="res://scenes/Tasks/bucket_spill_task.tscn" id="8_h62ty"]
@@ -177,7 +176,7 @@ collision_mask = 5
 transform = Transform3D(1, -7.10543e-15, -7.10543e-15, 0, 1, 0, -4.30333e-22, 0, 1, 9.31323e-10, 0, -5.03451e-17)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StairColliders" index="0"]
-transform = Transform3D(1, 0, -4.23516e-22, 0, 0.734251, 0.678878, 0, -0.678878, 0.734251, -3.20341, -3.0029, -2.07536)
+transform = Transform3D(1, 0, -4.23516e-22, 0, 0.734251, 0.678878, 0, -0.678878, 0.734251, -3.20341, -2.88305, -1.99116)
 collision_layer = 2
 collision_mask = 5
 
@@ -186,7 +185,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0789809, -0.124574)
 shape = SubResource("BoxShape3D_lu25e")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="StairColliders" index="1"]
-transform = Transform3D(-1, 5.93986e-08, -6.41447e-08, -1.32432e-08, 0.622337, 0.782749, 8.64139e-08, 0.782749, -0.622337, -3.49101, -3.08701, 6.38875)
+transform = Transform3D(-1, 5.93986e-08, -6.41447e-08, -1.32432e-08, 0.622337, 0.782749, 8.64139e-08, 0.782749, -0.622337, -3.49101, -2.85622, 6.43735)
 collision_layer = 2
 collision_mask = 5
 
@@ -195,7 +194,7 @@ transform = Transform3D(1, -7.44713e-10, -6.83031e-10, 7.38254e-10, 0.999936, -0
 shape = SubResource("BoxShape3D_idefu")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="StairColliders" index="2"]
-transform = Transform3D(-1, 5.93986e-08, -6.41447e-08, -1.32432e-08, 0.622337, 0.782749, 8.64139e-08, 0.782749, -0.622337, 2.85913, -3.08701, 6.38875)
+transform = Transform3D(-1, 5.93986e-08, -6.41447e-08, -1.32432e-08, 0.622337, 0.782749, 8.64139e-08, 0.782749, -0.622337, 2.85913, -2.90719, 6.38875)
 collision_layer = 2
 collision_mask = 5
 
@@ -206,67 +205,67 @@ shape = SubResource("BoxShape3D_idefu")
 [node name="RepairTasks" type="Node3D" parent="." index="3"]
 
 [node name="RepairTask" parent="RepairTasks" index="0" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.407326, 0, -0.913283, 0, 1, 0, 0.913283, 0, 0.407326, 0, -4.23366, -0.58553)
+transform = Transform3D(0.407326, 0, -0.913283, 0, 1, 0, 0.913283, 0, 0.407326, 0, -4.17433, -0.58553)
 
 [node name="RepairTask4" parent="RepairTasks" index="1" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 0.998652, -0.0519002, 0, 0.0519002, 0.998652, -1.27865, -4.07294, -2.42625)
+transform = Transform3D(1, 0, 0, 0, 0.998652, -0.0519002, 0, 0.0519002, 0.998652, -1.27865, -4.1777, -2.42625)
 
 [node name="RepairTask5" parent="RepairTasks" index="2" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 0.998652, -0.0519002, 0, 0.0519002, 0.998652, 0.757275, -4.39763, -5.06796)
+transform = Transform3D(1, 0, 0, 0, 0.998652, -0.0519002, 0, 0.0519002, 0.998652, 0.757275, -4.26948, -5.06796)
 
 [node name="RepairTask6" parent="RepairTasks" index="3" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.487113, 0.0453265, 0.872162, 0, 0.998652, -0.0519002, -0.873339, 0.0252813, 0.486456, 1.94736, -4.27775, -6.81837)
+transform = Transform3D(0.487113, 0.0453265, 0.872162, 0, 0.998652, -0.0519002, -0.873339, 0.0252813, 0.486456, 1.94736, -4.24926, -6.81837)
 
 [node name="RepairTask7" parent="RepairTasks" index="4" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.487113, 0.0453265, 0.872162, 0, 0.998652, -0.0519002, -0.873339, 0.0252813, 0.486456, -2.39881, -4.2661, -8.97732)
+transform = Transform3D(0.487113, 0.0453265, 0.872162, 0, 0.998652, -0.0519002, -0.873339, 0.0252813, 0.486456, -2.39881, -4.17551, -8.97732)
 
 [node name="RepairTask20" parent="RepairTasks" index="5" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.48159, -0.105142, 0.870067, 0.0731432, 0.994136, 0.079649, -0.873339, 0.0252813, 0.486456, -0.788749, -4.25076, -7.05001)
+transform = Transform3D(0.48159, -0.105142, 0.870067, 0.0731432, 0.994136, 0.079649, -0.873339, 0.0252813, 0.486456, -0.788749, -4.22107, -7.05001)
 
 [node name="RepairTask21" parent="RepairTasks" index="6" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.487113, 0.0453265, 0.872162, 0, 0.998652, -0.0519002, -0.873339, 0.0252813, 0.486456, -0.788749, -4.19472, -10.5723)
+transform = Transform3D(0.487113, 0.0453265, 0.872162, 0, 0.998652, -0.0519002, -0.873339, 0.0252813, 0.486456, -0.788749, -4.11085, -10.5723)
 
 [node name="RepairTask2" parent="RepairTasks" index="7" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.657402, 0, 0.75354, 0, 1, 0, -0.75354, 0, 0.657402, 2.0909, -4.3111, 0.639555)
+transform = Transform3D(0.657402, 0, 0.75354, 0, 1, 0, -0.75354, 0, 0.657402, 2.0909, -4.13, 0.639555)
 
 [node name="RepairTask8" parent="RepairTasks" index="8" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.811982, 0, -0.583683, 0, 1, 0, 0.583683, 0, 0.811982, 3.02962, -4.16645, 2.68759)
+transform = Transform3D(0.811982, 0, -0.583683, 0, 1, 0, 0.583683, 0, 0.811982, 3.02962, -4.11346, 2.68759)
 
 [node name="RepairTask9" parent="RepairTasks" index="9" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50003, -4.38379, -1.20176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50003, -4.18518, -1.20176)
 
 [node name="RepairTask10" parent="RepairTasks" index="10" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(-0.520756, 0, 0.853705, 0, 1, 0, -0.853705, 0, -0.520756, -2.09408, -4.23674, 1.17261)
+transform = Transform3D(-0.520756, 0, 0.853705, 0, 1, 0, -0.853705, 0, -0.520756, -2.09408, -4.11999, 1.17261)
 
 [node name="RepairTask11" parent="RepairTasks" index="11" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55493, -4.18711, 2.90671)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55493, -4.12116, 2.90671)
 
 [node name="RepairTask12" parent="RepairTasks" index="12" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.984747, 0, -0.173992, 0, 1, 0, 0.173992, 0, 0.984747, 0.184464, -4.20345, 2.70053)
+transform = Transform3D(0.984747, 0, -0.173992, 0, 1, 0, 0.173992, 0, 0.984747, 0.184464, -4.11316, 2.70053)
 
 [node name="RepairTask13" parent="RepairTasks" index="13" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.454099, 0, 0.890951, 0, 1, 0, -0.890951, 0, 0.454099, -1.32967, -4.16301, 4.09621)
+transform = Transform3D(0.454099, 0, 0.890951, 0, 1, 0, -0.890951, 0, 0.454099, -1.32967, -3.99846, 4.09621)
 
 [node name="RepairTask16" parent="RepairTasks" index="14" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(-0.0879729, 0, 0.996123, 0, 1, 0, -0.996123, 0, -0.0879729, -1.32967, -1.98764, 8.73584)
+transform = Transform3D(-0.0879729, 0, 0.996123, 0, 1, 0, -0.996123, 0, -0.0879729, -1.32967, -1.78484, 8.73584)
 
 [node name="RepairTask17" parent="RepairTasks" index="15" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(-0.713935, 0, -0.700212, 0, 1, 0, 0.700212, 0, -0.713935, 1.69098, -1.91999, 9.28661)
+transform = Transform3D(-0.713935, 0, -0.700212, 0, 1, 0, 0.700212, 0, -0.713935, 1.69098, -1.71288, 9.28661)
 
 [node name="RepairTask18" parent="RepairTasks" index="16" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 0.991536, 0.129834, 0, -0.129834, 0.991536, -0.537685, -1.85862, 10.6272)
+transform = Transform3D(1, 0, 0, 0, 0.991536, 0.129834, 0, -0.129834, 0.991536, -0.537685, -1.65467, 10.6272)
 
 [node name="RepairTask19" parent="RepairTasks" index="17" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.693528, 0, 0.72043, -0.0450605, 0.998042, 0.0433778, -0.71902, -0.0625467, 0.69217, 0.737259, -1.61929, 12.2556)
+transform = Transform3D(0.693528, 0, 0.72043, -0.0450605, 0.998042, 0.0433778, -0.71902, -0.0625467, 0.69217, 0.737259, -1.47829, 12.2556)
 
 [node name="RepairTask14" parent="RepairTasks" index="18" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.719716, 3.03475e-08, -0.694269, 0.694269, -3.14598e-08, 0.719716, 0, -1, -4.37114e-08, 0.885729, -2.86224, 7.53241)
+transform = Transform3D(0.719716, 3.03475e-08, -0.694269, 0.694269, -3.14598e-08, 0.719716, 0, -1, -4.37114e-08, 0.885729, -2.86224, 7.55266)
 
 [node name="RepairTask15" parent="RepairTasks" index="19" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(0.999876, -6.87352e-10, 0.0157248, -0.0157248, -4.3706e-08, 0.999876, 0, -1, -4.37114e-08, -1.11341, -2.86224, 7.52677)
+transform = Transform3D(0.999876, -6.87352e-10, 0.0157248, -0.0157248, -4.3706e-08, 0.999876, 0, -1, -4.37114e-08, -1.11341, -2.86224, 7.55082)
 
 [node name="RepairTask3" parent="RepairTasks" index="20" instance=ExtResource("2_2oxk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.29255, -1.49116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40819, -4.19882, -1.49116)
 
 [node name="RepairTimer" type="Timer" parent="." index="4"]
 wait_time = 15.0
@@ -285,25 +284,25 @@ shape = SubResource("BoxShape3D_ojkx1")
 [node name="Props" type="Node3D" parent="." index="6"]
 
 [node name="Box5" parent="Props" index="0" instance=ExtResource("6_xowsk")]
-transform = Transform3D(0.852731, 0, -0.52235, 0, 1, 0, 0.52235, 0, 0.852731, 1.8331, -3.88039, -11.2014)
+transform = Transform3D(0.852731, 0, -0.52235, 0, 1, 0, 0.52235, 0, 0.852731, 1.8331, -3.77358, -11.2014)
 
 [node name="Box4" parent="Props" index="1" instance=ExtResource("6_xowsk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67379, -2.70762, -11.2568)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67379, -2.60081, -11.2568)
 
 [node name="Box3" parent="Props" index="2" instance=ExtResource("6_xowsk")]
-transform = Transform3D(0.868052, 0, 0.496474, 0, 1, 0, -0.496474, 0, 0.868052, 3.29641, -2.70762, -10.856)
+transform = Transform3D(0.868052, 0, 0.496474, 0, 1, 0, -0.496474, 0, 0.868052, 3.29641, -2.60081, -10.856)
 
 [node name="Box2" parent="Props" index="3" instance=ExtResource("6_xowsk")]
-transform = Transform3D(0.843457, 0, 0.537197, 0, 1, 0, -0.537197, 0, 0.843457, 3.02027, -2.09455, -11.0496)
+transform = Transform3D(0.843457, 0, 0.537197, 0, 1, 0, -0.537197, 0, 0.843457, 3.02027, -1.98774, -11.0496)
 
 [node name="Box8" parent="Props" index="4" instance=ExtResource("6_xowsk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02117, 0.994297, -10.3748)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02117, 1.15742, -10.6888)
 
 [node name="Box9" parent="Props" index="5" instance=ExtResource("6_xowsk")]
-transform = Transform3D(0.868052, 0, 0.496474, 0, 1, 0, -0.496474, 0, 0.868052, 3.64379, 0.994297, -9.97404)
+transform = Transform3D(0.868052, 0, 0.496474, 0, 1, 0, -0.496474, 0, 0.868052, 3.64379, 1.15742, -10.288)
 
 [node name="Box10" parent="Props" index="6" instance=ExtResource("6_xowsk")]
-transform = Transform3D(0.843457, 0, 0.537197, 0, 1, 0, -0.537197, 0, 0.843457, 3.36764, 1.60737, -10.1676)
+transform = Transform3D(0.843457, 0, 0.537197, 0, 1, 0, -0.537197, 0, 0.843457, 3.36764, 1.77049, -10.4816)
 
 [node name="Box6" parent="Props" index="7" instance=ExtResource("6_xowsk")]
 transform = Transform3D(1, 0, 0, 0, 0.995856, 0.0909454, 0, -0.0909454, 0.995856, 2.09845, -3.55855, 6.71196)
@@ -312,7 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 0.995856, 0.0909454, 0, -0.0909454, 0.995856
 transform = Transform3D(0.863574, -0.0917753, 0.495799, 0.0289322, 0.990695, 0.13299, -0.503391, -0.100502, 0.858194, 2.89202, -3.46681, 6.85453)
 
 [node name="LargeBox" parent="Props" index="9" instance=ExtResource("7_j0384")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95938, -3.59356, -11.0007)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95938, -3.48675, -11.0007)
 
 [node name="Barrel" parent="Props" index="10" instance=ExtResource("20_ojijr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.28095, -3.74941, -10.3768)
@@ -332,7 +331,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92133, -2.57482, -10.9607)
 transform = Transform3D(0.95534, 0, -0.295508, 0, 1, 0, 0.295508, 0, 0.95534, -4.72838, -2.9916, -0.66089)
 
 [node name="LanternStand2" parent="Lanterns" index="1" instance=ExtResource("10_cs0w4")]
-transform = Transform3D(0.95534, 0, -0.295508, 0, 1, 0, 0.295508, 0, 0.95534, 2.52928, -2.55896, -10.4937)
+transform = Transform3D(0.95534, 0, -0.295508, 0, 1, 0, 0.295508, 0, 0.95534, 2.52928, -2.45215, -10.4937)
 
 [node name="LanternStand5" parent="Lanterns" index="2" instance=ExtResource("10_cs0w4")]
 transform = Transform3D(0.981121, 0, 0.193395, 0, 1, 0, -0.193395, 0, 0.981121, -1.78208, 0.271717, -4.09679)
@@ -396,9 +395,6 @@ transform = Transform3D(0.00399679, 0, 0.999992, 0, 1, 0, -0.999992, 0, 0.003996
 
 [node name="FishingTask" parent="Tasks" index="8" instance=ExtResource("9_kub6g")]
 transform = Transform3D(0.844581, -0.258189, -0.469064, 0.224808, 0.966093, -0.126988, 0.485947, 0.00180252, 0.873987, 3.682, 5.02995, 12.0324)
-
-[node name="BucketTask" parent="Tasks" index="9" instance=ExtResource("5_3byml")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47883, 1.52846)
 
 [node name="RockingAnimation" type="AnimationPlayer" parent="." index="10"]
 libraries = {
@@ -499,7 +495,7 @@ attachments/3/spatial_attachment_path = NodePath("../SailAttachementPoints/upper
 attachments/3/offset = Vector3(-0.02637, 0.0832273, -0.0224161)
 
 [node name="coil_task" parent="." index="17" instance=ExtResource("19_ktrm4")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.7071, -4.41838, -2.71147)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.7071, -4.16546, -2.71147)
 
 [node name="SailRope" type="SoftBody3D" parent="." index="18"]
 transform = Transform3D(0.737534, -0.0711822, -0.671546, -0.196044, 0.929036, -0.313782, 0.646227, 0.363078, 0.671241, 3.83964, 0.746564, -1.05602)
@@ -514,7 +510,7 @@ attachments/0/spatial_attachment_path = NodePath("../SailAttachementPoints/upper
 attachments/0/offset = Vector3(-0.399821, -0.0901549, 0.299236)
 attachments/1/point_index = 67
 attachments/1/spatial_attachment_path = NodePath("../coil_task")
-attachments/1/offset = Vector3(0.325634, 0.346509, -0.106627)
+attachments/1/offset = Vector3(0.325634, 0.177896, -0.106627)
 
 [node name="SailAttachementPoints" type="Node3D" parent="." index="19"]
 
@@ -531,7 +527,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.8835
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.97363, -0.177099, 0.849525)
 
 [node name="tank" parent="." index="20" instance=ExtResource("16_xjd1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.31167, -4.28889, -5.52536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.31167, -4.24362, -5.52536)
 
 [node name="ScoreTracker" type="Sprite3D" parent="." index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225932, 1.08441, -11.4147)
