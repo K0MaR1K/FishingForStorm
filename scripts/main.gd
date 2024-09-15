@@ -15,7 +15,6 @@ var blinks_to_storm: int = 1
 
 
 func _ready():
-	Global.current_game_scene = self
 	water_mesh = water.get_node("WaterMesh")
 	$WorldEnvironment.environment = peace_env
 	$WorldEnvironment/DirectionalLight3D.light_energy = 1.0
@@ -31,7 +30,10 @@ func play_music(_stream: AudioStream):
 	
 func _input(event):
 	if event.is_action_pressed("restart"):
-		Global.restart()
+		restart()
+		
+func restart():
+	get_tree().change_scene_to_packed(load("res://scenes/test_scene.tscn"))
 	
 func _on_body_overboard(body: Node3D):
 	if body is Player:
@@ -74,5 +76,5 @@ func game_over(reason):
 	$UICanvas.game_over(reason)
 
 
-func _on_boat_sounds_finished():
-	$BoatSounds.play()
+func _on_music_stream_finished() -> void:
+	$MusicStream.play()

@@ -48,7 +48,7 @@ func _on_lightning_timer_timeout():
 			$lightning_timer.start(0.5)
 			
 func is_lightning_to_hit_ship():
-	var zone_multiplayer = Global.zone * 0.2
+	var zone_multiplayer = 0.1 + Global.zone * 0.1
 	return randf_range(0, 1) > zone_multiplayer
 			
 func generate_random_pos(ship_pos):

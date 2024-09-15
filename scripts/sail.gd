@@ -21,13 +21,13 @@ func _ready():
 	raise_sail()
 	match Global.zone:
 		Global.ZONE.DEADMAN:
-			sail_unpin_time = 10.0
+			sail_unpin_time = 20.0
 		Global.ZONE.BUCCANEER:
-			sail_unpin_time = 6.0
+			sail_unpin_time = 15.0
 		Global.ZONE.SEAWITCH:
-			sail_unpin_time = 5.0
+			sail_unpin_time = 10.0
 		Global.ZONE.STORMBREAKER:
-			sail_unpin_time = 4.0
+			sail_unpin_time = 8.0
 		
 func lower_sail():
 	wrapped_sail.show()
