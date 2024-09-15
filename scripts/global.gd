@@ -48,9 +48,8 @@ var interactions = {"intro1" : "Hey, my name is Shawn the Shopkeeper.\n And your
 
 var money: 
 	set(value):
-		if not label:
-			label = $/root/TestScene/Ship/ScoreTracker/SubViewport/VBoxContainer/HBoxContainer/Label2
-		label.text = str(value)
+		if label:
+			label.text = str(value)
 		money = value
 
 var first_storm: bool = true
@@ -103,9 +102,10 @@ func restart():
 	is_storm = false
 	this_zone_storms_survived = 0
 	overall_storms_survived = 0
-	money = 0
 	map_canvas._ready()
 	rstrt = false
+	label = $/root/TestScene/Ship/ScoreTracker/SubViewport/VBoxContainer/HBoxContainer/Label2
+	money = 0
 	
 func main_menu():
 	current_game_scene.queue_free()
