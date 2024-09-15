@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgebk02xdh0yb"]
+[gd_scene load_steps=11 format=3 uid="uid://cgebk02xdh0yb"]
 
 [ext_resource type="Script" path="res://scripts/store.gd" id="1_4mnwu"]
 [ext_resource type="PackedScene" uid="uid://sr44degwwstg" path="res://scenes/shopkeeper.tscn" id="3_2ianb"]
 [ext_resource type="PackedScene" uid="uid://b5r2qvrb2t8vn" path="res://scenes/store_mesh.tscn" id="3_ey4hh"]
+[ext_resource type="PackedScene" uid="uid://t5l20egebs1u" path="res://assets/models/planks/Plank2.glb" id="4_5hnn4"]
+[ext_resource type="PackedScene" uid="uid://muj2oduds0l6" path="res://assets/models/planks/Plank3.glb" id="5_agbte"]
+[ext_resource type="PackedScene" uid="uid://pkpk4gves26p" path="res://assets/models/planks/Plank4.glb" id="6_vpmay"]
+[ext_resource type="PackedScene" uid="uid://dp81xfi248twa" path="res://scenes/props/barrel.tscn" id="7_w2c4b"]
+[ext_resource type="PackedScene" uid="uid://bwqv8jh10h2q6" path="res://scenes/props/box.tscn" id="8_8l4v8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_no2vv"]
+size = Vector3(6.45166, 3.84668, 7.30463)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6otet"]
+size = Vector3(5.3703, 2.20569, 2.26678)
 
 [node name="Store" type="Node3D"]
 script = ExtResource("1_4mnwu")
@@ -10,5 +21,57 @@ script = ExtResource("1_4mnwu")
 [node name="Shopkeeper" parent="." instance=ExtResource("3_2ianb")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.01457, 0.0272474, -2.35091)
 
-[node name="StoreMesh" parent="." instance=ExtResource("3_ey4hh")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="Shop" parent="." instance=ExtResource("3_ey4hh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 3.27264, -1.6035)
+
+[node name="InteractStoreArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.90228)
+collision_layer = 64
+
+[node name="InteractArea" type="CollisionShape3D" parent="InteractStoreArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.241943, 0.95166, -1.85892)
+shape = SubResource("BoxShape3D_no2vv")
+
+[node name="FishSellArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.90228)
+collision_layer = 64
+collision_mask = 4
+
+[node name="FishSellCollision" type="CollisionShape3D" parent="FishSellArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.312225, 0.128514, -2.51747)
+shape = SubResource("BoxShape3D_6otet")
+
+[node name="TalkingTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Plank2" parent="." instance=ExtResource("4_5hnn4")]
+transform = Transform3D(0.758646, 0, 0.651503, 0, 1, 0, -0.651503, 0, 0.758646, 1.34916, 0.0484545, 0.492165)
+
+[node name="Plank3" parent="." instance=ExtResource("4_5hnn4")]
+transform = Transform3D(0.758646, 0, 0.651503, 0, 1, 0, -0.651503, 0, 0.758646, 1.30365, 0.124771, 0.383562)
+
+[node name="Plank4" parent="." instance=ExtResource("5_agbte")]
+transform = Transform3D(0.758646, 0, 0.651503, 0, 1, 0, -0.651503, 0, 0.758646, 1.84687, 0.195782, -0.082942)
+
+[node name="Plank5" parent="." instance=ExtResource("6_vpmay")]
+transform = Transform3D(0.758646, 0, 0.651503, 0, 1, 0, -0.651503, 0, 0.758646, 2.52314, 0.335542, -0.663698)
+
+[node name="Barrel" parent="." instance=ExtResource("7_w2c4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63673, 0.470205, -3.05353)
+
+[node name="Barrel3" parent="." instance=ExtResource("7_w2c4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73402, 0.470205, 0.760858)
+
+[node name="Barrel2" parent="." instance=ExtResource("7_w2c4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63673, 1.64152, -3.05353)
+
+[node name="Box" parent="." instance=ExtResource("8_8l4v8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59148, 0.337051, -3.41851)
+
+[node name="Box2" parent="." instance=ExtResource("8_8l4v8")]
+transform = Transform3D(0.89474, 0, 0.446588, 0, 1, 0, -0.446588, 0, 0.89474, 0.788827, 0.337051, -3.41851)
+
+[connection signal="body_entered" from="InteractStoreArea" to="." method="_on_interact_store_area_body_entered"]
+[connection signal="body_exited" from="InteractStoreArea" to="." method="_on_interact_store_area_body_exited"]
+[connection signal="body_entered" from="FishSellArea" to="." method="_on_fish_sell_area_body_entered"]
+[connection signal="timeout" from="TalkingTimer" to="." method="_on_talking_timer_timeout"]

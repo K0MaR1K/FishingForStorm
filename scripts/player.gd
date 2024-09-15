@@ -43,6 +43,9 @@ var head_start_pos: float
 
 var tasks: Array[Node3D]
 var floaty: RigidBody3D
+var is_moving;
+var walking_stream = load("res://assets/sounds_and_music/sounds/wood_walking.wav");
+var running_stream = load("res://assets/sounds_and_music/sounds/wood_running.wav")
 
 var is_fishing: bool:
 	set(value):
@@ -119,6 +122,16 @@ func handle_walking(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, current_speed)
 			velocity.z = move_toward(velocity.z, 0, current_speed)
+			
+		if velocity.length() > 0.1:
+			#$AudioStreamPlayer.play()
+			if !is_moving:
+				$AudioStreamPlayer.play()
+				is_moving = true
+		else:
+			if is_moving:
+				$AudioStreamPlayer.stop()
+				is_moving = false
 
 func handle_movement_state(delta):
 	if Input.is_action_pressed("crouch"):
@@ -140,8 +153,10 @@ func handle_movement_state(delta):
 		if Input.is_action_pressed("sprint"):
 			#sprinting
 			current_speed = sprinting_speed
+			#$AudioStreamPlayer.stream = running_stream
 		else:
 			current_speed = walking_speed
+			$AudioStreamPlayer.stream = walking_stream
 
 func handle_pointing():
 	# For picking up items
@@ -182,3 +197,8 @@ func handle_tasks(delta):
 func entered_interaction(new_task: Node3D):
 	tasks.insert(0, new_task)
 	
+
+
+func _on_audio_stream_player_finished():
+	if is_moving:
+		$AudioStreamPlayer.play()

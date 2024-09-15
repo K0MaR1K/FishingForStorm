@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cy0cnc8uccist"]
 
 [ext_resource type="PackedScene" uid="uid://covmq1lx8eod7" path="res://scenes/Tasks/task_template.tscn" id="1_rbucg"]
-[ext_resource type="Material" uid="uid://billcabj1j5s5" path="res://assets/textures/water.tres" id="2_a46yw"]
+[ext_resource type="Material" path="res://assets/textures/water.tres" id="2_a46yw"]
 [ext_resource type="Script" path="res://scripts/Tasks/repair_task.gd" id="2_u6elx"]
 [ext_resource type="PackedScene" uid="uid://c5cdvl15th1w8" path="res://assets/models/planks/Plank.glb" id="4_f4f8f"]
 [ext_resource type="PackedScene" uid="uid://pkpk4gves26p" path="res://assets/models/planks/Plank4.glb" id="5_77i05"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ns106reuavk7"]
+[gd_scene load_steps=14 format=3 uid="uid://ns106reuavk7"]
 
 [ext_resource type="Texture2D" uid="uid://6lcywunqx5r1" path="res://assets/sprites/circle_05.png" id="1_mm651"]
 [ext_resource type="Script" path="res://scripts/storm_effects.gd" id="1_wwoii"]
 [ext_resource type="Shader" path="res://shaders/lightning.gdshader" id="2_sfbn0"]
+[ext_resource type="AudioStream" uid="uid://24nipa7orkho" path="res://assets/sounds_and_music/sounds/rain.ogg" id="4_2u30r"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x3q3i"]
 emission_shape = 3
@@ -119,6 +120,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_mm651")
 
+[node name="Lightning_strike" type="AudioStreamPlayer3D" parent="lightning"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -7.5, 0)
+volume_db = 2.0
+max_distance = 100.0
+bus = &"SF"
+
 [node name="LightningLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.7142, 0)
 light_energy = 0.0
@@ -128,4 +135,10 @@ libraries = {
 "": SubResource("AnimationLibrary_867sa")
 }
 
+[node name="RainSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2u30r")
+autoplay = true
+bus = &"SF"
+
 [connection signal="timeout" from="lightning_timer" to="." method="_on_lightning_timer_timeout"]
+[connection signal="finished" from="RainSounds" to="." method="_on_rain_sounds_finished"]

@@ -18,6 +18,7 @@ var fishes: Array[PackedScene] = [
  preload("res://scenes/fish/fish5.tscn"), #80.0 SW SB
  preload("res://scenes/fish/fish4.tscn"), #100.0 SB
  preload("res://scenes/fish/fish2.tscn")] #150.0 SB
+var shark = preload("res://scenes/fish/shark.tscn")
 
 var player: PhysicsBody3D
 var skeleton: Skeleton3D
@@ -40,13 +41,13 @@ var state = IDLE
 func zone_changed(value):
 	match value:
 		Global.ZONE.DEADMAN:
-			pull_speed = 0.1
+			pull_speed = 0.05
 		Global.ZONE.BUCCANEER:
-			pull_speed = 0.2
+			pull_speed = 0.1
 		Global.ZONE.SEAWITCH:
-			pull_speed = 0.3
+			pull_speed = 0.2
 		Global.ZONE.STORMBREAKER:
-			pull_speed = 0.4
+			pull_speed = 0.3
 
 func handle_fish_price():
 	var fish
@@ -108,6 +109,12 @@ func handle_fish_price():
 			fish.scale = Vector3(s, s, s)
 			fish.adjusted_price = fish.base_price + round(20.0 * s)
 			
+	if Global.is_storm and randf() > 0.5:
+		fish = shark.instantiate()
+		
+		var s = randf_range(0.7, 1.3)
+		fish.scale = Vector3(s, s, s)
+		fish.adjusted_price = fish.base_price + round(20.0 * s)
 	print(fish.adjusted_price)
 	return fish
 
@@ -116,8 +123,11 @@ func end_fishing(win):
 		if first_fish:
 			first_fish = false
 			Global.hint("Price of the fish depends on it's rarity")
+			Global.interaction_queue.append(Global.interactions["succeed1"])
+			
 		var fish = handle_fish_price()
 		player.hand.add_child(fish)
+		Global.fish_caught += 1
 	state = IDLE
 	player.is_fishing = false
 	floaty.hide()

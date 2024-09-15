@@ -2,11 +2,16 @@ extends SoftBody3D
 
 @onready var wrapped_sail = $"../SailWrapped"
 
+var sail_break_stream = load("res://assets/sounds_and_music/sounds/sail_break.wav")
+var sail_deploy_stream = load("res://assets/sounds_and_music/sounds/sail_deploy.wav")
+
 var pinned_points = 4;
 var sail_unpin_time = 6;
 var are_sails_down: bool = false:
 	set(value):
 		are_sails_down = value
+		$AudioStreamPlayer.stream = sail_deploy_stream
+		$AudioStreamPlayer.play()
 		if are_sails_down:
 			lower_sail();
 		else:
@@ -40,6 +45,8 @@ func _on_sail_destruction_timer_timeout():
 	if are_sails_down: 
 		$sail_destruction_timer.start(sail_unpin_time)
 		return
+	$AudioStreamPlayer.stream = sail_break_stream
+	$AudioStreamPlayer.play()
 	match pinned_points:
 		4:
 			set_point_pinned(0, false)
@@ -54,4 +61,5 @@ func _on_sail_destruction_timer_timeout():
 			pinned_points -= 1;
 			if get_parent().get_parent().has_method("game_over"):
 				get_parent().get_parent().game_over("You lost your sail!")
+	
 			

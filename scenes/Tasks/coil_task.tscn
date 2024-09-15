@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdm1qc6wx48oe"]
+[gd_scene load_steps=10 format=3 uid="uid://cdm1qc6wx48oe"]
 
 [ext_resource type="Script" path="res://scripts/Tasks/coil_task.gd" id="1_56red"]
 [ext_resource type="PackedScene" uid="uid://ddtcym6u5sh4e" path="res://assets/models/props/coil.glb" id="1_fi3b3"]
+[ext_resource type="AudioStream" uid="uid://bbuf3g8ksx24a" path="res://assets/sounds_and_music/sounds/winding.wav" id="3_ux270"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bobff"]
 size = Vector3(1.5, 1, 1.5)
@@ -80,6 +81,9 @@ surface_material_override/1 = SubResource("StandardMaterial3D_1byfw")
 libraries = {
 "": SubResource("AnimationLibrary_mhdxh")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ux270")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

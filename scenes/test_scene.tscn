@@ -6,7 +6,8 @@
 [ext_resource type="Environment" uid="uid://lquvw8gqo4ha" path="res://environments/storm_env.tres" id="3_lq5wc"]
 [ext_resource type="PackedScene" uid="uid://bqbvgwi0wt5hx" path="res://scenes/Items/bucket.tscn" id="8_qcsk1"]
 [ext_resource type="PackedScene" uid="uid://dxfa4bjft64qc" path="res://scenes/ship.tscn" id="10_x831h"]
-[ext_resource type="PackedScene" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
+[ext_resource type="PackedScene" uid="uid://ch4w3sksninet" path="res://scenes/Items/hammer.tscn" id="11_1mdt6"]
+[ext_resource type="AudioStream" uid="uid://en2o47c442sg" path="res://assets/sounds_and_music/sounds/boat_sounds.ogg" id="11_bruxn"]
 [ext_resource type="PackedScene" uid="uid://80lvb41s7xps" path="res://scenes/fire_control.tscn" id="11_kt2kk"]
 [ext_resource type="CompressedTexture3D" uid="uid://b3dyw8a7rkvcs" path="res://shaders/test_scene.GPUParticlesCollisionSDF3D_data.exr" id="12_hkfgt"]
 [ext_resource type="PackedScene" uid="uid://b8q86kob2js7n" path="res://scenes/canvas_and_ui/ui_canvas.tscn" id="13_0el7f"]
@@ -49,15 +50,20 @@ size = Vector3(10.0044, 10.2777, 27.5524)
 thickness = 2.0
 texture = ExtResource("12_hkfgt")
 
-[node name="FireControl" parent="." instance=ExtResource("11_kt2kk")]
-
 [node name="UICanvas" parent="." instance=ExtResource("13_0el7f")]
 
 [node name="PlayerRespawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91573, 0)
 
 [node name="Store" parent="." instance=ExtResource("13_vpemg")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.92382, 2.74474, 3.57602)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.52101, 2.81132, 3.57602)
 
 [node name="TransitionCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.593939, 0, 0.80451, 0, 1, 0, -0.80451, 0, 0.593939, 19.2749, 9.66759, 21.0336)
+
+[node name="BoatSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_bruxn")
+autoplay = true
+bus = &"SF"
+
+[connection signal="finished" from="BoatSounds" to="." method="_on_boat_sounds_finished"]
