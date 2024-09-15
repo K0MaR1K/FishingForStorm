@@ -455,7 +455,7 @@ stream = ExtResource("5_irj2c")
 attenuation_model = 1
 volume_db = -20.0
 autoplay = true
-bus = &"SF"
+bus = &"Ambience"
 
 [connection signal="timeout" from="TalkingTimer" to="." method="_on_talking_timer_timeout"]
 [connection signal="finished" from="Whistle" to="." method="_on_whistle_finished"]

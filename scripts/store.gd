@@ -21,7 +21,7 @@ func _ready() -> void:
 	Global.interaction_queue.append(Global.interactions["tutorial6"])
 	Global.interaction_queue.append(Global.interactions["tutorial7"])
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact2") and player_in_area:
 		if talking_timer.is_stopped():
 			talking_timer.start()
@@ -45,7 +45,7 @@ func disable():
 	shopkeeper.whistle.stop()
 	
 
-func _on_interact_store_area_body_entered(body: Node3D) -> void:
+func _on_interact_store_area_body_entered(_body: Node3D) -> void:
 	player_in_area = true
 	if first_entry:
 		Global.hint("Press RMB to talk to the shopkeeper")
@@ -58,7 +58,7 @@ func _on_interact_store_area_body_entered(body: Node3D) -> void:
 		Global.interaction_queue.append(Global.interactions["failed2"])
 		Global.interaction_queue.append(Global.interactions["failed3"])
 
-func _on_interact_store_area_body_exited(body: Node3D) -> void:
+func _on_interact_store_area_body_exited(_body: Node3D) -> void:
 	player_in_area = false
 	talking_timer.stop()
 	shopkeeper.wave()

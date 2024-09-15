@@ -4,8 +4,7 @@ extends Node
 @onready var blink_canvas: CanvasLayer = $BlinkCanvas
 @onready var map_canvas: CanvasLayer = $MapCanvas
 @onready var hint_canvas: CanvasLayer = $HintCanvas
-@onready var label_1: Label = $/root/TestScene/Ship/ScoreTracker/SubViewport/VBoxContainer/HBoxContainer/Label2
-@onready var label_2: Label = $/root/TestScene/Ship/ScoreTracker/SubViewport/VBoxContainer/HBoxContainer2/Label2
+@onready var label: Label = $/root/TestScene/Ship/ScoreTracker/SubViewport/VBoxContainer/HBoxContainer/Label2
 
 signal is_storm_changed(value)
 signal zone_changed(value)
@@ -49,12 +48,9 @@ var interactions = {"intro1" : "Hey, my name is Shawn the Shopkeeper.\n And your
 
 var money: 
 	set(value):
-		if money:
-			if value - money >= 0:
-				label_2.text = str(int(label_2.text) + value - money)
-		else:
-			label_2.text = str(0)
-		label_1.text = str(value)
+		if not label:
+			label = $/root/TestScene/Ship/ScoreTracker/SubViewport/VBoxContainer/HBoxContainer/Label2
+		label.text = str(value)
 		money = value
 
 var first_storm: bool = true
@@ -107,7 +103,7 @@ func restart():
 	is_storm = false
 	this_zone_storms_survived = 0
 	overall_storms_survived = 0
-	score = 0
+	money = 0
 	map_canvas._ready()
 	rstrt = false
 	
