@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bspjuurin0r3u"]
+
+[node name="ItemTemplate" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
